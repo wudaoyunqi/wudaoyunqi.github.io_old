@@ -353,7 +353,8 @@
         
           
             <p>经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊<em>(:зゝ∠)</em>。于是上<a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">git官网</a>从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一种××分布式版本控制系统××，这与常被混淆的××Github××(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。<br>由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。<br>Git安装跳过，请自行使用强大的搜索引擎。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一种<strong>分布式版本控制系统</strong>，这与常被混淆的<strong>Github</strong>(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。</p>
+<p>由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。</p>
 <h2 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h2><h3 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h3><p>首先聊聊Git的工作流程，Git有三种状态，你的文件可能处于其中之一</p>
 <ul>
 <li>已提交(committed) → 数据已经保存在本地数据库中</li>
@@ -368,15 +369,16 @@
 <li>暂存文件，将文件的快照放入暂存区域</li>
 <li>提交更新，找到暂存区域的文件，将快照存储到Git仓库<br>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </li>
 </ol>
-<h3 id="Git仓库-Repository"><a href="#Git仓库-Repository" class="headerlink" title="Git仓库(Repository)"></a>Git仓库(Repository)</h3><p>从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin), 一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pull request，请求管理员把自己的代码合并到源仓库中，这样就实现了××分布式开发工作××(可太分布了不是吗)。</p>
+<h3 id="Git仓库-Repository"><a href="#Git仓库-Repository" class="headerlink" title="Git仓库(Repository)"></a>Git仓库(Repository)</h3><p>从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin),<br>一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pull request，请求管理员把自己的代码合并到源仓库中，这样就实现了<strong>分布式开发工作</strong>(可太分布了不是吗)。</p>
 <p>下面讲讲获取Git仓库的方法</p>
 <ul>
-<li>在现有的目录中初始化<br>比如说我有一个项目目录test，那么我只需要进入该项目目录并输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">#初始化仓库，该命令将创建一个.git子目录，用来存放初始化的Git仓库中所有的必须文件</span><br></pre></td></tr></table></figure>
+<li><p>在现有的目录中初始化<br>比如说我有一个项目目录test，那么我只需要进入该项目目录并输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">#初始化仓库，该命令将创建一个.git子目录，用来存放初始化的Git仓库中所有的必须文件</span><br></pre></td></tr></table></figure>
+<p>  注意现在项目的文件还没有被跟踪(被标记)，我们需要</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line">#跟踪目录下的所有文件，即Git工作流程的第二步</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>注意现在项目的文件还没有被跟踪(被标记)，我们需要<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line">#跟踪目录下的所有文件，即Git工作流程的第二步</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>克隆现有的仓库<br>开发者在fork源仓库后就会有一个属于自己的开发者仓库，我们想要把它clone到本地<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yourname/reponamegit</span><br><span class="line">#这会在当前目录下创建一个名为reponame的目录，并在这个目录下初始化一个.git文件夹，从远程仓库拉取所有数据放入.git文件夹，然后读取文件的拷贝</span><br></pre></td></tr></table></figure>
+<li><p>克隆现有的仓库<br>开发者在fork源仓库后就会有一个属于自己的开发者仓库，我们想要把它clone到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yourname/reponamegit</span><br><span class="line">#这会在当前目录下创建一个名为reponame的目录，并在这个目录下初始化一个.git文件夹，从远程仓库拉取所有数据放入.git文件夹，然后读取文件的拷贝</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="仓库更新"><a href="#仓库更新" class="headerlink" title="仓库更新"></a>仓库更新</h3><p>我们无非就是对仓库里的文件进行操作，而文件只有两种状态，已追踪和未追踪。Git的操作逻辑是，编辑文件后，它就是一个已修改文件，我们需要把这个文件放入暂存区，然后提交所有暂存区的文件，以此反复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br><span class="line">#将文件放入暂存区，状态为已追踪</span><br><span class="line"></span><br><span class="line">git commit -m &apos;xxxx&apos;</span><br><span class="line">#提交暂存区所有的文件，&apos;xxxx&apos;是提交的说明</span><br></pre></td></tr></table></figure></p>
