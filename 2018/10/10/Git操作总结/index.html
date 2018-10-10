@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yunqi&#39;s blog">
 <meta property="og:description" content="经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊(:зゝ∠)。于是上git官网从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。 前言Git是一种分布式版本控制系统，这与常被混淆的Github(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-10T17:44:59.233Z">
+<meta property="og:updated_time" content="2018-10-10T17:48:12.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git操作总结">
 <meta name="twitter:description" content="经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊(:зゝ∠)。于是上git官网从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。 前言Git是一种分布式版本控制系统，这与常被混淆的Github(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需">
@@ -356,18 +356,23 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一种<strong>分布式版本控制系统</strong>，这与常被混淆的<strong>Github</strong>(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。</p>
 <p>由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。</p>
 <h2 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h2><h3 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h3><p>首先聊聊Git的工作流程，Git有三种状态，你的文件可能处于其中之一</p>
-<pre><code>* 已提交(committed) → 数据已经保存在本地数据库中
-* 已修改(modified) → 修改了文件但还没保存到数据库中
-* 已暂存(staged) → 对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中
-</code></pre><p>由此再引入三个工作区域的概念</p>
-<pre><code>* Git仓库 → 保存项目的数据
-* 工作目录 → 对项目的某个版本提取出来的内容
-* 暂存区域 → 保存下次将提交的文件列表信息
-</code></pre><p>基本的Git工作流程如下</p>
-<pre><code>1. 在工作目录中修改文件
-2. 暂存文件，将文件的快照放入暂存区域
-3. 提交更新，找到暂存区域的文件，将快照存储到Git仓库
-</code></pre><p>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </p>
+<ul>
+<li>已提交(committed) → 数据已经保存在本地数据库中</li>
+<li>已修改(modified) → 修改了文件但还没保存到数据库中</li>
+<li>已暂存(staged) → 对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中</li>
+</ul>
+<p>由此再引入三个工作区域的概念</p>
+<ul>
+<li>Git仓库 → 保存项目的数据</li>
+<li>工作目录 → 对项目的某个版本提取出来的内容</li>
+<li>暂存区域 → 保存下次将提交的文件列表信息</li>
+</ul>
+<p>基本的Git工作流程如下</p>
+<ol>
+<li>在工作目录中修改文件</li>
+<li>暂存文件，将文件的快照放入暂存区域</li>
+<li>提交更新，找到暂存区域的文件，将快照存储到Git仓库<br>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </li>
+</ol>
 <h3 id="Git仓库-Repository"><a href="#Git仓库-Repository" class="headerlink" title="Git仓库(Repository)"></a>Git仓库(Repository)</h3><p>从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin), 一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pull request，请求管理员把自己的代码合并到源仓库中，这样就实现了<strong>分布式开发工作</strong>(可太分布了不是吗)。</p>
 <p>下面讲讲获取Git仓库的方法</p>
 <ul>
