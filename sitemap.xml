@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/10/Git%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2018-10-10T17:26:47.787Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/10/hello-world/</loc>
     
     <lastmod>2018-10-10T10:29:08.049Z</lastmod>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git操作总结]]></title>
+    <url>%2F2018%2F10%2F10%2FGit%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊(:зゝ∠)。于是上git官网从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。 前言 Git是一种××分布式版本控制系统××，这与常被混淆的××Github××(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。 Git基础 Git工作流程 首先聊聊Git的工作流程，Git有三种状态，你的文件可能处于其中之一 已提交(committed) → 数据已经保存在本地数据库中 已修改(modified) → 修改了文件但还没保存到数据库中 已暂存(staged) → 对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中由此再引入三个工作区域的概念 Git仓库 → 保存项目的数据 工作目录 → 对项目的某个版本提取出来的内容 暂存区域 → 保存下次将提交的文件列表信息基本的Git工作流程如下 在工作目录中修改文件 暂存文件，将文件的快照放入暂存区域 提交更新，找到暂存区域的文件，将快照存储到Git仓库是不是感觉看不懂很头大？～～那你继续大着看下去吧）～～ Git仓库(Repository) 从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin), 一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pullrequest，请求管理员把自己的代码合并到源仓库中，这样就实现了××分布式开发工作××(可太分布了不是吗)。 下面讲讲获取Git仓库的方法× 在现有的目录中初始化比如说我有一个项目目录test，那么我只需要进入该项目目录并输入：12git init#初始化仓库，该命令将创建一个.git子目录，用来存放初始化的Git仓库中所有的必须文件 注意现在项目的文件还没有被跟踪(被标记)，我们需要12git add *#跟踪目录下的所有文件，即Git工作流程的第二步 × 克隆现有的仓库开发者在fork源仓库后就会有一个属于自己的开发者仓库，我们想要把它clone到本地12git clone git@github.com:yourname/reponamegit#这会在当前目录下创建一个名为reponame的目录，并在这个目录下初始化一个.git文件夹，从远程仓库拉取所有数据放入.git文件夹，然后读取文件的拷贝 仓库更新 我们无非就是对仓库里的文件进行操作，而文件只有两种状态，已追踪和未追踪。Git的操作逻辑是，编辑文件后，它就是一个已修改文件，我们需要把这个文件放入暂存区，然后提交所有暂存区的文件，以此反复。12345git add &lt;filename&gt;#将文件放入暂存区，状态为已追踪git commit -m &apos;xxxx&apos;#提交暂存区所有的文件，&apos;xxxx&apos;是提交的说明 注意，每次修改后文件都需要放入暂存区，这样才能提交更新后的信息(你也可以理解为git add的意思是添加内容到下一次提交中，如果文件没有被追踪，那么下一次要提交的内容便不包含它) 那么很自然会想到，我们怎么查看文件的状态呢？输入：1git status 可是git status的输出有时候太不友好了，我们迫切地想知道到底修改了那些地方，输入12git diff#比较工作目录中当前文件和暂存区域快照之间的差异，即修改之后没有暂存的文件变化内容 有时候聪明的你也会粗心，忘了把修改后的文件git add了，那么有没有什么命令能解决呢？12git commit -a#把所有已经被跟踪的文件打包暂存然后提交 啊有时候我们想删掉一个文件，但这个文件被追踪过，如果我们只是单纯地删除这个文件，你会发现在未暂存清单里会看见这个文件，这时候输入12git rm &lt;filename&gt;#将文件从暂存区域清除，再从工作目录中删除]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F10%2F10%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
