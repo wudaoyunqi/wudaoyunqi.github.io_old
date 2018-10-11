@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yunqi&#39;s blog">
 <meta property="og:description" content="经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊(:зゝ∠)。于是上git官网从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。 前言Git是一种分布式版本控制系统，这与常被混淆的Github(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-10T17:48:12.197Z">
+<meta property="og:updated_time" content="2018-10-11T08:17:02.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git操作总结">
 <meta name="twitter:description" content="经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊(:зゝ∠)。于是上git官网从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。 前言Git是一种分布式版本控制系统，这与常被混淆的Github(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需">
@@ -371,10 +371,11 @@
 <ol>
 <li>在工作目录中修改文件</li>
 <li>暂存文件，将文件的快照放入暂存区域</li>
-<li>提交更新，找到暂存区域的文件，将快照存储到Git仓库<br>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </li>
+<li>提交更新，找到暂存区域的文件，将快照存储到Git仓库</li>
 </ol>
+<p>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </p>
 <h3 id="Git仓库-Repository"><a href="#Git仓库-Repository" class="headerlink" title="Git仓库(Repository)"></a>Git仓库(Repository)</h3><p>从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin), 一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pull request，请求管理员把自己的代码合并到源仓库中，这样就实现了<strong>分布式开发工作</strong>(可太分布了不是吗)。</p>
-<p>下面讲讲获取Git仓库的方法</p>
+<p>下面讲讲获取Git仓库的两种方法</p>
 <ul>
 <li><p>在现有的目录中初始化<br>比如说我有一个项目目录test，那么我只需要进入该项目目录并输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">#初始化仓库，该命令将创建一个.git子目录，用来存放初始化的Git仓库中所有的必须文件</span><br></pre></td></tr></table></figure>
