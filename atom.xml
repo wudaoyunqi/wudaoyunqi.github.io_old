@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T05:34:17.965Z</updated>
+  <updated>2018-10-16T05:54:39.268Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,19 @@
     <link href="http://yoursite.com/2018/10/16/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     <id>http://yoursite.com/2018/10/16/树状数组/</id>
     <published>2018-10-16T01:55:22.000Z</published>
-    <updated>2018-10-16T05:34:17.965Z</updated>
+    <updated>2018-10-16T05:54:39.268Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我们将
-      
+      &lt;p&gt;树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效率很高）&lt;/p&gt;
+&lt;p&gt;树状数组可以实现的功能有&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将一个数组树状化&lt;/li&gt;
+&lt;li&gt;区间修改，如改变某一个点a[i]的值&lt;/li&gt;
+&lt;li&gt;区间查询，如询问a[1]+a[2]+…+a[i]的值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;“树状化”数组&quot;&gt;&lt;a href=&quot;#“树状化”数组&quot; class=&quot;headerlink&quot; title=&quot;“树状化”数组&quot;&gt;&lt;/a&gt;“树状化”数组&lt;/h2&gt;&lt;p&gt;下面我们来定义C[]数组（也就是把数组树状化）&lt;br&gt;C[i]=a[i-2^k+1]+a[i-2^k+2]+…+a[i]，其中k表示i的二进制中末尾0的个数，例如i=8时，二进制为1000，那么C[8]=a[1]+a[2]+…+a[8]，再例如i=6,二进制为110，则C[6]=a[5]+a[6]&lt;br&gt;
     
     </summary>
     
