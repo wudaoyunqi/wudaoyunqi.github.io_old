@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T05:54:39.268Z</updated>
+  <updated>2018-10-16T10:33:52.676Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2018/10/16/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     <id>http://yoursite.com/2018/10/16/树状数组/</id>
     <published>2018-10-16T01:55:22.000Z</published>
-    <updated>2018-10-16T05:54:39.268Z</updated>
+    <updated>2018-10-16T10:33:52.676Z</updated>
     
     <summary type="html">
     
@@ -33,7 +33,6 @@
 &lt;li&gt;区间修改，如改变某一个点a[i]的值&lt;/li&gt;
 &lt;li&gt;区间查询，如询问a[1]+a[2]+…+a[i]的值&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;“树状化”数组&quot;&gt;&lt;a href=&quot;#“树状化”数组&quot; class=&quot;headerlink&quot; title=&quot;“树状化”数组&quot;&gt;&lt;/a&gt;“树状化”数组&lt;/h2&gt;&lt;p&gt;下面我们来定义C[]数组（也就是把数组树状化）&lt;br&gt;C[i]=a[i-2^k+1]+a[i-2^k+2]+…+a[i]，其中k表示i的二进制中末尾0的个数，例如i=8时，二进制为1000，那么C[8]=a[1]+a[2]+…+a[8]，再例如i=6,二进制为110，则C[6]=a[5]+a[6]&lt;br&gt;
     
     </summary>
     
@@ -47,18 +46,17 @@
   </entry>
   
   <entry>
-    <title>Git操作总结</title>
+    <title>Git操作总结(一)</title>
     <link href="http://yoursite.com/2018/10/10/Git%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2018/10/10/Git操作总结/</id>
     <published>2018-10-10T14:49:34.000Z</published>
-    <updated>2018-10-11T08:23:06.516Z</updated>
+    <updated>2018-10-16T10:32:35.704Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊&lt;em&gt;(:зゝ∠)&lt;/em&gt;。于是上&lt;a href=&quot;https://git-scm.com/book/en/v2&quot; target=&quot;_blank&quot; rel=&quot;noopene
-      
+      &lt;p&gt;经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊&lt;em&gt;(:зゝ∠)&lt;/em&gt;。于是上&lt;a href=&quot;https://git-scm.com/book/en/v2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git官网&lt;/a&gt;从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Git是一种&lt;strong&gt;分布式版本控制系统&lt;/strong&gt;，这与常被混淆的&lt;strong&gt;Github&lt;/strong&gt;(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。&lt;/p&gt;
+&lt;p&gt;由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。&lt;/p&gt;
     
     </summary>
     
