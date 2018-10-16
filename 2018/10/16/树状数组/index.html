@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,树状数组," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yunqi&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了 ##前言 我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效">
+<meta name="keywords" content="算法,树状数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树状数组">
+<meta property="og:url" content="http://yoursite.com/2018/10/16/树状数组/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
+<meta property="og:description" content="树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了 ##前言 我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/786945/201612/786945-20161206222444319-1066528329.jpg">
+<meta property="og:updated_time" content="2018-10-16T05:31:31.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yunqi&#39;s blog">
+<meta name="twitter:title" content="树状数组">
+<meta name="twitter:description" content="树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了 ##前言 我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/786945/201612/786945-20161206222444319-1066528329.jpg">
 
 
 
@@ -115,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/16/树状数组/"/>
 
 
 
@@ -125,7 +132,7 @@
 <script 
 src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
-  <title>Yunqi's blog</title>
+  <title>树状数组 | Yunqi's blog</title>
   
 
 
@@ -144,8 +151,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,9 +254,9 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -280,9 +286,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/16/树状数组/" itemprop="url">树状数组</a></h1>
+          <h1 class="post-title" itemprop="name headline">树状数组</h1>
         
 
         <div class="post-meta">
@@ -354,9 +358,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
 
       
-        
-          
-            <p>树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了</p>
+        <p>树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了</p>
 <p>##前言</p>
 <p>我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效率很高）</p>
 <p>树状数组可以实现的功能有</p>
@@ -385,8 +387,6 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 <p>观察下列式子<br>a[1]+a[2]+…+a[n]=(c1[1])+(c1[1]+c1[2])+(c1[1]+c1[2]+c1[3])+…+(c1[1]+c1[2]+…+c1[n])=n<em>c1[1]+(n-1)c1[2]+…+c1[n]=n</em>(c1[1]+c1[2]+…+c1[n])-(0<em>c1[1]+1</em>c1[2]+…+(n-1)c1[n])=(n+1)<em>(c1[1]+c1[2]+…+c1[n])-(1</em>c1[1]+2<em>c1[2]+…+n</em>c1[n])<br>那么我们便维护一个数组c2[]，其中c2[i]=i*c[i]，每当我们修改c[]时，同步修改c2[]，总体复杂度还是O(logN)<br>以下是模板</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int c[100005][2];</span><br><span class="line">int n,m;</span><br><span class="line"></span><br><span class="line">int lowbit(int i)&#123;</span><br><span class="line">    return i&amp;-i;</span><br><span class="line">&#125;</span><br><span class="line">int getsum(int pos,int f)&#123;</span><br><span class="line">    int ans=0;</span><br><span class="line">    while(pos!=0)&#123;</span><br><span class="line">        ans+=c[pos][f];</span><br><span class="line">        pos-=lowbit(pos);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">void update(int pos,int f,int x)&#123;</span><br><span class="line">    while(pos&lt;=n)&#123;</span><br><span class="line">        c[pos][f]+=x;</span><br><span class="line">        pos+=lowbit(pos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int ask(int pos)&#123;</span><br><span class="line">    return (pos+1)*getsum(pos,0)-getsum(pos,1);</span><br><span class="line">&#125;</span><br><span class="line">int main(void)&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</span><br><span class="line">        int x=0,y;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;y);</span><br><span class="line">            update(i,0,y-x);</span><br><span class="line">            update(i,1,i*(y-x));</span><br><span class="line">            x=y;</span><br><span class="line">        &#125;</span><br><span class="line">        int opt,a,b,k;</span><br><span class="line">        for(int i=0;i&lt;m;i++)&#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;opt);</span><br><span class="line">            if(opt==1)&#123;</span><br><span class="line">                scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;k);</span><br><span class="line">                update(a,0,k);</span><br><span class="line">                update(b+1,0,-k);</span><br><span class="line">                update(a,1,a*k);</span><br><span class="line">                update(b+1,1,-(b+1)*k);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</span><br><span class="line">                printf(&quot;%d\n&quot;,ask(b)-ask(a-1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -401,195 +401,38 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/Git操作总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yunqi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wudaoyunqi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunqi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/Git操作总结/" itemprop="url">Git操作总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T22:49:34+08:00">
-                2018-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
-
+            <a href="/tags/树状数组/" rel="tag"># 树状数组</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊<em>(:зゝ∠)</em>。于是上<a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">git官网</a>从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一种<strong>分布式版本控制系统</strong>，这与常被混淆的<strong>Github</strong>(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。</p>
-<p>由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。</p>
-<h2 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h2><h3 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h3><p>首先聊聊Git的工作流程，Git有三种状态，你的文件可能处于其中之一</p>
-<ul>
-<li>已提交(committed) → 数据已经保存在本地数据库中</li>
-<li>已修改(modified) → 修改了文件但还没保存到数据库中</li>
-<li>已暂存(staged) → 对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中</li>
-</ul>
-<p>由此再引入三个工作区域的概念</p>
-<ul>
-<li>Git仓库 → 保存项目的数据</li>
-<li>工作目录 → 对项目的某个版本提取出来的内容</li>
-<li>暂存区域 → 保存下次将提交的文件列表信息</li>
-</ul>
-<p>基本的Git工作流程如下</p>
-<ol>
-<li>在工作目录中修改文件</li>
-<li>暂存文件，将文件的快照放入暂存区域</li>
-<li>提交更新，找到暂存区域的文件，将快照存储到Git仓库</li>
-</ol>
-<p>是不是感觉看不懂很头大？<del>那你继续大着看下去吧)</del> </p>
-<h3 id="Git仓库-Repository"><a href="#Git仓库-Repository" class="headerlink" title="Git仓库(Repository)"></a>Git仓库(Repository)</h3><p>从项目的开始到结尾，我们会接触两种仓库，一种是源仓库(origin), 一种是开发者仓库。源仓库是由项目发起者构建，它汇总了所有参与开发的各个开发者的代码，存放趋于稳定和可发布的代码。当源仓库建立后，开发者应把源仓库”复制”一份，自己的日常开发就在这个复制的仓库进行，即”fork”一下。每个开发者fork的仓库是独立，互不干扰的，而当开发工作完成以后，开发者可以向源仓库发送pull request，请求管理员把自己的代码合并到源仓库中，这样就实现了<strong>分布式开发工作</strong>(可太分布了不是吗)。</p>
-<p>下面讲讲获取Git仓库的两种方法</p>
-<ul>
-<li><p>在现有的目录中初始化<br>比如说我有一个项目目录test，那么我只需要进入该项目目录并输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">#初始化仓库，该命令将创建一个.git子目录，用来存放初始化的Git仓库中所有的必须文件</span><br></pre></td></tr></table></figure>
-<p>  注意现在项目的文件还没有被跟踪(被标记)，我们需要</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line">#跟踪目录下的所有文件，即Git工作流程的第二步</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>克隆现有的仓库<br>开发者在fork源仓库后就会有一个属于自己的开发者仓库，我们想要把它clone到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yourname/reponamegit</span><br><span class="line">#这会在当前目录下创建一个名为reponame的目录，并在这个目录下初始化一个.git文件夹，从远程仓库拉取所有数据放入.git文件夹，然后读取文件的拷贝</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="仓库更新"><a href="#仓库更新" class="headerlink" title="仓库更新"></a>仓库更新</h3><p>我们无非就是对仓库里的文件进行操作，而文件只有两种状态，已追踪和未追踪。Git的操作逻辑是，编辑文件后，它就是一个已修改文件，我们需要把这个文件放入暂存区，然后提交所有暂存区的文件，以此反复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br><span class="line">#将文件放入暂存区，状态为已追踪</span><br><span class="line"></span><br><span class="line">git commit -m &apos;xxxx&apos;</span><br><span class="line">#提交暂存区所有的文件，&apos;xxxx&apos;是提交的说明</span><br></pre></td></tr></table></figure></p>
-<p>注意，每次修改后文件都需要放入暂存区，这样才能提交更新后的信息(你也可以理解为git add的意思是添加内容到下一次提交中，如果文件没有被追踪，那么下一次要提交的内容便不包含它)</p>
-<p>那么很自然会想到，我们怎么查看文件的状态呢？输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
-<p>可是git status的输出有时候太不友好了，我们迫切地想知道到底修改了那些地方，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br><span class="line">#比较工作目录中当前文件和暂存区域快照之间的差异，即修改之后没有暂存的文件变化内容</span><br></pre></td></tr></table></figure></p>
-<p>有时候聪明的你也会粗心，忘了把修改后的文件git add了，那么有没有什么命令能解决呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br><span class="line">#把所有已经被跟踪的文件打包暂存然后提交</span><br></pre></td></tr></table></figure></p>
-<p>啊有时候我们想删掉一个文件，但这个文件被追踪过，如果我们只是单纯地删除这个文件，你会发现在未暂存清单里会看见这个文件，这时候输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;filename&gt;</span><br><span class="line">#将文件从暂存区域清除，再从工作目录中删除</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/Git操作总结/" rel="next" title="Git操作总结">
+                <i class="fa fa-chevron-left"></i> Git操作总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -599,10 +442,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -610,6 +454,10 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
           
+
+  
+
+
 
         </div>
         
@@ -871,6 +719,10 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

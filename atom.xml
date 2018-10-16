@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-11T08:23:06.516Z</updated>
+  <updated>2018-10-16T05:31:31.921Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树状数组</title>
+    <link href="http://yoursite.com/2018/10/16/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    <id>http://yoursite.com/2018/10/16/树状数组/</id>
+    <published>2018-10-16T01:55:22.000Z</published>
+    <updated>2018-10-16T05:31:31.921Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了&lt;/p&gt;
+&lt;p&gt;##前言&lt;/p&gt;
+&lt;p&gt;我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="树状数组" scheme="http://yoursite.com/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Git操作总结</title>
