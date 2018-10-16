@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Microsoft YaHei', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -226,51 +226,51 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 22px;
+  font-size: 23px;
 }
 @media (max-width: 767px) {
   h1 {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 h2 {
-  font-size: 20px;
+  font-size: 21px;
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 h3 {
-  font-size: 18px;
+  font-size: 19px;
 }
 @media (max-width: 767px) {
   h3 {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 h4 {
-  font-size: 16px;
+  font-size: 17px;
 }
 @media (max-width: 767px) {
   h4 {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 h5 {
-  font-size: 14px;
+  font-size: 15px;
 }
 @media (max-width: 767px) {
   h5 {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 h6 {
-  font-size: 12px;
+  font-size: 13px;
 }
 @media (max-width: 767px) {
   h6 {
-    font-size: 8px;
+    font-size: 9px;
   }
 }
 p {
@@ -486,14 +486,14 @@ pre,
   overflow: auto;
   margin: 20px 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 22px;
   color: #c5c8c6;
   background: #1d1f21;
   line-height: 1.6;
 }
 pre,
 code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Microsoft YaHei', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -501,7 +501,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: 22px;
 }
 pre {
   padding: 10px;
@@ -1220,7 +1220,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Mrcrosoft YaHei', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1498,7 +1498,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Mrcrosoft YaHei', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1851,7 +1851,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0873f6;
+  background: #ffe2fe;
 }
 .links-of-blogroll {
   font-size: 13px;
