@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T11:11:47.286Z</updated>
+  <updated>2019-01-24T11:11:52.673Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【图论】求无向连通图的割点（Tarjan算法）</title>
+    <link href="http://yoursite.com/2019/01/24/%E3%80%90%E5%9B%BE%E8%AE%BA%E3%80%91%E6%B1%82%E6%97%A0%E5%90%91%E8%BF%9E%E9%80%9A%E5%9B%BE%E7%9A%84%E5%89%B2%E7%82%B9%EF%BC%88Tarjan%E7%AE%97%E6%B3%95%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/</id>
+    <published>2019-01-24T07:16:42.000Z</published>
+    <updated>2019-01-24T11:11:52.673Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;#前言&quot;&gt;&lt;/a&gt;#前言&lt;/h2&gt;&lt;p&gt;寒假训练开始了，发现自己真是半灌水响叮当，自己关于割点的概念完全不知道，后来找了几篇不错的博客以及翻了翻白书，白书很适合理解概念，博客给
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="图论" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>树状数组</title>

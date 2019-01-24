@@ -307,6 +307,187 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunqi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wudaoyunqi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yunqi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/" itemprop="url">【图论】求无向连通图的割点（Tarjan算法）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T15:16:42+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="#前言"></a>#前言</h2><p>寒假训练开始了，发现自己真是半灌水响叮当，自己关于割点的概念完全不知道，后来找了几篇不错的博客以及翻了翻白书，白书很适合理解概念，博客给的模板代码适合借鉴。</p>
+<h2 id="割点的概念"><a href="#割点的概念" class="headerlink" title="#割点的概念"></a>#割点的概念</h2><p>在<strong>无向连通图</strong>中，如果将其中一个点以及这个点所连的所有的边都去掉，图不再连通，那么这个点成为<strong>割点</strong>（割顶/关节点）。</p>
+<h2 id="如何求割点"><a href="#如何求割点" class="headerlink" title="#如何求割点"></a>#如何求割点</h2><p>暴力的方法：</p>
+<ul>
+<li>依次删除每一个节点v</li>
+<li>DFS(BFS)判断是否连通</li>
+<li>再把节点v加入图中</li>
+</ul>
+<p>若用邻接表，需要做V次DFS，时间复杂度为O(V*(V+E))。</p>
+<h2 id="DFS搜索树"><a href="#DFS搜索树" class="headerlink" title="##DFS搜索树"></a>##DFS搜索树</h2><p>在介绍Tarjan算法之前，首先需要了解几个基本概念</p>
+<ul>
+<li><strong>DFS搜索树</strong>：用DFS对图进行遍历时，按照遍历的顺序，可以得到一棵DFS搜索树（图呢？？？</li>
+<li><strong>树边</strong>：即父子边，可理解为在DFS过程中访问<em>未访问节点</em>时经过的边</li>
+<li><strong>回边</strong>：也称反向边，即后代指向祖先的边，可理解为在DFS过程中访问<em>已访问节点</em>时经过的边</li>
+</ul>
+<h2 id="Tarjan算法"><a href="#Tarjan算法" class="headerlink" title="##Tarjan算法"></a>##Tarjan算法</h2><p>本篇的重点即介绍这一算法，该算法是由R.Tarjan发明的（前人真伟大<br>首先选定一个根节点，从该根节点开始遍历整个图（DFS）<br>思考割点的条件，我们发现有两类节点可以成为割点</p>
+<ol>
+<li>对于树根u，当且仅当它有两个或更多的子节点时，它才是割点</li>
+<li>对于非根节点u，我们有这样一个<strong>定理</strong>：在无向连通图G的DFS树中，非根节点u是G的割点当且仅当u存在一个子节点v，使得v及其所有后代都没有反向边连回u的祖先（连回u不算）。</li>
+</ol>
+<p>如何解释第二种情况呢？思考若其子节点都没有指向u的祖先的回边，说明删除u之后，根节点与u的子树不再连通，自然也就是割点了。很显然，我们需要解决子节点的回边问题。<br>我们维护两个数组<strong>dfn[]</strong>和<strong>low[]</strong>，dfn[u]记录节点u在DFS过程中在<strong>第几回被第一次遍历到</strong>，low[u]记录节点u以及u的后代通过非父子边能追溯到的最早的祖先的dfn值（即dfn值最小），low[u]的计算过程如下</p>
+<ul>
+<li>(u,v)为树边，low[u]=min(low[u],low[v])</li>
+<li>(u,v)为回边且v不是u的父亲节点，low[u]=min(low[u],dfn[v])</li>
+</ul>
+<p>当(u,v)为树边且low[v]&gt;=dfn[u]时，节点u为割点。该式子的含义是：以节点v为根的子树所能追溯到最早的祖先要么是v要么是u。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="##代码"></a>##代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">10000</span>;</span><br><span class="line"><span class="keyword">int</span> dfn[manx],low[maxn],pre[maxn]; <span class="comment">//pre[]记录每个节点的祖先，根节点设为-1</span></span><br><span class="line"><span class="keyword">bool</span> cut[maxn]; <span class="comment">//记录该节点是否为割点（因为可能会被重复判断为割点）</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"><span class="keyword">int</span> n,tot; <span class="comment">//n为节点数，tot记录割点数量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> cnt=<span class="number">0</span>;  <span class="comment">//记录dfs的次序</span></span><br><span class="line">  <span class="keyword">int</span> child=<span class="number">0</span>;</span><br><span class="line">  dfn[u]=low[u]=++cnt;  <span class="comment">//默认low[u]=dfn[u]</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> v=G[u][i];</span><br><span class="line">    <span class="keyword">if</span>(!dfn[v])&#123;  <span class="comment">//第一次访问时dfn值为0（dfn初始化为0）</span></span><br><span class="line">      child++;</span><br><span class="line">      pre[v]=u;</span><br><span class="line">      dfs(v);</span><br><span class="line">      low[u]=min(low[u],low[v]);  <span class="comment">//dfs完毕，如果low[v]&lt;low[u]，则更新low[u]（说明后代v所能追溯到最早的祖先在u之前）</span></span><br><span class="line">      <span class="keyword">if</span>(pre[u]==<span class="number">-1</span>&amp;&amp;child&gt;=<span class="number">2</span>&amp;&amp;!cut[u])&#123;  <span class="comment">//根节点的子节点多于1，满足割点的第一个条件</span></span><br><span class="line">        cut[u]=<span class="literal">true</span>;</span><br><span class="line">        tot++;</span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(pre[u]!=<span class="number">-1</span>&amp;&amp;low[v]&gt;=dfn[u]&amp;&amp;!cut[u])&#123;  <span class="comment">//割点的第二个条件</span></span><br><span class="line">        cut[u]=<span class="literal">true</span>;</span><br><span class="line">        tot++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(v!=pre[u])&#123;  <span class="comment">//(u,v)为回边，且v不是u的父亲</span></span><br><span class="line">      low[u]=min(low[u],dfn[v]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tarjan算法的时间复杂度为O(V+E)，即一次DFS就可以求出割点</p>
+<h2 id="后话"><a href="#后话" class="headerlink" title="#后话"></a>#后话</h2><p>我遇到的第一个求割点的题目是<a href="http://poj.org/problem?id=1144" target="_blank" rel="noopener">UVA315</a>，<del>抄模板</del>的时候cnt设为了int，结果就wa了（超囧）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/树状数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -645,7 +826,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -656,7 +837,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -667,7 +848,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -727,7 +908,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
