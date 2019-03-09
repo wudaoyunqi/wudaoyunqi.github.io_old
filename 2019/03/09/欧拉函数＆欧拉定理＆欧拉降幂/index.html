@@ -110,7 +110,7 @@
 
 
 
-  <meta name="keywords" content="-算法 -快速幂," />
+  <meta name="keywords" content="-算法 -欧拉函数," />
 
 
 
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="前言其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。 原理一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝a^｛2^a_{2}｝">
-<meta name="keywords" content="-算法 -快速幂">
+<meta name="description" content="前言上一篇博客我们讲到了快速幂(一般&amp;amp;&amp;amp;矩阵)，现在我们要讲讲一个叫欧拉降幂的东西，为了得到欧拉降幂公式，我们需要回顾一下欧拉函数，再到欧拉定理以及拓展欧拉定理。 欧拉函数公式欧拉函数phi[x],表示[1,x-1]区间中与x互质的数的个数phi[x]=x(1-1/a1)(1-1/a2)…(1-1/an)，其中ai是x的质因数那么就可以得到欧拉函数的一个性质，若p是质数，那么phi">
+<meta name="keywords" content="-算法 -欧拉函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速幂（一般＆＆矩阵）">
-<meta property="og:url" content="http://yoursite.com/2019/03/08/快速幂（一般＆＆矩阵）/index.html">
+<meta property="og:title" content="欧拉函数＆欧拉定理＆欧拉降幂">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/欧拉函数＆欧拉定理＆欧拉降幂/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="前言其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。 原理一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝a^｛2^a_{2}｝">
+<meta property="og:description" content="前言上一篇博客我们讲到了快速幂(一般&amp;amp;&amp;amp;矩阵)，现在我们要讲讲一个叫欧拉降幂的东西，为了得到欧拉降幂公式，我们需要回顾一下欧拉函数，再到欧拉定理以及拓展欧拉定理。 欧拉函数公式欧拉函数phi[x],表示[1,x-1]区间中与x互质的数的个数phi[x]=x(1-1/a1)(1-1/a2)…(1-1/an)，其中ai是x的质因数那么就可以得到欧拉函数的一个性质，若p是质数，那么phi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-09T02:10:40.745Z">
+<meta property="og:updated_time" content="2019-03-09T03:01:49.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速幂（一般＆＆矩阵）">
-<meta name="twitter:description" content="前言其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。 原理一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝a^｛2^a_{2}｝">
+<meta name="twitter:title" content="欧拉函数＆欧拉定理＆欧拉降幂">
+<meta name="twitter:description" content="前言上一篇博客我们讲到了快速幂(一般&amp;amp;&amp;amp;矩阵)，现在我们要讲讲一个叫欧拉降幂的东西，为了得到欧拉降幂公式，我们需要回顾一下欧拉函数，再到欧拉定理以及拓展欧拉定理。 欧拉函数公式欧拉函数phi[x],表示[1,x-1]区间中与x互质的数的个数phi[x]=x(1-1/a1)(1-1/a2)…(1-1/an)，其中ai是x的质因数那么就可以得到欧拉函数的一个性质，若p是质数，那么phi">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/08/快速幂（一般＆＆矩阵）/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/欧拉函数＆欧拉定理＆欧拉降幂/"/>
 
 
 
@@ -174,7 +174,7 @@
 <script 
 src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
-  <title>快速幂（一般＆＆矩阵） | Yunqi's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>欧拉函数＆欧拉定理＆欧拉降幂 | Yunqi's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -311,7 +311,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/快速幂（一般＆＆矩阵）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/欧拉函数＆欧拉定理＆欧拉降幂/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunqi">
@@ -328,7 +328,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
         
         
-          <h1 class="post-title" itemprop="name headline">快速幂（一般＆＆矩阵）</h1>
+          <h1 class="post-title" itemprop="name headline">欧拉函数＆欧拉定理＆欧拉降幂</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-08T23:43:02+08:00">
-                2019-03-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T10:16:22+08:00">
+                2019-03-09
               </time>
             
 
@@ -378,15 +378,16 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝<em>a^｛2^a_{2}｝…</em>a^｛2^a_{k}｝$。<br>这些a_{i}就是b的二进制为１的位数(末位取０，从低到高依次增1)，下面是具体实现代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">qpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ret *= a;</span><br><span class="line">        a *= a;    <span class="comment">//累乘，以便随时对ret做出贡献</span></span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇博客我们讲到了快速幂(一般&amp;&amp;矩阵)，现在我们要讲讲一个叫欧拉降幂的东西，为了得到欧拉降幂公式，我们需要回顾一下欧拉函数，再到欧拉定理以及拓展欧拉定理。</p>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>欧拉函数phi[x],表示[1,x-1]区间中与x互质的数的个数<br>phi[x]=x<em>(1-1/a1)</em>(1-1/a2)…<em>(1-1/an)，其中ai是x的质因数<br>那么就可以得到欧拉函数的一个性质，若p是质数，那么phi[p]=p-1(这一条有时会用到)<br>以及phi[i</em>p]=p<em>phi<a href="i%p==0">i</a>，phi[i</em>p]=(p-1)*phi<a href="i%p!=0">i</a></p>
+<h3 id="怎么求"><a href="#怎么求" class="headerlink" title="怎么求"></a>怎么求</h3><p>我们可以用线性筛筛出所有的欧拉函数，首先用线性筛找出[1,n]之间所有的素数，然后根据公式算出欧拉函数值<br>下面是线性筛代码</p>
 <a id="more"></a>
-<p>代码中我们用到了两种位运算 &amp; 和 &gt;&gt;，&amp;运算用于二进制取位操作，例如b&amp;1就是取二进制的末位，b&amp;1==1?b为奇数:b为偶数；&gt;&gt;运算去掉二进制的最后一位，b&gt;&gt;=1相当于b/2（向下取整）</p>
-<h2 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h2><p>矩阵快速幂是建立在快速幂之上的，只不过将a换成了一个矩阵，所以对于矩阵的相乘我们需要单独写一个函数来实现，以下是代码</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int temp[<span class="string">maxn</span>][<span class="symbol">maxn</span>];                                 </span><br><span class="line">inline void multi(int a[<span class="string"></span>][<span class="symbol">maxn</span>],int b[][maxn],int n)&#123; </span><br><span class="line"><span class="code">    memset(temp,0,sizeof(temp));                      </span></span><br><span class="line"><span class="code">    for(int i=1;i&lt;=n;i++)                             </span></span><br><span class="line"><span class="code">        for(int j=1;j&lt;=n;j++)                         </span></span><br><span class="line"><span class="code">            for(int k=1;k&lt;=n;k++)                     </span></span><br><span class="line"><span class="code">                temp[i][j]+=a[i][k]*b[k][j];          </span></span><br><span class="line"><span class="code">    for(int i=1;i&lt;=n;i++)                             </span></span><br><span class="line"><span class="code">        for(int j=1;j&lt;=n;j++)                         </span></span><br><span class="line"><span class="code">            a[i][j]=temp[i][j];                       </span></span><br><span class="line">&#125;                                                     </span><br><span class="line">int ret[<span class="string">maxn</span>][<span class="symbol">maxn</span>];                                  </span><br><span class="line">inline void pow(int a[][maxn],int n)&#123;                 </span><br><span class="line"><span class="code">    memser(ret,0,sizeof(ret));                        </span></span><br><span class="line"><span class="code">    for(int i=1;i&lt;=n;i++)                             </span></span><br><span class="line"><span class="code">        ret[i][i]=1;   //初始化为单位矩阵                     </span></span><br><span class="line"><span class="code">    while(n!=0)&#123;                                      </span></span><br><span class="line"><span class="code">        if(n&amp;1)                                       </span></span><br><span class="line"><span class="code">            multi(ret,a,n);                           </span></span><br><span class="line"><span class="code">        multi(a,a,n);                                 </span></span><br><span class="line"><span class="code">        n&gt;&gt;=1;                                        </span></span><br><span class="line"><span class="code">    &#125;                                                 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="斐波那契数列的矩阵快速幂"><a href="#斐波那契数列的矩阵快速幂" class="headerlink" title="斐波那契数列的矩阵快速幂"></a>斐波那契数列的矩阵快速幂</h2><p>求斐波那契数列是一个典型的递归过程，但如果所求的n足够大呢？这时候用矩阵快速幂比递归要好。<br>$$<br>Fib(n) =<br>\begin{cases}<br>0,  &amp; \text{ $n$=0 } \<br>1, &amp; \text{ $n$=1} \<br>Fib[n-1]+Fib[n-2], &amp; \text{ $n$&gt;1 }<br>\end{cases}<br>$$<br>$\bigl( \begin{smallmatrix} Fib[n] \ Fib[n-1] \end{smallmatrix} \bigr)$ = $\bigl( \begin{smallmatrix} 1 &amp; 1 \ 1 &amp; 0 \end{smallmatrix} \bigr)$ $\bigl( \begin{smallmatrix} Fib[n-1] \ Fib[n-2] \end{smallmatrix} \bigr)$ = $\bigl( \begin{smallmatrix} 1 &amp; 1 \ 1 &amp; 0 \end{smallmatrix} \bigr)^(n-2)$ $\bigl( \begin{smallmatrix} Fib[2] \ Fib[1] \end{smallmatrix} \bigr)$</p>
-<p>{ Fib[n] }    { 1 1 }{ Fib[n-1] }     { 1 1 }^(n-1) { Fib[2]=1 }<br>            =                      =<br>{Fib[n-1]}    { 1 0 }{ Fib[n-2] }     { 1 0 }       { Fib[1]=1 }<br>将模板改为结构体即可，注意结构体要记录矩阵的行数和列数（玄学表达，窝相信你们能懂得      </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>;</span><br><span class="line"><span class="keyword">int</span> prime[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxn; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            prime[++tot] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; i * prime[j] &lt;= maxn &amp;&amp; j &lt;= tot; j++) &#123;</span><br><span class="line">            vis[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是求phi[x]的部分<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> get_phi(<span class="built_in">int</span> <span class="built_in">n</span>) &#123;      //求<span class="built_in">n</span>的欧拉函数值，即<span class="built_in">phi</span>[<span class="built_in">n</span>]</span><br><span class="line">    <span class="built_in">int</span> ret = <span class="built_in">n</span>;</span><br><span class="line">    for (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= tot &amp;&amp; prime[i] * prime[i] &lt;= <span class="built_in">n</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">if</span> (<span class="built_in">n</span> % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            ret *= (<span class="number">1</span> - <span class="number">1</span> / prime[i]);</span><br><span class="line">            while (<span class="built_in">n</span> % prime[i] == <span class="number">0</span>)</span><br><span class="line">                <span class="built_in">n</span> /= prime[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">if</span> (<span class="built_in">n</span> &gt; <span class="number">1</span>)</span><br><span class="line">        ret *= (<span class="number">1</span> - <span class="number">1</span> / <span class="built_in">n</span>);</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>有了欧拉函数做坚实的后盾，<del>讲欧拉定理就不需要扯那些乱七八糟的东西了</del>(好吧其实是我不会证<br>“整那些干啥，会用就行了。”————鲁迅<br>先扔一个公式，当a,n互质时，a^(phi[n])%n=1，这个公式可以推出a^(phi[n])与n互质(不是废话…<br>似乎不是很直观的样子，那么再换一个a^b(mod n)=a^(b%phi[n])(mod n)(这大概是最有用的公式<br>证明也比较简单，把b表示为phi[n]的一次多项式，即b=x*phi[n]+y，因为有a^(phi[n])%n=1,所以a^b(mod n)=a^y(mod n)=a^(b%phi[n])(mod n)<br>ps:这个公式可以用于欧拉降幂（后面会将</p>
+<h2 id="拓展欧拉定理"><a href="#拓展欧拉定理" class="headerlink" title="拓展欧拉定理"></a>拓展欧拉定理</h2><p>接下来咱们再整个拓展欧拉定理，嗯，拓展大多数情况下不都是从特殊情况推广到一般情况嘛，那咱再整个a,n不互质时有什么样的公式<br>当b&lt;phi[n]时，a^b(mod n)=a^b(mod n);当b&gt;=phi[n]时，a^b(mod n)=a^(b%phi[n]+phi[n])(mod n)<br>证明？不存在的，我还要头发呢！“整那些干啥，会用就行了。”　————鲁迅</p>
+<h2 id="欧拉降幂"><a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a>欧拉降幂</h2><p>很庆幸，你不用再新推什么奇怪的公式，其实欧拉降幂公式就是欧拉定理和拓展欧拉定理结合起来<br>关于欧拉降幂的应用场景，对于一个问题求a^b(mod n)<br>根据条件把式子转换为三个中的一个<br>好yeah降幂成功惹<br>代码也不给了因为比较简单（不就是求欧拉函数再结合一下快速幂嘛</p>
+<p>友情连接：<a href="https://zybuluo.com/Junlier/note/1300214" target="_blank" rel="noopener">欧拉函数&amp;欧拉定理&amp;降幂 总结</a>(这个网站的mathjax支持好好啊，next自带的辣鸡</p>
 
       
     </div>
@@ -404,7 +405,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/算法-快速幂/" rel="tag"># -算法 -快速幂</a>
+            <a href="/tags/算法-欧拉函数/" rel="tag"># -算法 -欧拉函数</a>
           
         </div>
       
@@ -417,8 +418,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/" rel="next" title="【图论】求无向连通图的割点（Tarjan算法）">
-                <i class="fa fa-chevron-left"></i> 【图论】求无向连通图的割点（Tarjan算法）
+              <a href="/2019/03/08/快速幂（一般＆＆矩阵）/" rel="next" title="快速幂（一般＆＆矩阵）">
+                <i class="fa fa-chevron-left"></i> 快速幂（一般＆＆矩阵）
               </a>
             
           </div>
@@ -426,10 +427,6 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/09/欧拉函数＆欧拉定理＆欧拉降幂/" rel="prev" title="欧拉函数＆欧拉定理＆欧拉降幂">
-                欧拉函数＆欧拉定理＆欧拉降幂 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +585,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵快速幂"><span class="nav-text">矩阵快速幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列的矩阵快速幂"><span class="nav-text">斐波那契数列的矩阵快速幂</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉函数"><span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式"><span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么求"><span class="nav-text">怎么求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉定理"><span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展欧拉定理"><span class="nav-text">拓展欧拉定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉降幂"><span class="nav-text">欧拉降幂</span></a></li></ol></div>
             
 
           </div>
