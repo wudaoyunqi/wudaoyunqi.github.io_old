@@ -1,19 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[天梯赛－列车调度]]></title>
+    <url>%2F2019%2F03%2F25%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%88%97%E8%BD%A6%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[思路这道题就是求递减子列的个数，我的方法是开一个数组来记录当前每个递减子列的尾值，如果要插入的这个数大于所有尾值中最大的那一个，那么ans就+1，这个数就是新的递减子列的头(同时也是这个递减子列的尾，因为此时子列只有它一个元素)，反之，用lower_bound找到最小的大于这个数的尾值，这个数就变为该递减子列的尾(更新尾值)。因为尾值数组始终保持递增(有序),所以可以用lower_bound来找。 代码12345678910111213141516171819202122232425262728#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn=1e5+10;int a,b[maxn];int main(void)&#123; int n; while(cin&gt;&gt;n)&#123; int maxx=0,cnt=0; for(int i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;a); if(a&gt;maxx)&#123; maxx=a; b[++cnt]=a; &#125;else&#123; unsigned long k=lower_bound(b+1,b+cnt+1,a)-b; b[k]=a; if(k==cnt) maxx=a; &#125; &#125; printf("%d\n",cnt); &#125; return 0;&#125; 做题感受比赛时没有拿满分，有一个样例点没过，是因为我把数字插入顺序想反了，虽然也能做，但是也更复杂，后来补题的时候忘了如果数组中没有找到大于特定值的时候lower_bound会返回什么，所以自己用了maxx来记录最大的尾值，然后之后又忘记如果k=cnt的话时maxx也要更新==，逻辑真是硬伤啊orz（就是上面的代码。如果要按照思路来写的话，删掉maxx,如果k=cnt+1的话，那么就b[++cnt]=a]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛－关于堆的判断]]></title>
+    <url>%2F2019%2F03%2F25%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%85%B3%E4%BA%8E%E5%A0%86%E7%9A%84%E5%88%A4%E6%96%AD%2F</url>
+    <content type="text"><![CDATA[思路堆(Heap)的概念清楚了这道题就不难，按照插入顺序建堆理解起来也不难，用map判断比较快。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;#include&lt;map&gt;using namespace std;const int maxn=1010;map&lt;int,int&gt; num;int a[maxn];string str;int x,y;void print(bool ans)&#123; if(ans) cout&lt;&lt;"T"&lt;&lt;endl; else cout&lt;&lt;"F"&lt;&lt;endl;&#125;int main()&#123; int n,m; while(cin&gt;&gt;n&gt;&gt;m)&#123; for(int i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;a[i]); int j=i; while(j!=1)&#123; if(a[j]&lt;a[j/2]) swap(a[j],a[j/2]); j/=2; &#125; &#125; num.clear(); for(int i=1;i&lt;=n;i++) num[a[i]]=i; while(m--)&#123; bool ans=true; cin&gt;&gt;x; cin&gt;&gt;str; if(str=="and")&#123; cin&gt;&gt;y&gt;&gt;str&gt;&gt;str; if(num[x]/2!=num[y]/2) ans=false; print(ans); continue; &#125; cin&gt;&gt;str; if(str=="a")&#123; cin&gt;&gt;str&gt;&gt;str&gt;&gt;y; if(num[x]/2!=num[y]) ans=false; print(ans); continue; &#125; cin&gt;&gt;str; if(str=="root")&#123; if(num[x]!=1) ans=false; print(ans); continue; &#125; cin&gt;&gt;str&gt;&gt;y; if(num[y]/2!=num[x]) ans=false; print(ans); &#125; &#125; return 0;&#125; 做题感受咳咳，基础知识不牢固啊，堆的概念不清楚，并且一开始只想到先输入一行字符串，然后遍历判断是哪种情况，同时获取x和y的值，后来看到一篇博客分隔输入判断，实在是妙啊。不过这种方法的坑点是，无论你是否已经判断为哪种情况，你都需要把剩下的字符串全部输入完(否则输入缓存区还留有未处理的字符串，对下一次的输入造成影响)]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛－倒数第N个字符串]]></title>
+    <url>%2F2019%2F03%2F25%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[思路脑子头脑风暴一下，或者手推，就会发现这道题可以转换为26进制来做（0为a,25为z），倒数第１个字符串是zzz，即zzz-aaa，倒数第二个字符串是zzy，即zzz-aab，倒数第26个字符串是zza，即zzz-aaz,即把n-1转换为26进制，然后用zzz相减即可 代码123456789101112131415161718192021222324252627#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;int ans[10];int main(void) &#123; int l, n; while(~scanf("%d%d",&amp;l,&amp;n))&#123; int com[10], tnt = 0; n--; while (n != 0) &#123; com[++tnt] = n % 26; n /= 26; &#125; for (int i = 1; i &lt;= l; i++) ans[i] = 122; for (int i = l - tnt + 1, j = tnt; j &gt;= 1; i++, j--) ans[i] = 122 - com[j] ; for (int i = 1; i &lt;= l; i++) printf("%c", ans[i]); printf("\n"); &#125; return 0;&#125; 做题感受比赛时真的想了好久，哎，脑子是木的，有抓住一点26进制的影子（其实单纯的想到字母的相差关系也行），先开始一直对n取余、相除，后来想到n-1，然后才过的。归根结底还是思路和逻辑不够，解决办法刷题呗。]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[费马大定理＆＆费马小定理]]></title>
+    <url>%2F2019%2F03%2F09%2F%E8%B4%B9%E9%A9%AC%E5%A4%A7%E5%AE%9A%E7%90%86%EF%BC%86%EF%BC%86%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[欧拉函数＆欧拉定理＆欧拉降幂]]></title>
     <url>%2F2019%2F03%2F09%2F%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%86%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%EF%BC%86%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82%2F</url>
     <content type="text"><![CDATA[前言上一篇博客我们讲到了快速幂(一般&amp;&amp;矩阵)，现在我们要讲讲一个叫欧拉降幂的东西，为了得到欧拉降幂公式，我们需要回顾一下欧拉函数，再到欧拉定理以及拓展欧拉定理。 欧拉函数公式欧拉函数phi[x],表示[1,x-1]区间中与x互质的数的个数phi[x]=x(1-1/a1)(1-1/a2)…(1-1/an)，其中ai是x的质因数那么就可以得到欧拉函数的一个性质，若p是质数，那么phi[p]=p-1(这一条有时会用到)以及phi[ip]=pphii，phi[ip]=(p-1)*phii 怎么求我们可以用线性筛筛出所有的欧拉函数，首先用线性筛找出[1,n]之间所有的素数，然后根据公式算出欧拉函数值下面是线性筛代码 12345678910111213141516const int maxn = 1e5;int prime[maxn];bool vis[maxn];int tot = 0;void get_prime() &#123; for (int i = 2; i &lt;= maxn; i++) &#123; if (!vis[i]) prime[++tot] = i; for (int j = 1; i * prime[j] &lt;= maxn &amp;&amp; j &lt;= tot; j++) &#123; vis[i * prime[j]] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125; 然后是求phi[x]的部分12345678910111213int get_phi(int n) &#123; //求n的欧拉函数值，即phi[n] int ret = n; for (int i = 1; i &lt;= tot &amp;&amp; prime[i] * prime[i] &lt;= n; i++) &#123; if (n % prime[i] == 0) &#123; ret *= (1 - 1 / prime[i]); while (n % prime[i] == 0) n /= prime[i]; &#125; &#125; if (n &gt; 1) ret *= (1 - 1 / n); return ret;&#125; 欧拉定理有了欧拉函数做坚实的后盾，讲欧拉定理就不需要扯那些乱七八糟的东西了(好吧其实是我不会证“整那些干啥，会用就行了。”————鲁迅先扔一个公式，当a,n互质时，a^(phi[n])%n=1，这个公式可以推出a^(phi[n])与n互质(不是废话…似乎不是很直观的样子，那么再换一个a^b(mod n)=a^(b%phi[n])(mod n)(这大概是最有用的公式证明也比较简单，把b表示为phi[n]的一次多项式，即b=x*phi[n]+y，因为有a^(phi[n])%n=1,所以a^b(mod n)=a^y(mod n)=a^(b%phi[n])(mod n)ps:这个公式可以用于欧拉降幂（后面会将 拓展欧拉定理接下来咱们再整个拓展欧拉定理，嗯，拓展大多数情况下不都是从特殊情况推广到一般情况嘛，那咱再整个a,n不互质时有什么样的公式当b&lt;phi[n]时，a^b(mod n)=a^b(mod n);当b&gt;=phi[n]时，a^b(mod n)=a^(b%phi[n]+phi[n])(mod n)证明？不存在的，我还要头发呢！“整那些干啥，会用就行了。” ————鲁迅 欧拉降幂很庆幸，你不用再新推什么奇怪的公式，其实欧拉降幂公式就是欧拉定理和拓展欧拉定理结合起来关于欧拉降幂的应用场景，对于一个问题求a^b(mod n)根据条件把式子转换为三个中的一个好yeah降幂成功惹代码也不给了因为比较简单（不就是求欧拉函数再结合一下快速幂嘛 友情连接：欧拉函数&amp;欧拉定理&amp;降幂 总结(这个网站的mathjax支持好好啊，next自带的辣鸡]]></content>
+      <categories>
+        <category>算法</category>
+        <category>欧拉函数</category>
+      </categories>
       <tags>
-        <tag>-算法 -欧拉函数</tag>
+        <tag>欧拉函数</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[快速幂（一般＆＆矩阵）]]></title>
     <url>%2F2019%2F03%2F08%2F%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E4%B8%80%E8%88%AC%EF%BC%86%EF%BC%86%E7%9F%A9%E9%98%B5%EF%BC%89%2F</url>
     <content type="text"><![CDATA[前言其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。 原理一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝a^｛2^a_{2}｝…a^｛2^a_{k}｝$。这些a_{i}就是b的二进制为１的位数(末位取０，从低到高依次增1)，下面是具体实现代码 12345678910long long qpow(long long a, long long b) &#123; long long ret = 1; while (b != 0) &#123; if (b &amp; 1) ret *= a; a *= a; //累乘，以便随时对ret做出贡献 b &gt;&gt;= 1; &#125; return ret;&#125; 代码中我们用到了两种位运算 &amp; 和 &gt;&gt;，&amp;运算用于二进制取位操作，例如b&amp;1就是取二进制的末位，b&amp;1==1?b为奇数:b为偶数；&gt;&gt;运算去掉二进制的最后一位，b&gt;&gt;=1相当于b/2（向下取整） 矩阵快速幂矩阵快速幂是建立在快速幂之上的，只不过将a换成了一个矩阵，所以对于矩阵的相乘我们需要单独写一个函数来实现，以下是代码 1234567891011121314151617181920212223int temp[maxn][maxn]; inline void multi(int a[][maxn],int b[][maxn],int n)&#123; memset(temp,0,sizeof(temp)); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=n;j++) for(int k=1;k&lt;=n;k++) temp[i][j]+=a[i][k]*b[k][j]; for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=n;j++) a[i][j]=temp[i][j]; &#125; int ret[maxn][maxn]; inline void pow(int a[][maxn],int n)&#123; memser(ret,0,sizeof(ret)); for(int i=1;i&lt;=n;i++) ret[i][i]=1; //初始化为单位矩阵 while(n!=0)&#123; if(n&amp;1) multi(ret,a,n); multi(a,a,n); n&gt;&gt;=1; &#125; &#125; 斐波那契数列的矩阵快速幂求斐波那契数列是一个典型的递归过程，但如果所求的n足够大呢？这时候用矩阵快速幂比递归要好。$$Fib(n) =\begin{cases}0, &amp; \text{ $n$=0 } \1, &amp; \text{ $n$=1} \Fib[n-1]+Fib[n-2], &amp; \text{ $n$&gt;1 }\end{cases}$$$\bigl( \begin{smallmatrix} Fib[n] \ Fib[n-1] \end{smallmatrix} \bigr)$ = $\bigl( \begin{smallmatrix} 1 &amp; 1 \ 1 &amp; 0 \end{smallmatrix} \bigr)$ $\bigl( \begin{smallmatrix} Fib[n-1] \ Fib[n-2] \end{smallmatrix} \bigr)$ = $\bigl( \begin{smallmatrix} 1 &amp; 1 \ 1 &amp; 0 \end{smallmatrix} \bigr)^(n-2)$ $\bigl( \begin{smallmatrix} Fib[2] \ Fib[1] \end{smallmatrix} \bigr)$ { Fib[n] } { 1 1 }{ Fib[n-1] } { 1 1 }^(n-1) { Fib[2]=1 } = ={Fib[n-1]} { 1 0 }{ Fib[n-2] } { 1 0 } { Fib[1]=1 }将模板改为结构体即可，注意结构体要记录矩阵的行数和列数（玄学表达，窝相信你们能懂得]]></content>
+      <categories>
+        <category>算法</category>
+        <category>快速幂</category>
+      </categories>
       <tags>
-        <tag>-算法 -快速幂</tag>
+        <tag>快速幂</tag>
       </tags>
   </entry>
   <entry>
@@ -25,7 +71,6 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -38,7 +83,6 @@
         <category>树状数组</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树状数组</tag>
       </tags>
   </entry>

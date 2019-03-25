@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-09T03:01:49.698Z</updated>
+  <updated>2019-03-25T14:39:46.297Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,95 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>天梯赛－列车调度</title>
+    <link href="http://yoursite.com/2019/03/25/%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%88%97%E8%BD%A6%E8%B0%83%E5%BA%A6/"/>
+    <id>http://yoursite.com/2019/03/25/天梯赛－列车调度/</id>
+    <published>2019-03-25T14:11:16.000Z</published>
+    <updated>2019-03-25T14:39:46.297Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;这道题就是求递减子列的个数，我的方法是开一个数组来记录当前每个递减子列的尾值，如果要插入的这个数大于所有尾值中最大的那一个，那么ans就+1
+      
+    
+    </summary>
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/categories/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天梯赛－关于堆的判断</title>
+    <link href="http://yoursite.com/2019/03/25/%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%85%B3%E4%BA%8E%E5%A0%86%E7%9A%84%E5%88%A4%E6%96%AD/"/>
+    <id>http://yoursite.com/2019/03/25/天梯赛－关于堆的判断/</id>
+    <published>2019-03-25T14:00:31.000Z</published>
+    <updated>2019-03-25T14:10:56.945Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;堆(Heap)的概念清楚了这道题就不难，按照插入顺序建堆理解起来也不难，用map判断比较快。&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/categories/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天梯赛－倒数第N个字符串</title>
+    <link href="http://yoursite.com/2019/03/25/%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <id>http://yoursite.com/2019/03/25/天梯赛－倒数第N个字符串/</id>
+    <published>2019-03-25T13:24:50.000Z</published>
+    <updated>2019-03-25T13:59:42.231Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;脑子头脑风暴一下，或者手推，就会发现这道题可以转换为26进制来做（0为a,25为z），倒数第１个字符串是zzz，即zzz-aaa，倒数第二个
+      
+    
+    </summary>
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/categories/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>费马大定理＆＆费马小定理</title>
+    <link href="http://yoursite.com/2019/03/09/%E8%B4%B9%E9%A9%AC%E5%A4%A7%E5%AE%9A%E7%90%86%EF%BC%86%EF%BC%86%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/"/>
+    <id>http://yoursite.com/2019/03/09/费马大定理＆＆费马小定理/</id>
+    <published>2019-03-09T03:07:14.000Z</published>
+    <updated>2019-03-09T03:07:14.318Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>欧拉函数＆欧拉定理＆欧拉降幂</title>
     <link href="http://yoursite.com/2019/03/09/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%86%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%EF%BC%86%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"/>
     <id>http://yoursite.com/2019/03/09/欧拉函数＆欧拉定理＆欧拉降幂/</id>
     <published>2019-03-09T02:16:22.000Z</published>
-    <updated>2019-03-09T03:01:49.698Z</updated>
+    <updated>2019-03-25T13:55:15.139Z</updated>
     
     <summary type="html">
     
@@ -31,8 +115,12 @@
     
     </summary>
     
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="-算法 -欧拉函数" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
+      <category term="欧拉函数" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="欧拉函数" scheme="http://yoursite.com/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
@@ -41,7 +129,7 @@
     <link href="http://yoursite.com/2019/03/08/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E4%B8%80%E8%88%AC%EF%BC%86%EF%BC%86%E7%9F%A9%E9%98%B5%EF%BC%89/"/>
     <id>http://yoursite.com/2019/03/08/快速幂（一般＆＆矩阵）/</id>
     <published>2019-03-08T15:43:02.000Z</published>
-    <updated>2019-03-09T02:10:40.745Z</updated>
+    <updated>2019-03-25T13:55:29.502Z</updated>
     
     <summary type="html">
     
@@ -51,8 +139,12 @@
     
     </summary>
     
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="-算法 -快速幂" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+      <category term="快速幂" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+    
+    
+      <category term="快速幂" scheme="http://yoursite.com/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
     
   </entry>
   
@@ -61,7 +153,7 @@
     <link href="http://yoursite.com/2019/01/24/%E3%80%90%E5%9B%BE%E8%AE%BA%E3%80%91%E6%B1%82%E6%97%A0%E5%90%91%E8%BF%9E%E9%80%9A%E5%9B%BE%E7%9A%84%E5%89%B2%E7%82%B9%EF%BC%88Tarjan%E7%AE%97%E6%B3%95%EF%BC%89/"/>
     <id>http://yoursite.com/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/</id>
     <published>2019-01-24T07:16:42.000Z</published>
-    <updated>2019-01-24T11:38:19.027Z</updated>
+    <updated>2019-03-25T13:35:59.316Z</updated>
     
     <summary type="html">
     
@@ -82,8 +174,6 @@
       <category term="图论" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
@@ -93,7 +183,7 @@
     <link href="http://yoursite.com/2018/10/16/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     <id>http://yoursite.com/2018/10/16/树状数组/</id>
     <published>2018-10-16T01:55:22.000Z</published>
-    <updated>2019-01-24T11:29:47.966Z</updated>
+    <updated>2019-03-25T13:35:21.646Z</updated>
     
     <summary type="html">
     
@@ -112,8 +202,6 @@
     
       <category term="树状数组" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="树状数组" scheme="http://yoursite.com/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
