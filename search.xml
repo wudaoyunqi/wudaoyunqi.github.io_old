@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[天梯赛-分而冶之]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E5%88%86%E8%80%8C%E5%86%B6%E4%B9%8B%2F</url>
+    <content type="text"><![CDATA[思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐 代码123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;string&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn=1e4+10;struct Edge&#123; int u,v;&#125;edge[maxn];bool mark[maxn];int main(void)&#123; int n,m; while(~scanf("%d%d",&amp;n,&amp;m))&#123; for(int i=1;i&lt;=m;i++) scanf("%d%d",&amp;edge[i].u,&amp;edge[i].v); int k,num,node; scanf("%d",&amp;k); while(k--)&#123; bool flag=true; memset(mark,false,sizeof(mark)); scanf("%d",&amp;num); for(int i=1;i&lt;=num;i++) &#123; scanf("%d", &amp;node); mark[node] = true; &#125; for(int i=1;i&lt;=m;i++)&#123; if(!mark[edge[i].u]&amp;&amp;!mark[edge[i].v])&#123; flag=false; break; &#125; &#125; if(!flag) printf("NO\n"); else printf("YES\n"); &#125; &#125; return 0;&#125; 做题感受想复杂了，以为是无向图连通判断，发现自己不熟，就放弃这道题了]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛-红色警报]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E7%BA%A2%E8%89%B2%E8%AD%A6%E6%8A%A5%2F</url>
+    <content type="text"><![CDATA[思路第一种方法就是暴力，图我发现自己惯用vector来存，其实邻接矩阵也行，然后习惯用广搜，不习惯用深搜。比赛的时候想的巨复杂，其实还是因为自己做题太少，我居然想到用判断每个点所在连通块是否不连通来做（这也是我为什么想不到好的算法的原因吧，做题少脑子又木。用广搜算出连通块数量即可，也是很暴力的那种（似乎我现在对于暴力做很害怕？，注意的是攻占城市是一个一个攻占，已经被攻占的城市不涉及其他城市连通性，所以每次的基准连通量数目都要改（我没有想到这一点，所以才疯狂wa吧。用并查集来做也可以，不过也是偏向暴力的那种，每一次判断都要重新做一次并查集，基准连通数目每一次也要变，并查集通过计算根节点的数目得到连通块数目。注意的是连通块数目增１和不变都是不改变连通性的（被攻占的城市已经算一个连通块了 代码给出两种，一种深搜暴力，一种并查集 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;#include&lt;vector&gt;#include&lt;queue&gt;using namespace std;const int maxn=1000;vector&lt;int&gt; G[maxn];int n,m,k,node[maxn];int arr[maxn][maxn];bool vis[maxn];queue&lt;int&gt; q;void bfs()&#123; while(!q.empty())&#123; int p=q.front(); q.pop(); vis[p]=true; for(int i=0;i&lt;G[p].size();i++)&#123; if(!vis[G[p][i]])&#123; q.push(G[p][i]); vis[G[p][i]]=true; &#125; &#125; &#125;&#125;int main(void)&#123; scanf("%d%d",&amp;n,&amp;m); int a,b,cnt=0; memset(arr,0,sizeof(arr)); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d",&amp;a,&amp;b); if(!arr[a][b]&amp;&amp;!arr[b][a]) &#123; G[a].push_back(b); G[b].push_back(a); &#125; arr[a][b]=1; arr[b][a]=1; &#125; memset(vis,false,sizeof(vis)); for(int i=0;i&lt;n;i++)&#123; if(!vis[i])&#123; cnt++; q.push(i); bfs(); &#125; &#125; scanf("%d",&amp;k); for(int j=1;j&lt;=k;j++)&#123; memset(vis,false,sizeof(vis)); for(int l=1;l&lt;=j-1;l++) vis[node[l]]=true; scanf("%d",&amp;node[j]); vis[node[j]]=true; int com=0; for(int i=0;i&lt;n;i++)&#123; if(!vis[i])&#123; com++; q.push(i); bfs(); &#125; &#125; if(com&gt;cnt) printf("Red Alert: City %d is lost!\n",node[j]); else printf("City %d is lost.\n",node[j]); if(j==n) printf("Game Over.\n"); cnt=com; &#125; return 0;&#125; 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn=1000;int far[maxn];int n,m,k;bool vis[maxn];struct Edge&#123; int x,y;&#125;edge[maxn*5+10];void init()&#123; for(int i=0;i&lt;n;i++)&#123; vis[i]=false; far[i]=i; &#125;&#125;int find(int x)&#123; if(far[x]==x) return far[x]; else return far[x]=find(far[x]);&#125;void Union(int x,int y)&#123; x=find(x); y=find(y); if(x!=y) far[x]=y;&#125;int main()&#123; while(~scanf("%d%d",&amp;n,&amp;m))&#123; init(); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d",&amp;edge[i].x,&amp;edge[i].y); Union(edge[i].x,edge[i].y); &#125; int cnt=0,com,node; for(int i=0;i&lt;n;i++) if(far[i]==i) cnt++; scanf("%d",&amp;k); for(int i=1;i&lt;=k;i++)&#123; com=0; scanf("%d",&amp;node); vis[node]=true; for(int j=0;j&lt;n;j++) far[j]=j; for(int j=1;j&lt;=m;j++) if(!vis[edge[j].x]&amp;&amp;!vis[edge[j].y]) Union(edge[j].x,edge[j].y); for(int j=0;j&lt;n;j++) if(far[j]==j) com++; if(com&gt;cnt+1) printf("Red Alert: City %d is lost!\n",node); else printf("City %d is lost.\n",node); if(i==n) printf("Game Over.\n"); cnt=com; &#125; &#125; return 0;&#125; 做题感受训练时真的心态崩了啊，一直在卡这道题，结束前只过了一个样例，后来又发现自己写蠢了一个地方，最后半个小时自己完全就是木的吧（你看这心态就不好打完吃饭的时候搜题解，才发现题意也理解错了，想的方法也巨他妈复杂。]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛-猜数字]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E7%8C%9C%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[思路猜数字：其实非常简单，但是就是不知道为啥我没做对，这一次是用的map，比赛用的是结构体，真是绝了。map的lower_bound方法是找出第一个大于等于key的迭代器指针 代码12345678910111213141516171819202122232425262728293031#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;#include&lt;map&gt;using namespace std;map&lt;int,string&gt; name;int main(void)&#123; int n; while(~scanf("%d",&amp;n))&#123; int num,ans; string s; double sum=0; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;s&gt;&gt;num; name[num]=s; sum+=num; &#125; sum/=(2*n); map&lt;int,string&gt;::iterator it,it1; it=name.lower_bound((int)sum); it1=it; ans=it-&gt;first; if(sum-it-&gt;first&gt;(it1++)-&gt;first-sum) ans=(it++)-&gt;first; cout&lt;&lt;(int)sum&lt;&lt;" "&lt;&lt;name[ans]&lt;&lt;endl; &#125; return 0;&#125; 做题感受感觉很谜，为啥比赛时没过，我只是把结构体换成map而已。pintia只能看到两页的提交记录，也试验不了了，如果又是和小字辈一样的话，我真是要吐血orx]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛-是否完全二叉搜索树]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E6%98%AF%E5%90%A6%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[思路二叉树的判断，如果是完全，则深度为h的树，除了第h层，其它层都是满的，这里用结构体来存二叉树，同时判断是否为完全。二叉树的空间定义为1&lt;&lt;20，其实用到的最大空间为1&lt;&lt;20-1，父节点为i，子节点就为i&lt;&lt;1,i&lt;&lt;1+1 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#define INF 0x3f3f3f3fusing namespace std;const int maxn=1&lt;&lt;20+1;int node[maxn],a;int main()&#123; int n; while(~scanf("%d",&amp;n))&#123; for(int i=1;i&lt;=maxn;i++) node[i]=INF; for(int i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;a); for(int j=1;j&lt;=maxn;)&#123; if(node[j]==INF)&#123; node[j]=a; break; &#125;else&#123; if(node[j]&lt;a) j&lt;&lt;=1; else j&lt;&lt;=1,j+=1; &#125; &#125; &#125; bool flag=true; int cnt=0; for(int i=1;i&lt;=maxn;i++)&#123; if(node[i]==INF) flag=false; if(node[i]!=INF)&#123; cnt++; printf("%d%c",node[i],cnt==n?'\n':' '); if(cnt==n) break; &#125; &#125; if(flag) printf("YES\n"); else printf("NO\n"); &#125; return 0;&#125; 做题感受比赛没有看这道题，在纠结前面的红色警报，但是才发现自己对二叉树的理解很差劲，就算看了也不一定会吧（所以说自己很差劲,勉励吧:(]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛-愿天下有情人都是兄妹]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E6%84%BF%E5%A4%A9%E4%B8%8B%E6%9C%89%E6%83%85%E4%BA%BA%E9%83%BD%E6%98%AF%E5%85%84%E5%A6%B9%2F</url>
+    <content type="text"><![CDATA[思路就是深搜（也是最直接的思路）,结构体存每个人的性别，父母id，如果父母id是-1，就记为0（没有人的id是00000），先搜第一个人的祖先，最多搜到第五代就停止，将搜到的id做标记，然后搜第二个人的祖先，如果在第五代之内有第一个人的祖先，那么就输出no这道题和小字辈很相似，都是深搜的题。我遇到了两个坑点，一个是每个人的父母也要标明性别，另一个是输入id，性别的时候，如果是用cin连续输入的话，有三个样例点就过不了，如果第一个id和性别分开输入的话，就可以过了（搜了很多关于cin的资料，但还是不明白，留给以后的自己填坑。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;using namespace std;const int maxn=int(1e5+10);struct Node&#123; char gender; int far; int mom;&#125;node[maxn];bool vis[maxn];bool ans;void dfs(int x,int ok,int depth)&#123; if(depth&gt;5||!ans||x==0) return ; if(ok==1&amp;&amp;vis[x])&#123; ans=false; return ; &#125; vis[x]=true; dfs(node[x].far,ok,depth+1); dfs(node[x].mom,ok,depth+1);&#125;int main()&#123; int n; while(cin&gt;&gt;n)&#123; int id,fid,mid; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;id; cin&gt;&gt;node[id].gender&gt;&gt;fid&gt;&gt;mid; fid=fid==-1?0:fid; mid=mid==-1?0:mid; node[id].far=fid; node[id].mom=mid; node[fid].gender='M'; node[mid].gender='F'; &#125; int k,a,b; cin&gt;&gt;k; while(k--)&#123; memset(vis,false,sizeof(vis)); ans=true; cin&gt;&gt;a&gt;&gt;b; if(node[a].gender==node[b].gender) printf("Never Mind\n"); else&#123; dfs(a,0,1); dfs(b,1,1); if(ans) printf("Yes\n"); else printf("No\n"); &#125; &#125; &#125; return 0;&#125; 做题感受比赛时纠结红色警报那道题了，这道题根本没看，不过私底下补题的时候还是遇到了坑点，估计比赛时做也没办法拿满分吧（还需努力啊。还有，一开始以为编号必须用字符串存，后来试了一下直接当int输入也可以。]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛-小字辈]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E5%B0%8F%E5%AD%97%E8%BE%88%2F</url>
+    <content type="text"><![CDATA[思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的 代码12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;string&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;const int maxn=1e5+10;int _rank[maxn];int far[maxn];int getrank(int i)&#123; if(_rank[i]!=0) return _rank[i]; else return _rank[i]=getrank(far[i])+1;&#125;int main(void)&#123; int n; while(~scanf("%d",&amp;n))&#123; vector&lt;int&gt; ans[maxn]; for(int i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;far[i]); if(far[i]==-1) _rank[i]=1; else _rank[i]=0; &#125; int maxx=-1; for(int i=1;i&lt;=n;i++)&#123; getrank(i); maxx=max(maxx,_rank[i]); ans[_rank[i]].push_back(i); &#125; unsigned long _size=ans[maxx].size(); printf("%d\n",maxx); for(unsigned long i=0;i&lt;_size;i++) printf("%d%c",ans[maxx][i],i==_size-1?'\n':' '); &#125; return 0;&#125; 做题感受一开始我是没有用上面的代码实现深搜，就是dfs记录了搜索深度，每搜一次深度加1，现在想想并不是很好，很容易超时。上面的代码开了rank数组来记录，只要rank的值已经求出来了就立刻返回，记忆化搜索很妙啊:)然后关于按顺序输出，我也是东想西想，甚至还想开个map……(我在想什么……，不用上面代码vector实现，开个结构体排序处理一下也好嘛……(我x*&amp;.#$@….哦还不止如此，我调了很久最后发现不用多组输入就过，用就会wa一个样例点，但是我很认真的检查了关于初始化没有问题啊，当时真的是……绝了，然而我刚刚又交了之前貌似没过的代码，结果就过了，我:??????我一定是见到了异世界（或者我见到了平行世界的我见到的场景？？？（我在说什么……更新刚刚实时测试了一下，把有一个样例点没过的代码复制粘贴再提交了一次，发现就过了……什么神奇的网站xxxxxxxx（真的是要吐血，浪费我很多很多很多很多很多时间去纠结一个实际上没有错的东西？？？？？？体验真是极差cao]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天梯赛－名人堂与代金劵]]></title>
+    <url>%2F2019%2F03%2F26%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%90%8D%E4%BA%BA%E5%A0%82%E4%B8%8E%E4%BB%A3%E9%87%91%E5%8A%B5%2F</url>
+    <content type="text"><![CDATA[思路很简单很入门级的题，ACMer选手写这种题就是过家家，但是不知道最近我的脑袋是怎么了，这种题都会卡（卡nm?，这个脑子啊……，写个结构体然后排序不就好了嘛，充其量就是这个排名卡一下……哎，我居然在处理排名的时候又建了个数组然后非要用lower_bound来找分数一样的人有多少个然后在输出==，感觉我是被lower_boung带入歧途其实很简单的，用个com记录上一个排名，然后和当前的比较，如果分数一样，com不变，否则就更新为i，最后要注意当com&gt;k的时候才结束，不是输出k个就结束 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;map&gt;using namespace std;const int maxn=1e4+10;struct Node&#123; string id; int score;&#125;stu[maxn];bool cmp(const Node&amp; a,const Node&amp; b)&#123; if(a.score&gt;b.score) return true; else if(a.score==b.score) return a.id&lt;b.id; else return false;&#125;int main(void)&#123; int n,g,k; while(~scanf("%d%d%d",&amp;n,&amp;g,&amp;k))&#123; int sum=0; for(int i=1;i&lt;=n;i++) &#123; cin &gt;&gt; stu[i].id &gt;&gt; stu[i].score; if (stu[i].score &gt;= g) sum += 50; else if (stu[i].score &gt;= 60 &amp;&amp; stu[i].score &lt; g) sum += 20; &#125; sort(stu+1,stu+n+1,cmp); int com=1; printf("%d\n",sum); for(int i=1;com&lt;=k;)&#123; cout&lt;&lt;com&lt;&lt;" "&lt;&lt;stu[i].id&lt;&lt;" "&lt;&lt;stu[i].score&lt;&lt;endl; if(stu[++i].score!=stu[com].score) com=i; &#125; &#125; return 0;&#125; 做题感受没啥感受，就是愈发觉得自己变蠢了]]></content>
+      <categories>
+        <category>天梯赛题解</category>
+      </categories>
+      <tags>
+        <tag>天梯赛题解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[天梯赛－列车调度]]></title>
     <url>%2F2019%2F03%2F25%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B%EF%BC%8D%E5%88%97%E8%BD%A6%E8%B0%83%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[思路这道题就是求递减子列的个数，我的方法是开一个数组来记录当前每个递减子列的尾值，如果要插入的这个数大于所有尾值中最大的那一个，那么ans就+1，这个数就是新的递减子列的头(同时也是这个递减子列的尾，因为此时子列只有它一个元素)，反之，用lower_bound找到最小的大于这个数的尾值，这个数就变为该递减子列的尾(更新尾值)。因为尾值数组始终保持递增(有序),所以可以用lower_bound来找。 代码12345678910111213141516171819202122232425262728#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn=1e5+10;int a,b[maxn];int main(void)&#123; int n; while(cin&gt;&gt;n)&#123; int maxx=0,cnt=0; for(int i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;a); if(a&gt;maxx)&#123; maxx=a; b[++cnt]=a; &#125;else&#123; unsigned long k=lower_bound(b+1,b+cnt+1,a)-b; b[k]=a; if(k==cnt) maxx=a; &#125; &#125; printf("%d\n",cnt); &#125; return 0;&#125; 做题感受比赛时没有拿满分，有一个样例点没过，是因为我把数字插入顺序想反了，虽然也能做，但是也更复杂，后来补题的时候忘了如果数组中没有找到大于特定值的时候lower_bound会返回什么，所以自己用了maxx来记录最大的尾值，然后之后又忘记如果k=cnt的话时maxx也要更新==，逻辑真是硬伤啊orz（就是上面的代码。如果要按照思路来写的话，删掉maxx,如果k=cnt+1的话，那么就b[++cnt]=a]]></content>
