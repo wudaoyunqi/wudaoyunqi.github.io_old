@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-26T07:40:34.633Z</updated>
+  <updated>2019-04-04T04:28:04.828Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天梯赛-深入虎穴（2019年决赛）</title>
+    <link href="http://yoursite.com/2019/04/04/%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E6%B7%B1%E5%85%A5%E8%99%8E%E7%A9%B4%EF%BC%882019%E5%B9%B4%E5%86%B3%E8%B5%9B%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/04/04/天梯赛-深入虎穴（2019年决赛）/</id>
+    <published>2019-04-04T04:20:18.000Z</published>
+    <updated>2019-04-04T04:28:04.828Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;这是一棵树，但要把无根变为有根，题目中“只有一个出口”的条件便能确定这个树的根，由根去dfs就行了&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a h
+      
+    
+    </summary>
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/categories/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>天梯赛-分而冶之</title>
