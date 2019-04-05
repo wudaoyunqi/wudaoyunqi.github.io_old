@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-04T04:28:04.828Z</updated>
+  <updated>2019-04-05T14:14:00.246Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天梯赛-特立独行的幸福数（2019年决赛）</title>
+    <link href="http://yoursite.com/2019/04/05/%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E7%89%B9%E7%AB%8B%E7%8B%AC%E8%A1%8C%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%95%B0%EF%BC%882019%E5%B9%B4%E5%86%B3%E8%B5%9B%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/04/05/天梯赛-特立独行的幸福数（2019年决赛）/</id>
+    <published>2019-04-05T14:05:14.000Z</published>
+    <updated>2019-04-05T14:14:00.246Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;幸福数求法是如果不是幸福数，那么一定会出现循环，一种方法是标记每次得到的数，另一种骚操作是判断20是否会出现（如果出现20，那么这个数就一定
+      
+    
+    </summary>
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/categories/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="天梯赛题解" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>天梯赛-深入虎穴（2019年决赛）</title>
