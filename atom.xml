@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-05T14:17:52.231Z</updated>
+  <updated>2019-04-11T14:36:43.301Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2050热身赛（赶火车）【数学期望】</title>
+    <link href="http://yoursite.com/2019/04/11/2050%E7%83%AD%E8%BA%AB%E8%B5%9B%EF%BC%88%E8%B5%B6%E7%81%AB%E8%BD%A6%EF%BC%89%E3%80%90%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E3%80%91/"/>
+    <id>http://yoursite.com/2019/04/11/2050热身赛（赶火车）【数学期望】/</id>
+    <published>2019-04-11T14:22:09.000Z</published>
+    <updated>2019-04-11T14:36:43.301Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;期望就是走这条路的概率*这条路到达的时间，设期望为Ex，则Ex=(a1+a2+…+an+(b1+Ex)+(b2+Ex)+…+(bm+Ex))
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数学期望" scheme="http://yoursite.com/tags/%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>天梯赛-特立独行的幸福数（2019年决赛）</title>

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2050热身赛（赶火车）【数学期望】]]></title>
+    <url>%2F2019%2F04%2F11%2F2050%E7%83%AD%E8%BA%AB%E8%B5%9B%EF%BC%88%E8%B5%B6%E7%81%AB%E8%BD%A6%EF%BC%89%E3%80%90%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E3%80%91%2F</url>
+    <content type="text"><![CDATA[思路期望就是走这条路的概率*这条路到达的时间，设期望为Ex，则Ex=(a1+a2+…+an+(b1+Ex)+(b2+Ex)+…+(bm+Ex))/(n+m)，化简一下就是Ex=(a1+a2+…+an+b1+b2+…+bm)/n.式子的意思为，如果走可以到达终点的n条路的话，选取的概率就是1/(n+m)，所花时间就是ai，如果走其他的m条路的话，选取的概率是1/(n+m),所花时间就是bi+Ex.期望值一个近似平均值，当我们走那m条路时，走了bi时间后又回到原点，这时候跟最开始的情况又一样了，而我们已经设期望时间是Ex了，所以总共时间就是bi+Ex（自己好好思索一下） 代码123456789101112131415161718192021222324252627282930313233//// Created by yunqi on 19-4-11.//#include&lt;algorithm&gt;#include&lt;iostream&gt;using namespace std;int main(void) &#123; int t; scanf("%d", &amp;t); while (t--) &#123; int n, m; double y; scanf("%d%d%lf", &amp;n, &amp;m, &amp;y); double a, sum = 0; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; for (int i = 1; i &lt;= m; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; double ans = sum / n; if (ans &gt; y) printf("Wait\n"); else printf("Go\n"); &#125; return 0;&#125; 做题感受啊……看到这道题我就知道寒假训练时有一道题和这道很像，而我又忘记是怎么做的了（囧），所以又去翻代码，发现还不是很懂又直接去搜了题解orz啊……这次写了题解自己大概有一点认识吧（底气不足]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数学期望</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[天梯赛-特立独行的幸福数（2019年决赛）]]></title>
     <url>%2F2019%2F04%2F05%2F%E5%A4%A9%E6%A2%AF%E8%B5%9B-%E7%89%B9%E7%AB%8B%E7%8B%AC%E8%A1%8C%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%95%B0%EF%BC%882019%E5%B9%B4%E5%86%B3%E8%B5%9B%EF%BC%89%2F</url>
     <content type="text"><![CDATA[思路幸福数求法是如果不是幸福数，那么一定会出现循环，一种方法是标记每次得到的数，另一种骚操作是判断20是否会出现（如果出现20，那么这个数就一定不是幸福数（小明某一次打表找到的规律而这道题还要判断是不是独立的，那么开个vector记录每次得到的数的前一个数，同时也记录每个幸福数要得到1需要经过几次转换，最后再判断是不是质数即可 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384//// Created by yunqi on 19-4-5.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;const int maxn = 1e4 + 10;int relate_num[maxn];vector&lt;int&gt; pre_num[maxn];vector&lt;int&gt; num;int prime[maxn];bool vis[maxn];int cnt = 0;void get_prime() &#123; for (int i = 2; i &lt;= maxn; i++) &#123; if (!vis[i]) prime[++cnt] = i; for (int j = 1; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= maxn; j++) &#123; vis[i * prime[j]] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125;bool judge(int n) &#123; int nn = n; int ret = 0; while (true) &#123; int com = nn; while (nn != 0) &#123; ret += (nn % 10) * (nn % 10); nn /= 10; &#125; relate_num[n]++; if (ret == 1) return true; else if (ret == 4 || ret == 20 || ret == 16) return false; pre_num[ret].push_back(com); nn = ret; ret = 0; &#125;&#125;void init() &#123; for (int i = 1; i &lt;= maxn; i++) if (judge(i)) num.push_back(i);&#125;int main() &#123; int a, b; get_prime(); init(); while (~scanf("%d%d", &amp;a, &amp;b)) &#123; int _size = (int) num.size(); bool flag1=false; for (int i = 0; i &lt; _size; i++) &#123; if (num[i] &gt; b) break; if (num[i] &gt;= a &amp;&amp; num[i] &lt;= b) &#123; bool flag = true; for (int j = 0; j &lt; pre_num[num[i]].size() &amp;&amp; flag; j++) if (pre_num[num[i]][j] &gt;= a &amp;&amp; pre_num[num[i]][j] &lt;= b) flag = false; if (flag) &#123; printf("%d %d\n", num[i], relate_num[num[i]] * (vis[num[i]] ? 1 : 2)); flag1 = true; &#125; &#125; &#125; if(!flag1) printf("SAD\n"); &#125; return 0;&#125; 做题感受比赛的时候，啊……一直在卡，赛后发现自己题意理解错了，同时自己赛后补题的过程中发现你需要把这个数a的所有前一个数bi都判断一下是否在区间内，其实整体写下来也不难，哎自己太菜了]]></content>
