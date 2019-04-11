@@ -6,6 +6,7 @@
     <content type="text"><![CDATA[思路期望就是走这条路的概率*这条路到达的时间，设期望为Ex，则Ex=(a1+a2+…+an+(b1+Ex)+(b2+Ex)+…+(bm+Ex))/(n+m)，化简一下就是Ex=(a1+a2+…+an+b1+b2+…+bm)/n.式子的意思为，如果走可以到达终点的n条路的话，选取的概率就是1/(n+m)，所花时间就是ai，如果走其他的m条路的话，选取的概率是1/(n+m),所花时间就是bi+Ex.期望值一个近似平均值，当我们走那m条路时，走了bi时间后又回到原点，这时候跟最开始的情况又一样了，而我们已经设期望时间是Ex了，所以总共时间就是bi+Ex（自己好好思索一下） 代码123456789101112131415161718192021222324252627282930313233//// Created by yunqi on 19-4-11.//#include&lt;algorithm&gt;#include&lt;iostream&gt;using namespace std;int main(void) &#123; int t; scanf("%d", &amp;t); while (t--) &#123; int n, m; double y; scanf("%d%d%lf", &amp;n, &amp;m, &amp;y); double a, sum = 0; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; for (int i = 1; i &lt;= m; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; double ans = sum / n; if (ans &gt; y) printf("Wait\n"); else printf("Go\n"); &#125; return 0;&#125; 做题感受啊……看到这道题我就知道寒假训练时有一道题和这道很像，而我又忘记是怎么做的了（囧），所以又去翻代码，发现还不是很懂又直接去搜了题解orz啊……这次写了题解自己大概有一点认识吧（底气不足]]></content>
       <categories>
         <category>算法</category>
+        <category>数学期望</category>
       </categories>
       <tags>
         <tag>算法</tag>
