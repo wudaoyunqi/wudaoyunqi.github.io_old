@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-18T08:20:35.208Z</updated>
+  <updated>2019-04-18T09:29:51.066Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些碎碎念</title>
+    <link href="http://yoursite.com/2019/04/18/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    <id>http://yoursite.com/2019/04/18/一些碎碎念/</id>
+    <published>2019-04-18T08:37:34.000Z</published>
+    <updated>2019-04-18T09:29:51.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前去长白山的时候，我就说我发现自己一年过去了还是没有什么进步，cf分数还是那么低，每次都做不到四道题，每次都要思考很久，简单的思路不会，暴力有时候还会卡壳，算法的应用烂得跟个啥一样。没有进步，我觉得这个状态很可怕。&lt;br&gt;数学系的课程我学不懂，我也没有精力把所有的时间都放
+      
+    
+    </summary>
+    
+      <category term="没有目录" scheme="http://yoursite.com/categories/%E6%B2%A1%E6%9C%89%E7%9B%AE%E5%BD%95/"/>
+    
+    
+      <category term="没有tag" scheme="http://yoursite.com/tags/%E6%B2%A1%E6%9C%89tag/"/>
+    
+  </entry>
   
   <entry>
     <title>NEUOJ-2019-2Monthly-5</title>
@@ -69,9 +92,9 @@
       <category term="负进制" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
     
     
-      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
-    
       <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
     
       <category term="负进制" scheme="http://yoursite.com/tags/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
     
@@ -469,30 +492,6 @@
     
     
       <category term="欧拉函数" scheme="http://yoursite.com/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>快速幂（一般＆＆矩阵）</title>
-    <link href="http://yoursite.com/2019/03/08/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E4%B8%80%E8%88%AC%EF%BC%86%EF%BC%86%E7%9F%A9%E9%98%B5%EF%BC%89/"/>
-    <id>http://yoursite.com/2019/03/08/快速幂（一般＆＆矩阵）/</id>
-    <published>2019-03-08T15:43:02.000Z</published>
-    <updated>2019-03-25T13:55:29.502Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;其实整个系列弄下来是因为尝试做了小米OJ的二月月赛，结果被狠狠压在地上打(哭，看了评论有人给出的题解，有道题因为涉及到矩阵快速幂，所以干脆把快速幂重新再看一遍。&lt;/p&gt;
-&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;一般朴素的幂积算法计算$a^b$时间复杂度是O(n)，而快速幂可以降到O(logn)，实现的原理是将b二进制化，$b=2^a_{1}+2^a_{2}+…+2^a_{k}$ , $a^b=a^｛2^a_{1}｝&lt;em&gt;a^｛2^a_{2}｝…&lt;/em&gt;a^｛2^a_{k}｝$。&lt;br&gt;这些a_{i}就是b的二进制为１的位数(末位取０，从低到高依次增1)，下面是具体实现代码&lt;/p&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;qpow&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; b)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; ret = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (b != &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (b &amp;amp; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ret *= a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a *= a;    &lt;span class=&quot;comment&quot;&gt;//累乘，以便随时对ret做出贡献&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        b &amp;gt;&amp;gt;= &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ret;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="快速幂" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
-    
-    
-      <category term="快速幂" scheme="http://yoursite.com/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
     
   </entry>
   
