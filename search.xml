@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[NEUOJ-2019-2Monthly-5]]></title>
+    <url>%2F2019%2F04%2F18%2FNEUOJ-2019-2Monthly-5%2F</url>
+    <content type="text"><![CDATA[Problem Description给你一个n个数的序列 已知这n个数为1,1/2,1/3….1/n 我们定义一个生成新序列的操作mjfgay: 每次将序列相邻两项相加并且取平均。并将新生成的序列代替原来的序列。 比如 对于序列 1 1/2 1/3 ，经过一次mjfgay操作后，我们可以得到一个新序列 3/4 5/12 显然，经过n-1次之后，这个序列只会剩一个数 每次给你序列的长度n，问经过n-1次mjfgay操作过后，剩下的数是多少 答案对1e9+7取模 即若答案为P/Q，输出的是P*(Q^(-1))%(1e9+7) Q^(-1)代表逆元Input第一行输入一个整数t，代表数据组数(1&lt;=t&lt;=1000000) 每组数据输入一个正整数n，代表题目中的n (2&lt;=n&lt;2^26) Output对每组数据 输出答案%1e9+7的值 Sample Input223 Sample Output750000006583333338 思路找规律。杰霸写的题解看不懂=_=，但我推出了结果的式子（纯暴力推出），最后的P是2^n-1,Q是n(2^(n-1)),因为Q可能很大，会爆精度，所以变除法为乘法，下面讲一下逆元。设c是b的逆元，则有bc三1(mod m)(同余)则(a/b)%m=(a/b)1%m=(a/b)bc%m=ac%m即a/b的模等于a*b的逆元的模如何求逆元呢？需要用到费马小定理。如果b与m互质，那么就有b^(m-1)三1(mod m)这个式子和前面的逆元关系式连接起来，得到c=b^(m-2)，快速幂求结果即可，复杂度O(logn) 代码1234567891011121314151617181920212223242526272829303132333435363738394041//// Created by Yunqi on 19-4-18 上午12:37.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#define mod 1000000007using namespace std;typedef long long ll;ll qpower(ll n, ll m) &#123; if (n == 1) return 1LL; ll ret = 1; while (m &gt; 0) &#123; if (m &amp; 1) ret = (ret * n) % mod; n = (n * n) % mod; m &gt;&gt;= 1; &#125; return ret;&#125;int main() &#123; int t; while (cin &gt;&gt; t) &#123; while (t--) &#123; long long n; cin &gt;&gt; n; ll com = qpower(2LL, n - 1); ll nume = com * 2 - 1; ll deno = n * com % mod; ll niyuan = qpower(deno, mod - 2); ll ans = nume * niyuan % mod; cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 做题感受啊….四个月之后的我还是推不出式子，比赛完之后好像推出来了，所以ac了，现在推还是很傻比地往杨辉三角靠（虽然好像是这个关系），然后又去查杨辉三角的式子，得到是C(n-1,m-1),然后又去算阶乘，算每一步的逆元，算最小公倍数分式加和（我在想什么……以上充分证明了我对数字关系很不敏感，就和上一道负进制一样，哎，多锻炼思维吧。附上逆元的博客：【逆元】]]></content>
+      <categories>
+        <category>NEUOJ</category>
+        <category>逆元</category>
+      </categories>
+      <tags>
+        <tag>NEUOJ</tag>
+        <tag>逆元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NEUOJ-2019-2Monthly-2]]></title>
+    <url>%2F2019%2F04%2F18%2FNEUOJ-2018%E6%96%B0%E7%94%9F%E8%B5%9B-2%2F</url>
+    <content type="text"><![CDATA[思路我们习惯将10进制转换为正进制，方法无非是取余n，其商再继续取余直至该数被除至0，依次得到的余数倒序即为该十进制的n进制表示。如果是-n进制，方法也基本一样，永远满足被除数=商除数+余数，这里注意余数&gt;=0，当余数是负数时，将商++之后把余数变为正数（-=进制n）举个栗子：-1 = 1 (-2)^1 + 1 (-2)^0;① -1%（-2）=-1，-1/-2=0 ——&gt; -1-（-2）=1,0+1=1 ——&gt; 0（-2）-1=1*（-2）+1② 1%（-2）=1,1/（-2）=0-1用二进制表示就是11 代码12345678910111213141516171819202122232425262728293031323334353637//// Created by Yunqi on 19-4-17 下午9:55.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;vector&lt;long long&gt; ans;int main() &#123; long long n; while (cin &gt;&gt; n) &#123; ans.clear(); if (n == 0) &#123; cout &lt;&lt; n &lt;&lt; endl; continue; &#125; while (n != 0) &#123; long long com1 = n % (-2); long long com2 = n / (-2); if (com1 &lt; 0) &#123; com1 += 2; ++com2; &#125; ans.push_back(com1); n = com2; &#125; for (int i = (int)ans.size() - 1; i &gt;= 0; --i) printf("%lld", ans[i]); cout&lt;&lt;endl; &#125; return 0;&#125; 做题感受这道题一直做不出来囧，手推了好久也没推出来，自闭到绝望，后来搜了一下负进制，百度百科直接给出了代码，比赛完之后试了一下就过了=_=。然后昨天再次尝试做，还是没推出来（说明写过的题还是特么的不会），推的这个过程很自闭。然后遇到的一个问题是最后遍历vector输出的时候，下标i如果声明为unsigned long类型就会输出一堆多余的东西，如果声明为int类型就不会，不知道怎么回事orz（这个坑先不填附上负进制的博客: 负进制的转换]]></content>
+      <categories>
+        <category>算法</category>
+        <category>负进制</category>
+      </categories>
+      <tags>
+        <tag>NEUOJ</tag>
+        <tag>算法</tag>
+        <tag>负进制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[USACO-1.4-Dual_Palindromes]]></title>
+    <url>%2F2019%2F04%2F18%2FUSACO-1-4-Dual-Palindromes%2F</url>
+    <content type="text"><![CDATA[思路和1.3思路一样，这一次只是多增加了判断是否有两个以上的进制表示是回文数字 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152/* ID: cm291182 TASK: dualpal LANG: C++*///// Created by Yunqi on 19-4-17 下午3:49.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;fstream&gt;#include&lt;cstdio&gt;using namespace std;bool judge(int base, int n) &#123; int num[1000], tot = 0; while (n != 0) &#123; num[++tot] = n % base; n /= base; &#125; for (int i = 1, j = tot; i &lt;= j; ++i, --j) &#123; if (num[i] != num[j]) return false; &#125; return true;&#125;int main() &#123; ifstream fin("dualpal.in"); ofstream fout("dualpal.out"); int n, s; while (fin &gt;&gt; n &gt;&gt; s) &#123; int cnt = 0; for (int i = s + 1; cnt &lt; n; ++i) &#123; int tot = 0; for (int j = 2; j &lt;= 10; ++j) &#123; if (judge(j, i)) &#123; ++tot; if (tot == 2) &#123; ++cnt; fout &lt;&lt; i &lt;&lt; endl; break; &#125; &#125; &#125; &#125; &#125; return 0;&#125; 做题感受没啥感受，一开始判断没写对，然后还好。其实每次做到进制的题都觉得不好写，可能觉得进制方面的知识太深了，题见多了就行。]]></content>
+      <categories>
+        <category>USACO</category>
+      </categories>
+      <tags>
+        <tag>USACO</tag>
+        <tag>搜索</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[USACO-1.3-Palindromic_Squares]]></title>
+    <url>%2F2019%2F04%2F18%2FUSACO-1-3-Palindromic-Squares%2F</url>
+    <content type="text"><![CDATA[思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*ID: cm291182TASK: palsquareLANG: C++*/#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;fstream&gt;using namespace std;char base[20] = &#123;'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'&#125;;int main(void) &#123; ofstream fout("palsquare.out"); ifstream fin("palsquare.in"); int b; while (fin &gt;&gt; b) &#123; for (int i = 1; i &lt;= 300; ++i) &#123; string ans1, ans2; int squ = i * i, com = i; while (com &gt; 0) &#123; ans1 += base[com % b]; com /= b; &#125; reverse(ans1.begin(), ans1.end()); while (squ &gt; 0) &#123; ans2 += base[squ % b]; squ /= b; &#125; bool flag = true; string::iterator j,k; for (j = ans2.begin(), k = ans2.end() - 1; j &lt;= k; ++j, --k) &#123; if (*j != *k) &#123; flag = false; break; &#125; &#125; if (flag) fout &lt;&lt; ans1 &lt;&lt; " " &lt;&lt; ans2 &lt;&lt; endl; &#125; &#125; return 0;&#125; 做题感受一年前的我做这道题觉得很难，所以之后就没做了，现在看来不是很难。中间遇到的坑是短除法取模得到的数字顺序与输出顺序是相反的=_=，借用reverse一波，然后就是字符串的问题，开始把ans1和ans2的声明放在循环外面，这样会导致字符串会保留上一次的结果。哦，最初也没看到要输出n表示为b进制后的数字，直接输出十进制的n了。]]></content>
+      <categories>
+        <category>USACO</category>
+      </categories>
+      <tags>
+        <tag>USACO</tag>
+        <tag>搜索</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2050热身赛（赶火车）【数学期望】]]></title>
     <url>%2F2019%2F04%2F11%2F2050%E7%83%AD%E8%BA%AB%E8%B5%9B%EF%BC%88%E8%B5%B6%E7%81%AB%E8%BD%A6%EF%BC%89%E3%80%90%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E3%80%91%2F</url>
     <content type="text"><![CDATA[思路期望就是走这条路的概率*这条路到达的时间，设期望为Ex，则Ex=(a1+a2+…+an+(b1+Ex)+(b2+Ex)+…+(bm+Ex))/(n+m)，化简一下就是Ex=(a1+a2+…+an+b1+b2+…+bm)/n.式子的意思为，如果走可以到达终点的n条路的话，选取的概率就是1/(n+m)，所花时间就是ai，如果走其他的m条路的话，选取的概率是1/(n+m),所花时间就是bi+Ex.期望值一个近似平均值，当我们走那m条路时，走了bi时间后又回到原点，这时候跟最开始的情况又一样了，而我们已经设期望时间是Ex了，所以总共时间就是bi+Ex（自己好好思索一下） 代码123456789101112131415161718192021222324252627282930313233//// Created by yunqi on 19-4-11.//#include&lt;algorithm&gt;#include&lt;iostream&gt;using namespace std;int main(void) &#123; int t; scanf("%d", &amp;t); while (t--) &#123; int n, m; double y; scanf("%d%d%lf", &amp;n, &amp;m, &amp;y); double a, sum = 0; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; for (int i = 1; i &lt;= m; ++i) &#123; scanf("%lf", &amp;a); sum += a; &#125; double ans = sum / n; if (ans &gt; y) printf("Wait\n"); else printf("Go\n"); &#125; return 0;&#125; 做题感受啊……看到这道题我就知道寒假训练时有一道题和这道很像，而我又忘记是怎么做的了（囧），所以又去翻代码，发现还不是很懂又直接去搜了题解orz啊……这次写了题解自己大概有一点认识吧（底气不足]]></content>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-11T14:41:25.678Z</updated>
+  <updated>2019-04-18T08:20:35.208Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NEUOJ-2019-2Monthly-5</title>
+    <link href="http://yoursite.com/2019/04/18/NEUOJ-2019-2Monthly-5/"/>
+    <id>http://yoursite.com/2019/04/18/NEUOJ-2019-2Monthly-5/</id>
+    <published>2019-04-18T07:15:46.000Z</published>
+    <updated>2019-04-18T08:20:35.208Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Problem-Description&quot;&gt;&lt;a href=&quot;#Problem-Description&quot; class=&quot;headerlink&quot; title=&quot;Problem Description&quot;&gt;&lt;/a&gt;Problem Description&lt;/h2&gt;&lt;p&gt;给你一个n个数的序列&lt;/p&gt;
+&lt;p&gt;已知这n个数为1,1/2,1/3….1/n&lt;/p&gt;
+&lt;p&gt;我们定义一个生成新序列的操作mjfgay:&lt;/p&gt;
+&lt;p&gt;每次将序列相邻两项相加并且取平均。并将新生成的序列代替原来的序列。&lt;/p&gt;
+&lt;p&gt;比如 对于序列 1 1/2 1/3 ，经过一次mjfgay操作后，我们可以得到一个新序列 3/4 5/12&lt;/p&gt;
+&lt;p&gt;显然，经过n-1次之后，这个序列只会剩一个数&lt;/p&gt;
+&lt;p&gt;每次给你序列的长度n，问经过n-1次mjfgay操作过后，剩下的数是多少&lt;/p&gt;
+&lt;p&gt;答案对1e9+7取模&lt;/p&gt;
+&lt;p&gt;即若答案为P/Q，输出的是P*(Q^(-1))%(1e9+7) Q^(-1)代表逆元&lt;br&gt;
+    
+    </summary>
+    
+      <category term="NEUOJ" scheme="http://yoursite.com/categories/NEUOJ/"/>
+    
+      <category term="逆元" scheme="http://yoursite.com/categories/NEUOJ/%E9%80%86%E5%85%83/"/>
+    
+    
+      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
+    
+      <category term="逆元" scheme="http://yoursite.com/tags/%E9%80%86%E5%85%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NEUOJ-2019-2Monthly-2</title>
+    <link href="http://yoursite.com/2019/04/18/NEUOJ-2018%E6%96%B0%E7%94%9F%E8%B5%9B-2/"/>
+    <id>http://yoursite.com/2019/04/18/NEUOJ-2018新生赛-2/</id>
+    <published>2019-04-18T06:18:01.000Z</published>
+    <updated>2019-04-18T08:23:12.744Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;我们习惯将10进制转换为正进制，方法无非是取余n，其商再继续取余直至该数被除至0，依次得到的余数倒序即为该十进制的n进制表示。如果是-n进制
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="负进制" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
+    
+    
+      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="负进制" scheme="http://yoursite.com/tags/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>USACO-1.4-Dual_Palindromes</title>
+    <link href="http://yoursite.com/2019/04/18/USACO-1-4-Dual-Palindromes/"/>
+    <id>http://yoursite.com/2019/04/18/USACO-1-4-Dual-Palindromes/</id>
+    <published>2019-04-18T04:04:45.000Z</published>
+    <updated>2019-04-18T04:10:30.476Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;和1.3思路一样，这一次只是多增加了判断是否有两个以上的进制表示是回文数字&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; cl
+      
+    
+    </summary>
+    
+      <category term="USACO" scheme="http://yoursite.com/categories/USACO/"/>
+    
+    
+      <category term="USACO" scheme="http://yoursite.com/tags/USACO/"/>
+    
+      <category term="搜索" scheme="http://yoursite.com/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>USACO-1.3-Palindromic_Squares</title>
+    <link href="http://yoursite.com/2019/04/18/USACO-1-3-Palindromic-Squares/"/>
+    <id>http://yoursite.com/2019/04/18/USACO-1-3-Palindromic-Squares/</id>
+    <published>2019-04-18T03:53:45.000Z</published>
+    <updated>2019-04-18T04:03:46.905Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。&lt;/p&gt;
+&lt;h2 id=&quot;代码&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="USACO" scheme="http://yoursite.com/categories/USACO/"/>
+    
+    
+      <category term="USACO" scheme="http://yoursite.com/tags/USACO/"/>
+    
+      <category term="搜索" scheme="http://yoursite.com/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>2050热身赛（赶火车）【数学期望】</title>
@@ -380,87 +493,6 @@
     
     
       <category term="快速幂" scheme="http://yoursite.com/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【图论】求无向连通图的割点（Tarjan算法）</title>
-    <link href="http://yoursite.com/2019/01/24/%E3%80%90%E5%9B%BE%E8%AE%BA%E3%80%91%E6%B1%82%E6%97%A0%E5%90%91%E8%BF%9E%E9%80%9A%E5%9B%BE%E7%9A%84%E5%89%B2%E7%82%B9%EF%BC%88Tarjan%E7%AE%97%E6%B3%95%EF%BC%89/"/>
-    <id>http://yoursite.com/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/</id>
-    <published>2019-01-24T07:16:42.000Z</published>
-    <updated>2019-03-25T13:35:59.316Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;寒假训练开始了，发现自己真是半灌水响叮当，自己关于割点的概念完全不知道，后来找了几篇不错的博客以及翻了翻白书，白书很适合理解概念，博客给的模板代码适合借鉴。&lt;/p&gt;
-&lt;h2 id=&quot;割点的概念&quot;&gt;&lt;a href=&quot;#割点的概念&quot; class=&quot;headerlink&quot; title=&quot;割点的概念&quot;&gt;&lt;/a&gt;割点的概念&lt;/h2&gt;&lt;p&gt;在&lt;strong&gt;无向连通图&lt;/strong&gt;中，如果将其中一个点以及这个点所连的所有的边都去掉，图不再连通，那么这个点成为&lt;strong&gt;割点&lt;/strong&gt;（割顶/关节点）。&lt;/p&gt;
-&lt;h2 id=&quot;如何求割点&quot;&gt;&lt;a href=&quot;#如何求割点&quot; class=&quot;headerlink&quot; title=&quot;如何求割点&quot;&gt;&lt;/a&gt;如何求割点&lt;/h2&gt;&lt;p&gt;暴力的方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;依次删除每一个节点v&lt;/li&gt;
-&lt;li&gt;DFS(BFS)判断是否连通&lt;/li&gt;
-&lt;li&gt;再把节点v加入图中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;若用邻接表，需要做V次DFS，时间复杂度为O(V*(V+E))。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="图论" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
-    
-    
-      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树状数组</title>
-    <link href="http://yoursite.com/2018/10/16/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    <id>http://yoursite.com/2018/10/16/树状数组/</id>
-    <published>2018-10-16T01:55:22.000Z</published>
-    <updated>2019-03-25T13:35:21.646Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;树状数组不太熟悉，所以下决心写出个教程来，断断续续花了三天（可太断断续续了），听说OI选手最喜欢写树状数组（线段树）了&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我们将一个数组a[]树状化，每个节点的值C[i]记录了其叶子节点的权值之和，那么树状数组C[]就维护了这个数组a[]的前缀和S[i]=a[1]+a[2]+…+a[i],树状数组利用了二进制，使其可以在O(logn)时间内对这个数组a[]进行修改和求和（与O(n)比起来效率很高）&lt;/p&gt;
-&lt;p&gt;树状数组可以实现的功能有&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;将一个数组树状化&lt;/li&gt;
-&lt;li&gt;区间修改，如改变某一个点a[i]的值&lt;/li&gt;
-&lt;li&gt;区间查询，如询问a[1]+a[2]+…+a[i]的值&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="树状数组" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
-    
-      <category term="树状数组" scheme="http://yoursite.com/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git操作总结(一)</title>
-    <link href="http://yoursite.com/2018/10/10/Git%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2018/10/10/Git操作总结/</id>
-    <published>2018-10-10T14:49:34.000Z</published>
-    <updated>2018-10-16T10:32:35.704Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;经久没有使用git（捂脸跑开），今天开会被czq小朋友教做人，所以欸真的需要再回顾一下git操作啊&lt;em&gt;(:зゝ∠)&lt;/em&gt;。于是上&lt;a href=&quot;https://git-scm.com/book/en/v2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git官网&lt;/a&gt;从头到尾仔仔细细看了一波（不能再废下去了啊喂（摇醒）。也相当于给自己做一个git笔记，以后有忘记的命令操作就来这里看啦。&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Git是一种&lt;strong&gt;分布式版本控制系统&lt;/strong&gt;，这与常被混淆的&lt;strong&gt;Github&lt;/strong&gt;(只支持Git做版本控制的项目托管平台)是两种不同的概念。在Git中的绝大多数操作都只需要访问本地文件和资源，Git和其他版本控制系统的主要差别在于对待数据的方法，其他大部分系统以文件变更列表的方式存储信息，而Git更像是把数据看作是一组快照，每次提交修改和更新时对这个文件制作一个快照并保存这个快照的索引(其中以文件内容的哈希值来作为索引)。&lt;/p&gt;
-&lt;p&gt;由于git的使用非常灵活，在实践过程中便衍生出很多种不同的工作流程和协作方式。Git有多种使用方式，强烈建议使用命令行模式。Git安装跳过，请自行使用强大的搜索引擎。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://yoursite.com/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
     
   </entry>
   
