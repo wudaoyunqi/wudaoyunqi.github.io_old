@@ -77,7 +77,7 @@
     <link href="http://yoursite.com/2019/05/05/NEUOJ-1Monthly-2/"/>
     <id>http://yoursite.com/2019/05/05/NEUOJ-1Monthly-2/</id>
     <published>2019-05-05T06:52:06.000Z</published>
-    <updated>2019-05-05T07:09:54.681Z</updated>
+    <updated>2019-05-05T07:49:19.250Z</updated>
     
     <summary type="html">
     
@@ -89,7 +89,11 @@
     
     </summary>
     
-      <category term="积性函数 DP" scheme="http://yoursite.com/categories/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0-DP/"/>
+      <category term="NEUOJ" scheme="http://yoursite.com/categories/NEUOJ/"/>
+    
+      <category term="积性函数" scheme="http://yoursite.com/categories/NEUOJ/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="DP" scheme="http://yoursite.com/categories/NEUOJ/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/DP/"/>
     
     
       <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
