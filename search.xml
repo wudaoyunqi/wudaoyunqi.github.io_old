@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[浙江省赛19th-Robot_Cleaner_I]]></title>
+    <url>%2F2019%2F05%2F05%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Robot-Cleaner-I%2F</url>
+    <content type="text"><![CDATA[题目地址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=5981 思路按照题意模拟即可，有三处剪枝，一是获得的字母数＞字母总数时剪枝，二是给每个点对应一个哈希坐标，记录这个坐标是否在某几个x值循环（这一点比较难想，很容易t），三是只要处于do nothing状态就break 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859//// Created by neuacm on 4/20/19.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;using namespace std;const int maxn = 2010;char s[maxn], type[20000][2000];int vis[maxn * 10][300];int n, m, a, b;long long k;int main() &#123; int t; scanf("%d", &amp;t); while (t--) &#123; scanf("%d%d", &amp;n, &amp;m); scanf("%d%d%lld", &amp;a, &amp;b, &amp;k); scanf("%s", s + 1); for (int i = 1; i &lt;= n; ++i) scanf("%s", type[i] + 1); int ans = 0, sum = 0; for (int i = 1; i &lt;= n; ++i) for (int j = 1; j &lt;= m; ++j) if (type[i][j] == '2') sum++; memset(vis, -1, sizeof(vis)); while (k--) &#123; if (ans == sum) break; int x = 81 * (type[a][b] - '0') + 27 * (type[a - 1][b] - '0') + 9 * (type[a + 1][b] - '0') + 3 * (type[a][b - 1] - '0') + type[a][b + 1] - '0'; if (vis[(a - 1) * m + b][x] == ans) break; vis[(a - 1) * m + b][x] = ans; if (s[x + 1] == 'U' &amp;&amp; type[a - 1][b] != '1') a--; else if (s[x + 1] == 'D' &amp;&amp; type[a + 1][b] != '1') a++; else if (s[x + 1] == 'L' &amp;&amp; type[a][b - 1] != '1') b--; else if (s[x + 1] == 'R' &amp;&amp; type[a][b + 1] != '1') b++; else if (s[x + 1] == 'P' &amp;&amp; type[a][b] == '2') &#123; ans++; type[a][b] = '0'; &#125; else break; &#125; printf("%d\n", ans); &#125; return 0;&#125; 做题感受开始一直t，愣是没想到第二个剪枝，因为k太大所以当然会t啦……，看题解有另一个剪枝的方法，一个位置不会被访问超过n*m次，总共4e8的复杂度也能过]]></content>
+      <categories>
+        <category>浙江省赛</category>
+        <category>哈希</category>
+      </categories>
+      <tags>
+        <tag>浙江省赛</tag>
+        <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浙江省赛19th-Extended_Twin_Composite_Number]]></title>
+    <url>%2F2019%2F05%2F05%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Extended-Twin-Composite-Number%2F</url>
+    <content type="text"><![CDATA[题目地址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4099 思路n2+n=n3 代码12345678910111213141516171819202122232425//// Created by neuacm on 4/20/19.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;int main(void) &#123; int t; while (~scanf("%d", &amp;t)) &#123; while (t--) &#123; long long n; scanf("%lld", &amp;n); if(n==1) printf("%d %d\n",8,9); else printf("%lld %lld\n",n*2,n*3); &#125; &#125; return 0;&#125; 做题感受海星]]></content>
+      <categories>
+        <category>浙江省赛</category>
+        <category>思维</category>
+      </categories>
+      <tags>
+        <tag>浙江省赛</tag>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浙江省赛19th-Potion]]></title>
+    <url>%2F2019%2F05%2F05%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Potion%2F</url>
+    <content type="text"><![CDATA[题目地址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4094 思路因为只能从rank高的（分给）rank低的，所以从n开始依次将bi置为ai，bi-1+=(bi-ai)，如果bi&lt;ai，那么输出No,否则输出Yes 代码123456789101112131415161718192021222324252627282930#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstdio&gt;using namespace std;long long a[110],b[110];int main(void)&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;++i) scanf("%lld",&amp;a[i]); for(int i=1;i&lt;=n;++i) scanf("%lld",&amp;b[i]); bool jduge=true; for(int i=n;i&gt;=1;--i)&#123; if(b[i]&lt;a[i])&#123; jduge=false; break; &#125; b[i-1]+=(b[i]-a[i]); &#125; if(!jduge) printf("No\n"); else printf("Yes\n"); &#125; return 0;&#125; 做题感受海星]]></content>
+      <tags>
+        <tag>浙江省赛</tag>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浙江省赛19th-Thanks,TuSimple!]]></title>
+    <url>%2F2019%2F05%2F01%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Thanks_TuSimple%2F</url>
+    <content type="text"><![CDATA[题目网址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4090 思路首先根据pi的值从小到大排序，同一个pi值按身高从低到高排序，然后线性匹配。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn = 1e5 + 10;struct Node &#123; int high; int like; bool operator&lt;(const Node &amp;a) const &#123; if (like == a.like) return high &lt; a.high; else return like &lt; a.like; &#125;&#125; a[maxn], b[maxn];int main(void) &#123; int t; scanf("%d", &amp;t); while (t--) &#123; int n, m; scanf("%d%d", &amp;n, &amp;m); for (int i = 1; i &lt;= n; ++i) scanf("%d", &amp;a[i].high); for (int i = 1; i &lt;= m; ++i) scanf("%d", &amp;b[i].high); for (int i = 1; i &lt;= n; ++i) scanf("%d", &amp;a[i].like); for (int i = 1; i &lt;= m; ++i) scanf("%d", &amp;b[i].like); sort(a + 1, a + n + 1); sort(b + 1, b + m + 1); int ans = 0, pos = m + 1; for (int i = 1; i &lt;= m; ++i) &#123; if (b[i].like) &#123; pos = i; break; &#125; &#125; for (int i = 1; i &lt;= n; ++i) &#123; if (pos &gt; m) break; if (!a[i].like &amp;&amp; a[i].high &gt; b[pos].high) &#123; ans++; pos++; &#125; &#125; pos = n + 1; for (int i = 1; i &lt;= n; ++i) &#123; if (a[i].like) &#123; pos = i; break; &#125; &#125; for (int i = 1; i &lt;= m; ++i) &#123; if (pos &gt; n) break; if (!b[i].like &amp;&amp; a[pos].high &lt; b[i].high) &#123; ans++; pos++; &#125; &#125; printf("%d\n", ans); &#125; return 0;&#125; 这是比赛完搜题解的时候自己改换了思路，原先比赛时写的代码巨tm复杂，都想出二分答案了，还不停地转了转去…… 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;struct Like&#123; int high; int like;&#125;male[100010],female[100010];vector&lt;int&gt; malehigh,maleshort,femalehigh,femaleshort;bool cmp1(const int &amp;a,const int &amp;b)&#123; return a&gt;b;&#125;bool cmp2(const int &amp;a,const int &amp;b)&#123; return a&lt;b;&#125;int main(void)&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n,m; scanf("%d%d",&amp;n,&amp;m); maleshort.clear(),malehigh.clear(),femaleshort.clear(),femalehigh.clear(); for(int i=1;i&lt;=n;++i) scanf("%d",&amp;male[i].high); for(int i=1;i&lt;=m;++i) scanf("%d",&amp;female[i].high); for(int i=1;i&lt;=n;++i)&#123; scanf("%d",&amp;male[i].like); if(male[i].like==0) maleshort.push_back(male[i].high); else malehigh.push_back(male[i].high); &#125; for(int i=1;i&lt;=m;++i)&#123; scanf("%d",&amp;female[i].like); if(female[i].like==0) femaleshort.push_back(female[i].high); else femalehigh.push_back(female[i].high); &#125; sort(maleshort.begin(),maleshort.end(),cmp1); sort(malehigh.begin(),malehigh.end(),cmp2); sort(femaleshort.begin(),femaleshort.end(),cmp1); sort(femalehigh.begin(),femalehigh.end(),cmp2); int ans=0; for(int i=0;i&lt;maleshort.size()&amp;&amp;!femaleshort.empty();++i)&#123; vector&lt;int&gt;::iterator k=lower_bound(femalehigh.begin(),femalehigh.end(),maleshort[i]); if(k==femalehigh.begin()) continue; if(k==femalehigh.end())&#123; ans++; femalehigh.erase(femalehigh.end()-1); &#125;else&#123; ans++; femalehigh.erase(k-1); &#125; &#125; for(int i=0;i&lt;femaleshort.size()&amp;&amp;!malehigh.empty();++i)&#123; vector&lt;int&gt;::iterator k=lower_bound(malehigh.begin(),malehigh.end(),femaleshort[i]); if(k==malehigh.begin()) continue; if(k==malehigh.end())&#123; ans++; malehigh.erase(malehigh.end()-1); &#125;else&#123; ans++; malehigh.erase(k-1); &#125; &#125; printf("%d\n",ans); &#125; return 0;&#125; 做题感受比赛时脑子不清醒，想得太复杂]]></content>
+      <categories>
+        <category>浙江省赛</category>
+        <category>思维</category>
+      </categories>
+      <tags>
+        <tag>浙江省赛</tag>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浙江省赛19th-Postman]]></title>
+    <url>%2F2019%2F05%2F01%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Postman%2F</url>
+    <content type="text"><![CDATA[题目网址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4096 思路首先将坐标分组排序，两边分别计算路径最后相加，比较左边和右边离原点最远的点，这个点就只走一次（最后一次），然后从最远的点开始往原点“跳”，每次跳k个点直到回到原点（如此能保证总路径是最短的） 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950//// Created by yunqi on 19-4-14.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;#include&lt;cmath&gt;using namespace std;bool cmp(const long long a, const long long b) &#123; return a &lt; b;&#125;int main() &#123; int t; scanf("%d", &amp;t); while (t--) &#123; int n,k; vector&lt;long long&gt; left, right; long long ans = 0, a; scanf("%d%d", &amp;n, &amp;k); for (int i = 1; i &lt;= n; ++i) &#123; scanf("%lld", &amp;a); if (a &gt;= 0) right.push_back(a); else left.push_back(abs(a)); &#125; int n1 = left.size(), n2 = right.size(); sort(left.begin(), left.end(), cmp); sort(right.begin(), right.end(), cmp); for (int i = n1 - k - 1; i &gt;= 0; i -= k) ans += (left[i] * 2); for (int i = n2 - k - 1; i &gt;= 0; i -= k) ans += (right[i] * 2); if (n1 &gt; 0 &amp;&amp; n2 &gt; 0) &#123; ans += (left[n1 - 1] * (left[n1 - 1] &gt;= right[n2 - 1] ? 1 : 2)); ans += (right[n2 - 1] * (left[n1 - 1] &gt;= right[n2 - 1] ? 2 : 1)); &#125; else if (n1 == 0) &#123; ans += right[n2 - 1]; &#125; else &#123; ans += left[n1 - 1]; &#125; printf("%lld\n", ans); &#125; return 0;&#125; 做题感受啊…..这道题的hint真的是让人入坑啊……先开始一直纠结，就是wa，后来杰霸来了向他求助，他说不就是一道傻逼题吗……（啊…当时真是抓狂orz，然后我就自己再改了一下，结果一直segmentfault,回南湖后再思考了一下发现left或right的元素个数可能为0，需要分类判断一下。还有个坑是今天重写了一遍，发现遍历vector时下标类型声明为unsignedlong（clion一直标黄提醒）就会t，声明为int就过了（暂时不知道咋回事……]]></content>
+      <categories>
+        <category>浙江省赛</category>
+        <category>思维</category>
+      </categories>
+      <tags>
+        <tag>浙江省赛</tag>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一些碎碎念]]></title>
     <url>%2F2019%2F04%2F18%2F%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5%2F</url>
     <content type="text"><![CDATA[之前去长白山的时候，我就说我发现自己一年过去了还是没有什么进步，cf分数还是那么低，每次都做不到四道题，每次都要思考很久，简单的思路不会，暴力有时候还会卡壳，算法的应用烂得跟个啥一样。没有进步，我觉得这个状态很可怕。数学系的课程我学不懂，我也没有精力把所有的时间都放在上面，想保研太难了（当然也许是我持有借口一说，但我不想深入）。自己搞ACM，不，我觉得不是在搞，而是不上心地散一点时间在上面。诚然我付出的很少，特别是上学期，人嘛，没有自控力地生活总是会陷入烂泥里。所以我在长白山回来之后就问了zj学长，很丢人地自己状态说出来。是啊，云淇并不是很优秀。扪心自问，我付出得很少，特别是自从大一那事之后，我的状态就变得很奇怪。我不想以这个为借口，就事论事。但是很丢人啊，开学以来无论是月赛，天梯赛都是这样，做不好，做不快，做不对。我应该早点发觉，而不是一味地陷入那个烂泥里不出来。看柳婼的博客，能感觉她的确是一个优秀努力的人，而与我对比，自然分的高下，这种比对之后的差别是很可耻的，就像昨天填的表格一样，很丢人。不能因为我不是计算机的学生就给自己找借口，我应该找到合适的状态，把自己放的很谦卑，把自己放在泥地里，只有抬头才能向上，而不是心悬在空中向下俯视。我想变强，怎么去付诸，怎么去调整，怎么去改变心态，怎么去不丢人。昨天晚上真的很想让世界上所有的人都忘记我，很丢人很丢人，简直想去死。我很好面子，很要强，对我来说是挺打击的。可是万事有因有果，这是一场马拉松，中间的懈力已经很明显了。不想成为现在的样子，很差劲，没有力气去调整人际关系，和小泽也不想说话了，也知道我性格的弊病已经显现出来了，我明白，可是我不想说出来，因为我总是忍不住发脾气。需要找到一个情感的宣泄口，比赛又会自虐，或许负面情绪会更多，但是还是要去试试的。上面的话很没有逻辑，我的手指已经被机械键盘打疼了，应该让自己理智一点。更多的话，以后再说吧。哦，今天还想剪头，昨天大姨妈来了常微分课上疼的要死要活，打瞌睡都睡不了。昨晚又在科学馆待了一晚上，效率不是很好，还困，又不敢发出声音怕被发现，然后还有这烦死人的大姨妈。啊，要活下去，坚强地活下去。 2019年4月18日17:28]]></content>
@@ -12,8 +73,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[NEUOJ-2019-2Monthly-5]]></title>
-    <url>%2F2019%2F04%2F18%2FNEUOJ-2019-2Monthly-5%2F</url>
+    <title><![CDATA[NEUOJ-2019-1Monthly-6]]></title>
+    <url>%2F2019%2F04%2F18%2FNEUOJ-2019-1Monthly-6%2F</url>
     <content type="text"><![CDATA[Problem Description给你一个n个数的序列 已知这n个数为1,1/2,1/3….1/n 我们定义一个生成新序列的操作mjfgay: 每次将序列相邻两项相加并且取平均。并将新生成的序列代替原来的序列。 比如 对于序列 1 1/2 1/3 ，经过一次mjfgay操作后，我们可以得到一个新序列 3/4 5/12 显然，经过n-1次之后，这个序列只会剩一个数 每次给你序列的长度n，问经过n-1次mjfgay操作过后，剩下的数是多少 答案对1e9+7取模 即若答案为P/Q，输出的是P*(Q^(-1))%(1e9+7) Q^(-1)代表逆元Input第一行输入一个整数t，代表数据组数(1&lt;=t&lt;=1000000) 每组数据输入一个正整数n，代表题目中的n (2&lt;=n&lt;2^26) Output对每组数据 输出答案%1e9+7的值 Sample Input223 Sample Output750000006583333338 思路找规律。杰霸写的题解看不懂=_=，但我推出了结果的式子（纯暴力推出），最后的P是2^n-1,Q是n(2^(n-1)),因为Q可能很大，会爆精度，所以变除法为乘法，下面讲一下逆元。设c是b的逆元，则有bc三1(mod m)(同余)则(a/b)%m=(a/b)1%m=(a/b)bc%m=ac%m即a/b的模等于a*b的逆元的模如何求逆元呢？需要用到费马小定理。如果b与m互质，那么就有b^(m-1)三1(mod m)这个式子和前面的逆元关系式连接起来，得到c=b^(m-2)，快速幂求结果即可，复杂度O(logn) 代码1234567891011121314151617181920212223242526272829303132333435363738394041//// Created by Yunqi on 19-4-18 上午12:37.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#define mod 1000000007using namespace std;typedef long long ll;ll qpower(ll n, ll m) &#123; if (n == 1) return 1LL; ll ret = 1; while (m &gt; 0) &#123; if (m &amp; 1) ret = (ret * n) % mod; n = (n * n) % mod; m &gt;&gt;= 1; &#125; return ret;&#125;int main() &#123; int t; while (cin &gt;&gt; t) &#123; while (t--) &#123; long long n; cin &gt;&gt; n; ll com = qpower(2LL, n - 1); ll nume = com * 2 - 1; ll deno = n * com % mod; ll niyuan = qpower(deno, mod - 2); ll ans = nume * niyuan % mod; cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 做题感受啊….四个月之后的我还是推不出式子，比赛完之后好像推出来了，所以ac了，现在推还是很傻比地往杨辉三角靠（虽然好像是这个关系），然后又去查杨辉三角的式子，得到是C(n-1,m-1),然后又去算阶乘，算每一步的逆元，算最小公倍数分式加和（我在想什么……以上充分证明了我对数字关系很不敏感，就和上一道负进制一样，哎，多锻炼思维吧。附上逆元的博客：【逆元】]]></content>
       <categories>
         <category>NEUOJ</category>
@@ -25,7 +86,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[NEUOJ-2019-2Monthly-2]]></title>
+    <title><![CDATA[NEUOJ-2018新生赛-2]]></title>
     <url>%2F2019%2F04%2F18%2FNEUOJ-2018%E6%96%B0%E7%94%9F%E8%B5%9B-2%2F</url>
     <content type="text"><![CDATA[思路我们习惯将10进制转换为正进制，方法无非是取余n，其商再继续取余直至该数被除至0，依次得到的余数倒序即为该十进制的n进制表示。如果是-n进制，方法也基本一样，永远满足被除数=商除数+余数，这里注意余数&gt;=0，当余数是负数时，将商++之后把余数变为正数（-=进制n）举个栗子：-1 = 1 (-2)^1 + 1 (-2)^0;① -1%（-2）=-1，-1/-2=0 ——&gt; -1-（-2）=1,0+1=1 ——&gt; 0（-2）-1=1*（-2）+1② 1%（-2）=1,1/（-2）=0-1用二进制表示就是11 代码12345678910111213141516171819202122232425262728293031323334353637//// Created by Yunqi on 19-4-17 下午9:55.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;vector&lt;long long&gt; ans;int main() &#123; long long n; while (cin &gt;&gt; n) &#123; ans.clear(); if (n == 0) &#123; cout &lt;&lt; n &lt;&lt; endl; continue; &#125; while (n != 0) &#123; long long com1 = n % (-2); long long com2 = n / (-2); if (com1 &lt; 0) &#123; com1 += 2; ++com2; &#125; ans.push_back(com1); n = com2; &#125; for (int i = (int)ans.size() - 1; i &gt;= 0; --i) printf("%lld", ans[i]); cout&lt;&lt;endl; &#125; return 0;&#125; 做题感受这道题一直做不出来囧，手推了好久也没推出来，自闭到绝望，后来搜了一下负进制，百度百科直接给出了代码，比赛完之后试了一下就过了=_=。然后昨天再次尝试做，还是没推出来（说明写过的题还是特么的不会），推的这个过程很自闭。然后遇到的一个问题是最后遍历vector输出的时候，下标i如果声明为unsigned long类型就会输出一堆多余的东西，如果声明为int类型就不会，不知道怎么回事orz（这个坑先不填附上负进制的博客: 负进制的转换]]></content>
       <categories>
@@ -33,8 +94,8 @@
         <category>负进制</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>NEUOJ</tag>
+        <tag>算法</tag>
         <tag>负进制</tag>
       </tags>
   </entry>
