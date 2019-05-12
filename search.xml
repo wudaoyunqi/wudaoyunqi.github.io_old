@@ -1,8 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kuangbin带你飞专题十四数论基础-U]]></title>
+    <url>%2F2019%2F05%2F12%2Fkuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-U%2F</url>
+    <content type="text"><![CDATA[题目网址：https://vjudge.net/contest/299252#problem/U 思路就是单纯的求素数=_=，我现在习惯写线性筛啦。坑点是注意2要输出no 代码12345678910111213141516171819202122232425262728293031323334353637383940414243//// Created by Yunqi on 19-5-11 下午6:34.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;cmath&gt;using namespace std;const int maxn = 2e4;int prime[maxn];bool vis[maxn];int cnt, tot;void get_prime() &#123; vis[1] = true; for (int i = 2; i &lt; maxn; ++i) &#123; if (!vis[i]) prime[++tot] = i; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt; maxn; ++j) &#123; vis[i * prime[j]] = true; if (i % prime[j] == 0) break; &#125; &#125; vis[2] = true;&#125;int main() &#123; get_prime(); int n; while (~scanf("%d", &amp;n)) &#123; if (n &lt;= 0) break; if (!vis[n]) printf("%d: yes\n",++cnt); else printf("%d: no\n",++cnt); &#125; return 0;&#125; 做题感受没啥，先开始没注意结束条件是n&lt;=0，写成了n==0，所以wa了两发orz。]]></content>
+      <categories>
+        <category>kuangbin带你飞</category>
+        <category>数论</category>
+        <category>素数</category>
+      </categories>
+      <tags>
+        <tag>kuangbin带你飞</tag>
+        <tag>数论</tag>
+        <tag>素数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kuangbin带你飞专题十四数论基础-E]]></title>
+    <url>%2F2019%2F05%2F12%2Fkuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-E%2F</url>
+    <content type="text"><![CDATA[题目网址：https://vjudge.net/contest/299252#problem/E 思路n^k=(10^lgn)^k=10^klgn,求x的前三位方法：x=10^lgx，lgx＝整数a+小数b，a描述x有几位，10^a=100…0，10^b修饰每一位的数字，所以x的前三位就是10^b*100。后三位很好求，在快速幂中取mod＝1000即可。有个坑点是后三位可能有前导零，所以要注意格式控制符的写法。 代码123456789101112131415161718192021222324252627282930313233343536373839//// Created by Yunqi on 19-5-11 下午4:55.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;cmath&gt;using namespace std;long long qpow(long long a, long long b) &#123; long long ret = 1; while (b &gt; 0) &#123; if (b &amp; 1) ret = ret * a % 1000; a = a * a % 1000; b &gt;&gt;= 1; &#125; return ret;&#125;int main() &#123; int t; int cnt = 0; while (~scanf("%d", &amp;t)) &#123; while (t--) &#123; long long n, k; scanf("%lld%lld", &amp;n, &amp;k); long long ans2 = qpow(n, k); double x = k * log10(n); x = x - (int) x; int ans1 = (int)pow(10, x + 2); printf("Case %d: %d %03lld\n", ++cnt, ans1, ans2); &#125; &#125; return 0;&#125; 做题感受不看题解真的想不出来怎么求前三位=_=，居然用到了取对数公式。]]></content>
+      <categories>
+        <category>kuangbin带你飞</category>
+        <category>数论</category>
+        <category>数学思维</category>
+      </categories>
+      <tags>
+        <tag>kuangbin带你飞</tag>
+        <tag>数论</tag>
+        <tag>数学思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kuangbin带你飞专题十四数论基础-C]]></title>
+    <url>%2F2019%2F05%2F12%2Fkuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-C%2F</url>
+    <content type="text"><![CDATA[题目网址：https://vjudge.net/contest/299252#problem/C 思路啊，寒假训练做过这道题，也是第一次知道唯一分解定理这个东西。大意就是任何一个正整数都可以表示为若干个素数的乘积并且表示方法唯一，例如12=2^23，称之为标准分解式。有几个性质：１、如果N=P1^a1p2^a2…pm^am，那么它的正因数的个数为(1+a1)(1+a2)…(1+am)２、它的全体正因数之和为(1+p1+p1^2+…+p1^a1)(1+p2+p2^2+…+p2^a2)…(1+pm+pm^2+…+pm^am)那么这道题我们要用到的是第一个性质，首先判断b*b是否&gt;=a（题目说这个矩形不是正方形并且给出的是长度偏小的那一边）,大于则输出０，小于就求a有几个因子，然后将这个数/2，最后减掉[1,b-1]区间内a的因子数 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465//// Created by Yunqi on 19-5-11 下午4:18.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn = 1e6 + 10;long long prime[maxn];bool vis[maxn];int tot, cnt;void get_prime() &#123; for (long long i = 2; i &lt; maxn; ++i) &#123; if (!vis[i]) prime[++tot] = i; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt; maxn; ++j) &#123; vis[i * prime[j]] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125;int get_factor(long long n) &#123; int ret = 1; for (int i = 1; i &lt;= tot &amp;&amp; prime[i] * prime[i] &lt;= n; ++i) &#123; if (n % prime[i] == 0) &#123; int sum = 0; while (n % prime[i] == 0) &#123; n /= prime[i]; sum++; &#125; ret *= (1 + sum); &#125; &#125; if (n &gt; 1) ret *= 2; return ret;&#125;int main() &#123; int t; get_prime(); while (~scanf("%d", &amp;t)) &#123; while (t--) &#123; long long a, b; scanf("%lld%lld", &amp;a, &amp;b); if (b * b &gt;= a) &#123; printf("Case %d: %d\n", ++cnt, 0); &#125; else &#123; int ans = get_factor(a); ans /= 2; for (int i = 1; i &lt; b; ++i) if (a % i == 0) ans--; printf("Case %d: %d\n", ++cnt, ans); &#125; &#125; &#125; return 0;&#125; 做题感受忘了那个求因子数的公式了，去搜了搜，然后其他的还行]]></content>
+      <categories>
+        <category>kuangbin带你飞</category>
+        <category>数论</category>
+        <category>唯一分解定理</category>
+      </categories>
+      <tags>
+        <tag>kuangbin带你飞</tag>
+        <tag>数论</tag>
+        <tag>唯一分解定理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kuangbin带你飞专题十四数论基础-A]]></title>
+    <url>%2F2019%2F05%2F12%2Fkuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-A%2F</url>
+    <content type="text"><![CDATA[题目网址：https://vjudge.net/contest/299252#problem/A 思路先预处理欧拉函数值，我习惯用线性筛了，然后将cost记忆化求值，这里注意phi[a]&lt;a，所以从a+1开始遍历寻找phi=a的数，更新cost[a] 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172//// Created by Yunqi on 19-5-11 下午2:57.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;const int maxn = 3e6 + 10;vector&lt;int&gt; prime;int phi[maxn], cost[maxn];bool vis[maxn];void get_prime() &#123; for (int i = 2; i &lt; maxn; ++i) &#123; if (!vis[i]) prime.push_back(i); for (int j = 0; j &lt; prime.size() &amp;&amp; prime[j] * i &lt; maxn; ++j) &#123; vis[prime[j] * i] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125;void get_phi() &#123; phi[1] = 0; int _size = (int) prime.size(); for (int i = 2; i &lt; maxn; ++i) &#123; phi[i] = i; int com = i; for (int j = 0; j &lt; _size &amp;&amp; prime[j] * prime[j] &lt;= com; ++j) &#123; if (com % prime[j] == 0) &#123; phi[i] = phi[i] / prime[j] * (prime[j] - 1); while (com % prime[j] == 0) com /= prime[j]; &#125; &#125; if (com &gt; 1) phi[i] = phi[i] / com * (com - 1); &#125;&#125;int main() &#123; get_prime(); get_phi(); int t, n, a, cnt = 0; while (~scanf("%d", &amp;t)) &#123; while (t--) &#123; scanf("%d", &amp;n); long long ans = 0; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;a); if (cost[a] != 0) ans += cost[a]; else &#123; for (int k = a + 1;; ++k) if (phi[k] &gt;= a) &#123; ans += k; cost[a] = k; break; &#125; &#125; &#125; printf("Case %d: %lld Xukha\n", ++cnt, ans); &#125; &#125; return 0;&#125; 做题感受数论我现在最熟悉的就是线性筛求素数和求欧拉函数吧，比较顺溜，就是常常写错一些小细节]]></content>
+      <categories>
+        <category>kuangbin带你飞</category>
+        <category>数论</category>
+        <category>欧拉函数</category>
+      </categories>
+      <tags>
+        <tag>kuangbin带你飞</tag>
+        <tag>数论</tag>
+        <tag>欧拉函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2017SWERC-Ingredients]]></title>
+    <url>%2F2019%2F05%2F12%2F2017SWERC-Ingredients%2F</url>
+    <content type="text"><![CDATA[题目网址：https://open.kattis.com/problems/ingredients 思路虽说是个拓扑排序，但不是广义上求顺序的，只要求把每一点的cost算出来就行，所以我用了dfs求cost和prestige，求的方法题目已经给出，取最小的cost，cost相同则取prestige最大的那个。求完之后用01背包算出答案。怎么看出是01背包的呢，首先它有要求的最大cost值，然后题目的意思让你选若干个dish在总cost不超过最大值的情况下使得prestige最大，就很符合01背包的概念嘛。“01”顾名思义就是选（１）或不选（０）。另外，这里也用到了map将字符串转换为int型编号,用vector存边，每个顶点存以它为起点的边。dfs的思路是首先记录每个点的入度，找到入度为０的那个点，然后从这个点开始遍历它所连接的边，更新另一个点v的co和p值，同时将v的入度-1，如果入度为０了（此时它的co和p已经计算完毕），就将这个v点加入队列，重复以上步骤。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485//// Created by Yunqi on 19-5-3 下午4:16.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;#include&lt;queue&gt;#include&lt;map&gt;#define INF 1e18using namespace std;const int maxn = 1e4 + 10;long long co[maxn], p[maxn], dp[maxn];map&lt;string, int&gt; recipe;struct Edge &#123; int v; long cost; long pres;&#125; es;vector&lt;Edge&gt; node[maxn];int indegree[maxn];queue&lt;int&gt; q;int b, n;int main() &#123; while (~scanf("%d%d", &amp;b, &amp;n)) &#123; char str1[220], str2[220], str3[220]; long long cost, pres; int k = 0; memset(indegree, 0, sizeof(indegree)); memset(dp, 0, sizeof(dp)); recipe.clear(); for (int i = 1; i &lt;= maxn; ++i) node[i].clear(); for (int i = 1; i &lt;= n; ++i) &#123; scanf("%s%s%s%lld%lld", str1, str2, str3, &amp;cost, &amp;pres); if (!recipe.count(str1)) recipe[str1] = ++k; if (!recipe.count(str2)) recipe[str2] = ++k; es.v = recipe[str1], es.cost = cost, es.pres = pres; node[recipe[str2]].push_back(es); indegree[recipe[str1]]++; &#125; for (int i = 1; i &lt;= k; ++i) &#123; co[i] = INF; p[i] = 0; &#125; for (int i = 1; i &lt;= k; ++i) &#123; if (indegree[i] == 0) &#123; q.push(i); co[i] = p[i] = 0; &#125; &#125; while (!q.empty()) &#123; int u = q.front(); q.pop(); for (int i = 0; i &lt; node[u].size(); ++i) &#123; int v = node[u][i].v; if (co[v] &gt; co[u] + node[u][i].cost || (co[v] == co[u] + node[u][i].cost &amp;&amp; p[v] &lt; p[u] + node[u][i].pres)) &#123; co[v] = co[u] + node[u][i].cost; p[v] = p[u] + node[u][i].pres; &#125; if (!--indegree[v]) q.push(v); &#125; &#125; for (int i = 1; i &lt;= k; ++i) for (int j = b; j &gt;= (int)co[i]; --j) dp[j] = max(dp[j], dp[j - co[i]] + p[i]); long long ans1 = -1, ans2 = 0; for (int i = b; i &gt;= 0; --i) &#123; if (ans1 &lt;= dp[i]) &#123; ans1 = dp[i]; ans2 = i; &#125; &#125; printf("%lld\n%lld\n", ans1, ans2); &#125; return 0;&#125; 做题感受啊……我的图论烂得跟个shit一样，我一直存在的问题是不知道那道题用什么来存图，存图该存哪些值==，嗯，分析得很透彻，怎么解决呢？刷题啊（一开始没有意识到要将每个点的cost设置为INF,所以一直错（先把思路捋清除啊喂然后是01背包的部分，啊…我到现在还不是很能理解，看了《挑战程序设计竞赛》这本书也模模糊糊的，现在在刷kuangbin关于dp的部分，然后再看看背包九讲吧。最后是我wa十多发的坑，map没有清空==，还是学弟帮我找出来的，咋脑子就卡在这里了呢]]></content>
+      <categories>
+        <category>SWERC</category>
+        <category>拓扑排序</category>
+      </categories>
+      <tags>
+        <tag>SWERC</tag>
+        <tag>拓扑排序</tag>
+        <tag>01背包</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2017SWERC-Blowing-Candles]]></title>
+    <url>%2F2019%2F05%2F12%2F2017SWERC-Blowing-Candles%2F</url>
+    <content type="text"><![CDATA[题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293//// Created by Yunqi on 19-5-1 下午2:13.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;#include&lt;cmath&gt;#define INF 1e9using namespace std;const int maxn = 2e5 + 10;int n, top;struct Point &#123; double x, y; Point(double _x = 0, double _y = 0) : x(_x), y(_y) &#123;&#125; Point operator-(Point a) const &#123; return Point(x - a.x, y - a.y); &#125;&#125; point[maxn], stack[maxn];double cross(const Point &amp;p1, const Point &amp;p2, const Point &amp;p0) &#123; //叉乘 return (p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y);&#125;double det(const Point &amp;a, const Point &amp;b) &#123; return a.x * b.y - a.y * b.x;&#125;double dis(const Point &amp;a, const Point &amp;b) &#123; //两点距离 return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));&#125;bool cmp(const Point &amp;a, const Point &amp;b) &#123; //极角排序 double temp = cross(a, b, point[0]); if (temp &gt; 0) return true; if (temp &lt; 0) return false; return dis(a, point[0]) &lt; dis(b, point[0]);&#125;void Graham_scan() &#123; for (int i = 0; i &lt; n; ++i) &#123; while (top &gt; 1 &amp;&amp; cross(stack[top - 1], point[i], stack[top - 2]) &lt;= 0) --top; stack[top++] = point[i]; &#125;&#125;double len(const Point &amp;a, const Point &amp;b, const Point &amp;c) &#123; double s = fabs(cross(b, c, a)); return s / dis(a, b);&#125;double cps(double r) &#123; if (top &lt;= 2) return 0; double ans = 2 * r; int cur = 1; for (int i = 1; i &lt;= top; ++i) &#123; while (det(stack[i - 1] - stack[i % top], stack[(cur + 1) % top] - stack[cur]) &lt; 0) cur = (cur + 1) % top; ans = min(ans, len(stack[i - 1], stack[i % top], stack[cur])); &#125; return ans;&#125;int main() &#123; double r; while (cin &gt;&gt; n &gt;&gt; r) &#123; top = 0; Point com(0, INF); int k = 0; for (int i = 0; i &lt; n; ++i) &#123; cin &gt;&gt; point[i].x &gt;&gt; point[i].y; if (com.y &gt; point[i].y || (com.y == point[i].y &amp;&amp; com.x &gt; point[i].x)) &#123; com = point[i]; k = i; &#125; &#125; swap(point[0], point[k]); sort(point + 1, point + n, cmp); Graham_scan(); printf("%.2lf\n", cps(r)); &#125; return 0;&#125; 做题感受思考了一会儿意识到这是道凸包题，但是很久都没碰计算几何题了，连求凸包的算法都模糊不清了。找凸包模板花了点时间（我应该先去搞清楚求凸包的思路的），然后找靠谱的旋转卡壳模板又花了点时间，总之前后花费了很多时间。(一开始我还不知道旋转卡壳法囧下面简单阐述一下求凸包的思路：１、找到左下角那个点p0，然后以这个点为基准将其他点按极角排序２、极角排序思路：向量a-&gt;p0与b-&gt;p0求叉乘，如果大于０，那么a点极角＜b点极角，反之将两点交换顺序，如果叉乘=0，再比较两点到p0的距离哪一个小３、排序好后，将p0,p1压进栈，然后计算pi-&gt;栈顶后一个点与栈顶-&gt;栈顶后一个点的叉乘，如果大于０，则将该点压入栈，否则依次将栈顶点出栈，直到大于０然后是旋转卡壳法的思路：这里涉及到対踵点（边），有三种情况，点－点，边－点，边－边，这里我们用边－点的方法找宽度。１、当前边的两个点为i,i+1,依次找点cur使得这三个点构成的三角形面积最大２、找点cur的方法有两种，一种是比较cur和cur+1的分别构成的面积，如果cur+1的面积更大，那么cur++，直到不满足条件，此时的cur就是最远的点的编号；另一种是计算i+1-&gt;1与cur-&gt;cur+1的叉乘，如果&lt;0，说明cur不是最远点，cur+1，直到&gt;=0，此时的cur就是最远的点。（在纸上画画就清晰了）３、找到cur了，然后计算cur到边（i，ｉ＋１）的距离，用面积除以边（i,i+1）的长度４、遍历所有的边，记录最小的距离（下一条边的cur一定是上一条边的cur之后的点，所以cur一直增加即可而不用从头开始计算）计算几何有一个靠谱的模板真的很重要啊:(]]></content>
+      <categories>
+        <category>SWERC</category>
+        <category>凸包（旋转卡壳）</category>
+      </categories>
+      <tags>
+        <tag>SWERC</tag>
+        <tag>凸包（旋转卡壳）</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2017SWERC-Frosting-on-the-Cake]]></title>
+    <url>%2F2019%2F05%2F12%2F2017SWERC-Frosting-on-the-Cake%2F</url>
+    <content type="text"><![CDATA[题目网址：https://open.kattis.com/problems/frosting 思路n范围到1e5了，所以暴力不行啦，得把复杂度降低，目测大概O(n)左右。仔细观察每种颜色所处的Ai,Bj的i+j的关系，发现白色块(i%3+j)%3=2,黄色块(i%3+j)%3=0，红色块=1，那么答案就呼之欲出了。复杂度O(3n)。 代码123456789101112131415161718192021222324252627282930//// Created by Yunqi on 19-5-1 下午1:53.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn = 1e5 + 10;int a, b;int main() &#123; int n; while (~scanf("%d", &amp;n)) &#123; long long ans[3] = &#123;0&#125;, aa[3] = &#123;0&#125;; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;a); aa[i % 3] += a; &#125; for (int j = 1; j &lt;= n; ++j) &#123; scanf("%d", &amp;b); for (int i = 0; i &lt; 3; ++i) ans[(i + j) % 3] += aa[i] * b; &#125; printf("%lld %lld %lld\n", ans[0], ans[1], ans[2]); &#125; return 0;&#125; 做题感受找到规律花了一点时间，前后过题花了半个点=_=]]></content>
+      <categories>
+        <category>SWERC</category>
+        <category>思维</category>
+      </categories>
+      <tags>
+        <tag>SWERC</tag>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2017SWERC-Cakey-McCakeFace]]></title>
+    <url>%2F2019%2F05%2F12%2F2017SWERC-Cakey-McCakeFace%2F</url>
+    <content type="text"><![CDATA[题目网址：https://open.kattis.com/problems/cakeymccakeface 思路让你找出现次数最多的时间差，范围是[0,1e9]，那么用map的key记录时间差，value记录出现次数，最后找出value最大的最小的key即可。因为map会自动对key排序（默认从小到大），那么比较大小的时候写成&gt;max_n就行。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//// Created by Yunqi on 19-5-1 下午12:11.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;#include&lt;set&gt;#include&lt;map&gt;using namespace std;const int maxn = 100010;int t1[maxn], t2[maxn];//bool cmp(const int &amp;a, const int &amp;b) &#123;// return a &lt; b;//&#125;int main() &#123; int n, m; while (~scanf("%d%d", &amp;n, &amp;m)) &#123; map&lt;int, int&gt; sum; for (int i = 1; i &lt;= n; ++i) scanf("%d", &amp;t1[i]); for (int i = 1; i &lt;= m; ++i) &#123; scanf("%d", &amp;t2[i]); for (int j = 1; j &lt;= n; ++j) &#123; int tmp = t2[i] - t1[j]; if (tmp &gt; 0) sum[tmp]++; else break; &#125; &#125; map&lt;int, int&gt;::iterator it; int max_n = 0, ans = 0; for (it = sum.begin(); it != sum.end(); it++) &#123; if (it-&gt;second &gt; max_n) &#123; max_n = it-&gt;second; ans = it-&gt;first; &#125; &#125; printf("%d\n", ans); &#125; return 0;&#125; 做题感受先开始想到的是用set=_=，然后忘了哪一个可以插入重复元素，用到了unordered_set（我在想什么…，后来想到了multiset，第一发t了，后来又想到map，用map记录次数，但是又用了set（记录是否出现过），反正思路很乱…..，其实没必要用到set，map的key就可以记录啊后来只用了map，再交又wa了（更新ans那一块逻辑有问题），改了很久,到最后过一共花了一个半点（哎]]></content>
+      <tags>
+        <tag>SWERC</tag>
+        <tag>map</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[NEUOJ-2019-2Monthly-3]]></title>
-    <url>%2F2019%2F05%2F05%2FNEUOJ-2Monthly-3%2F</url>
+    <url>%2F2019%2F05%2F05%2FNEUOJ-2019-2Monthly-3%2F</url>
     <content type="text"><![CDATA[题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374//// Created by yunqi on 19-2-17.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;namespace fastIO &#123;#define BUF_SIZE 100000 //fread -&gt; read bool IOerror = 0; inline char nc() &#123; static char buf[BUF_SIZE], *p1 = buf + BUF_SIZE, *pend = buf + BUF_SIZE; if (p1 == pend) &#123; p1 = buf; pend = buf + fread(buf, 1, BUF_SIZE, stdin); if (pend == p1) &#123; IOerror = 1; return -1; &#125; &#125; return *p1++; &#125; inline bool blank(char ch) &#123; return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t'; &#125; inline void read(int &amp;x) &#123; char ch; while (blank(ch = nc())); if (IOerror) return; for (x = ch - '0'; (ch = nc()) &gt;= '0' &amp;&amp; ch &lt;= '9'; x = x * 10 + ch - '0'); &#125; inline void readll(long long int &amp;x) &#123; char ch; while (blank(ch = nc())); if (IOerror) return; for (x = ch - '0'; (ch = nc()) &gt;= '0' &amp;&amp; ch &lt;= '9'; x = x * 10 + ch - '0'); &#125;#undef BUF_SIZE&#125;;using namespace std;using namespace fastIO;const int maxn = 1e5 + 10;long long a[maxn];int main(void) &#123; int t; read(t); while (t--) &#123; int n, q; read(n); read(q); for (int i = 1; i &lt;= n; i++) readll(a[i]); sort(a + 1, a + n + 1); while (q--) &#123; long long x; readll(x); unsigned long l = lower_bound(a + 1, a + n + 1, x) - a; unsigned long r = upper_bound(a + 1, a + n + 1, x) - a; printf("%ld\n", r - l); &#125; &#125; return 0;&#125; 做题感受寒假刚好对lower_bound和upper_bound掌握得很熟练，所以看到这道题马上就想出来了，并且也意识到暴力是会t的：）这一次快读会用了，体验很好，只可惜我做出三题后明显显露疲惫之态，导致第四道很多人都做出来了我却木有quq，我干啥去了？咸鱼去了啊]]></content>
       <categories>
         <category>NEUOJ</category>
@@ -15,7 +124,7 @@
   </entry>
   <entry>
     <title><![CDATA[NEUOJ-2019-2Monthly-2]]></title>
-    <url>%2F2019%2F05%2F05%2FNEUOJ-2Monthly-2%2F</url>
+    <url>%2F2019%2F05%2F05%2FNEUOJ-2019-2Monthly-2%2F</url>
     <content type="text"><![CDATA[题目地址：https://oj.neu.edu.cn/problem/1466 思路通过找规律发现，只有素数或者质因子分解形式为两个质数（指数为１）的积的合数不符合题目条件。那么可以先预处理出1e6范围内的符合条件的结果，然后再用lower_bound查找n的位置就行。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172//// Created by yunqi on 19-2-17.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;const int maxn = 1e6 + 10;int prime[80000], ans[maxn];bool vis[maxn];int cnt = 0, tot = 0;void get_prime() &#123; for (int i = 2; i &lt;= maxn; i++) &#123; if (!vis[i]) prime[++cnt] = i; for (int j = 1; i * prime[j] &lt;= maxn &amp;&amp; j &lt;= cnt; j++) &#123; vis[i * prime[j]] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125;void judge_factor() &#123; for (int i = 4; i &lt;= maxn; i++) &#123; if (!vis[i]) //素数 continue; int temp = i, sum2 = 0 ,judge=false; for (int j = 1; j &lt;= cnt &amp;&amp; prime[j] * prime[j] &lt;= temp; j++) &#123; if (temp % prime[j] == 0) &#123; sum2++; int sum1 = 0; while (temp % prime[j] == 0) &#123; temp /= prime[j]; sum1++; &#125; if (sum1 &gt; 1) &#123; ans[++tot] = i;// printf("%d\n", i); judge=true; break; &#125; &#125; &#125; if (temp &gt; 1) sum2++; if (sum2 &gt; 2 &amp;&amp; !judge) ans[++tot] = i; &#125;// printf("%d\n", tot);&#125;int main(void) &#123; int t; get_prime(); judge_factor(); while (~scanf("%d", &amp;t)) &#123; while (t--) &#123; int n; scanf("%d", &amp;n); unsigned long pos = lower_bound(ans + 1, ans + tot + 1, n) - ans; if (ans[pos] &gt; n) pos--; printf("%ld\n", pos); &#125; &#125; return 0;&#125; ## 做题感受 当时推了有将近一个多个小时orz，比赛过了两个小时才ac]]></content>
       <categories>
         <category>NEUOJ</category>
@@ -28,7 +137,7 @@
   </entry>
   <entry>
     <title><![CDATA[NEUOJ-2019-1Monthly-2]]></title>
-    <url>%2F2019%2F05%2F05%2FNEUOJ-1Monthly-2%2F</url>
+    <url>%2F2019%2F05%2F05%2FNEUOJ-2019-1Monthly-2%2F</url>
     <content type="text"><![CDATA[题目地址：https://oj.neu.edu.cn/problem/1460 思路任何一个整数都可以表示为n=p1^a1p2^a2…pn^an，则f(n,0)=a1a2…an，f(n,0)是积性函数（自己手推一下），对于f(x,y)是f(x,y-1)与自身进行狄利克雷卷积得到的结果，所以f(x,y)也是积性函数（这一点没有想通，等之后深挖狄利克雷卷积再填坑），所以f(x,y)也是积性函数。因此，只要对n质因子分解，然后预处理次方的dp值就可以了 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182//// Created by Yunqi on 19-4-18 下午7:30.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;string&gt;#include&lt;vector&gt;#include&lt;cmath&gt;#define mod 1000000007typedef long long ll;using namespace std;const int maxn = 1e6 + 10;ll prime[maxn];ll dp[30][10010]; //次方幂dpbool vis[maxn];void get_prime() &#123; int cnt = 0; for (ll i = 2; i &lt; maxn; ++i) &#123; if (!vis[i]) prime[++cnt] = i; for (int j = 1; j &lt;= cnt &amp;&amp; prime[j] * i &lt; maxn; ++j) &#123; vis[prime[j] * i] = true; if (i % prime[j] == 0) break; &#125; &#125;&#125;void get_dp() &#123; //计算次方幂的dp for (ll i = 1; i &lt; 30; ++i) dp[i][0] = i; for (int i = 1; i &lt; 30; ++i) &#123; for (int j = 1; j &lt;= 10000; ++j) &#123; if (i == 1) &#123; dp[i][j] = dp[i][j - 1] * 2 % mod; &#125; else &#123; dp[i][j] = dp[i][j - 1] * 2 % mod; for (int k = 1; k &lt; i; ++k) dp[i][j] = (dp[i][j] + dp[k][j - 1] * dp[i - k][j - 1] % mod) % mod; &#125; &#125; &#125;&#125;ll get_factor(ll x, ll m) &#123; //分解质因数 ll ret = 1; if (!vis[x]) return dp[1][m] % mod; for (int i = 1; prime[i] * prime[i] &lt;= x; ++i) &#123; if (x % prime[i] == 0) &#123; int cnt = 0; while (x % prime[i] == 0) &#123; x /= prime[i]; ++cnt; &#125; ret = (ret * dp[cnt][m]) % mod; &#125; &#125; if (x &gt; 1LL) ret = (ret * dp[1][m]) % mod; return ret;&#125;int main() &#123; get_prime(); get_dp(); int t; while(~scanf("%d", &amp;t)) &#123; while (t--) &#123; ll n, m; scanf("%lld%lld", &amp;n, &amp;m); printf("%lld\n", get_factor(n, m)); &#125; &#125; return 0;&#125; 做题感受前前后后花了两天，先开始问了邱学弟dp的做法，然后他提点了一下我，我在纸上推了好久，有点思路了，写了初步的解法（先开始关于次方的dp没有推出来，或者说没有想到次方那里去…），后来发现样例都过不了。于是去找杨博学长问问，才发现我蠢到连取模都忘了orx，加了还是t，然后杨博学长说分解质因数时如果是素数就直接返回（优化），我加上从t到wa。杨博学长开始盲目debug，说取模会有负数这一情况让我改改，我改了还是wa。囧最后还是问了邱学弟，他看了一下说n=1时结果好像不太对，我特判了一下，最后终于ac了！当时抓狂想把杨博学长祭天qaq]]></content>
       <categories>
         <category>NEUOJ</category>
@@ -43,7 +152,7 @@
   </entry>
   <entry>
     <title><![CDATA[NEUOJ-2019-1Monthly-1]]></title>
-    <url>%2F2019%2F05%2F05%2FNEUOJ-1Monthly-1%2F</url>
+    <url>%2F2019%2F05%2F05%2FNEUOJ-2019-1Monthly-1%2F</url>
     <content type="text"><![CDATA[题目地址：https://oj.neu.edu.cn/problem/1459 思路三种做法，１、三次lowbit ２、三次x=x&amp;(x-1) 3、__builtin_popcountll（计算一个64位无符号整数的二进制有多少个位为１） 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061//// Created by Yunqi on 19-4-17 下午11:13.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;namespace fastIO &#123;#define BUF_SIZE 100000 bool IOerror = 0; inline char nc() &#123; static char buf[BUF_SIZE], *p1 = buf + BUF_SIZE, *pend = buf + BUF_SIZE; if (p1 == pend) &#123; p1 = buf; pend = buf + fread(buf, 1, BUF_SIZE, stdin); if (pend == p1) &#123; IOerror = 1; return -1; &#125; &#125; return *p1++; &#125; inline bool blank(char ch) &#123; return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t'; &#125; inline void read(long long int &amp;x) &#123; char ch; while (blank(ch = nc())); if (IOerror) return; for (x = ch - '0'; (ch = nc()) &gt;= '0' &amp;&amp; ch &lt;= '9'; x = x * 10 + ch - '0'); &#125;#undef BUF_SIZE&#125;;using namespace fastIO;int main() &#123; long long t; read(t); while (t--) &#123; long long n; read(n); for (int i = 1; i &lt;= 3 &amp;&amp; n; ++i) &#123; long long com = n &amp; (-n); n -= com; &#125; if (n == 0) printf("Yes\n"); else printf("No\n"); &#125; return 0;&#125; 做题感受第一次遇见自己写一个命名空间（快读部分），所以先开始都不知道怎么用快读==，那一次校赛就爆０了（也是我心不在焉地做题的锅。后来杰霸吐槽这么多只有邱学弟一个人写出了正解，才知道不能单纯地暴力做，要用位运算。lowbit就是求x的最低位１的位置，计算方法是x&amp;-x，运用了补码原理，而x=x&amp;(x-1)相当于将x最右边的１消除。位运算真的很深……，在写树状数组的博客时也提到这一点，以后有空专门补补这方面的知识]]></content>
       <categories>
         <category>NEUOJ</category>
@@ -76,8 +185,8 @@
         <category>思维</category>
       </categories>
       <tags>
-        <tag>浙江省赛</tag>
         <tag>思维</tag>
+        <tag>浙江省赛</tag>
       </tags>
   </entry>
   <entry>
@@ -85,8 +194,8 @@
     <url>%2F2019%2F05%2F05%2F%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Potion%2F</url>
     <content type="text"><![CDATA[题目地址：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4094 思路因为只能从rank高的（分给）rank低的，所以从n开始依次将bi置为ai，bi-1+=(bi-ai)，如果bi&lt;ai，那么输出No,否则输出Yes 代码123456789101112131415161718192021222324252627282930#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstdio&gt;using namespace std;long long a[110],b[110];int main(void)&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;++i) scanf("%lld",&amp;a[i]); for(int i=1;i&lt;=n;++i) scanf("%lld",&amp;b[i]); bool jduge=true; for(int i=n;i&gt;=1;--i)&#123; if(b[i]&lt;a[i])&#123; jduge=false; break; &#125; b[i-1]+=(b[i]-a[i]); &#125; if(!jduge) printf("No\n"); else printf("Yes\n"); &#125; return 0;&#125; 做题感受海星]]></content>
       <tags>
-        <tag>浙江省赛</tag>
         <tag>思维</tag>
+        <tag>浙江省赛</tag>
       </tags>
   </entry>
   <entry>
@@ -98,8 +207,8 @@
         <category>思维</category>
       </categories>
       <tags>
-        <tag>浙江省赛</tag>
         <tag>思维</tag>
+        <tag>浙江省赛</tag>
       </tags>
   </entry>
   <entry>
@@ -111,8 +220,8 @@
         <category>思维</category>
       </categories>
       <tags>
-        <tag>浙江省赛</tag>
         <tag>思维</tag>
+        <tag>浙江省赛</tag>
       </tags>
   </entry>
   <entry>
@@ -127,8 +236,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[NEUOJ-2019-1Monthly-6]]></title>
-    <url>%2F2019%2F04%2F18%2FNEUOJ-2019-1Monthly-6%2F</url>
+    <title><![CDATA[NEUOJ-2019-1Monthly-5]]></title>
+    <url>%2F2019%2F04%2F18%2FNEUOJ-2019-1Monthly-5%2F</url>
     <content type="text"><![CDATA[Problem Description给你一个n个数的序列 已知这n个数为1,1/2,1/3….1/n 我们定义一个生成新序列的操作mjfgay: 每次将序列相邻两项相加并且取平均。并将新生成的序列代替原来的序列。 比如 对于序列 1 1/2 1/3 ，经过一次mjfgay操作后，我们可以得到一个新序列 3/4 5/12 显然，经过n-1次之后，这个序列只会剩一个数 每次给你序列的长度n，问经过n-1次mjfgay操作过后，剩下的数是多少 答案对1e9+7取模 即若答案为P/Q，输出的是P*(Q^(-1))%(1e9+7) Q^(-1)代表逆元Input第一行输入一个整数t，代表数据组数(1&lt;=t&lt;=1000000) 每组数据输入一个正整数n，代表题目中的n (2&lt;=n&lt;2^26) Output对每组数据 输出答案%1e9+7的值 Sample Input223 Sample Output750000006583333338 思路找规律。杰霸写的题解看不懂=_=，但我推出了结果的式子（纯暴力推出），最后的P是2^n-1,Q是n(2^(n-1)),因为Q可能很大，会爆精度，所以变除法为乘法，下面讲一下逆元。设c是b的逆元，则有bc三1(mod m)(同余)则(a/b)%m=(a/b)1%m=(a/b)bc%m=ac%m即a/b的模等于a*b的逆元的模如何求逆元呢？需要用到费马小定理。如果b与m互质，那么就有b^(m-1)三1(mod m)这个式子和前面的逆元关系式连接起来，得到c=b^(m-2)，快速幂求结果即可，复杂度O(logn) 代码1234567891011121314151617181920212223242526272829303132333435363738394041//// Created by Yunqi on 19-4-18 上午12:37.//#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#define mod 1000000007using namespace std;typedef long long ll;ll qpower(ll n, ll m) &#123; if (n == 1) return 1LL; ll ret = 1; while (m &gt; 0) &#123; if (m &amp; 1) ret = (ret * n) % mod; n = (n * n) % mod; m &gt;&gt;= 1; &#125; return ret;&#125;int main() &#123; int t; while (cin &gt;&gt; t) &#123; while (t--) &#123; long long n; cin &gt;&gt; n; ll com = qpower(2LL, n - 1); ll nume = com * 2 - 1; ll deno = n * com % mod; ll niyuan = qpower(deno, mod - 2); ll ans = nume * niyuan % mod; cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 做题感受啊….四个月之后的我还是推不出式子，比赛完之后好像推出来了，所以ac了，现在推还是很傻比地往杨辉三角靠（虽然好像是这个关系），然后又去查杨辉三角的式子，得到是C(n-1,m-1),然后又去算阶乘，算每一步的逆元，算最小公倍数分式加和（我在想什么……以上充分证明了我对数字关系很不敏感，就和上一道负进制一样，哎，多锻炼思维吧。附上逆元的博客：【逆元】]]></content>
       <categories>
         <category>NEUOJ</category>
