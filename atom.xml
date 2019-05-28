@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-12T06:32:13.421Z</updated>
+  <updated>2019-05-28T14:41:26.916Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018CCPC女生赛-B-缺失的数据范围</title>
+    <link href="http://yoursite.com/2019/05/28/2018CCPC%E5%A5%B3%E7%94%9F%E8%B5%9B-B-%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4/"/>
+    <id>http://yoursite.com/2019/05/28/2018CCPC女生赛-B-缺失的数据范围/</id>
+    <published>2019-05-28T14:21:48.000Z</published>
+    <updated>2019-05-28T14:41:26.916Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;蛮明显的二分，对[1,1e18]的数进行二分。这里有精度问题，所以要用到除法（某种角度很自然的想法？），精度问题可以用long&lt;br&gt;dou
+      
+    
+    </summary>
+    
+      <category term="CCPC" scheme="http://yoursite.com/categories/CCPC/"/>
+    
+      <category term="2018女生赛" scheme="http://yoursite.com/categories/CCPC/2018%E5%A5%B3%E7%94%9F%E8%B5%9B/"/>
+    
+      <category term="二分" scheme="http://yoursite.com/categories/CCPC/2018%E5%A5%B3%E7%94%9F%E8%B5%9B/%E4%BA%8C%E5%88%86/"/>
+    
+    
+      <category term="二分" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86/"/>
+    
+  </entry>
   
   <entry>
     <title>kuangbin带你飞专题十四数论基础-U</title>
@@ -268,9 +295,9 @@
       <category term="二分" scheme="http://yoursite.com/categories/NEUOJ/%E4%BA%8C%E5%88%86/"/>
     
     
-      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
-    
       <category term="二分" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86/"/>
+    
+      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
     
   </entry>
   
@@ -545,35 +572,6 @@
       <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
     
       <category term="逆元" scheme="http://yoursite.com/tags/%E9%80%86%E5%85%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NEUOJ-2018新生赛-2</title>
-    <link href="http://yoursite.com/2019/04/18/NEUOJ-2018%E6%96%B0%E7%94%9F%E8%B5%9B-2/"/>
-    <id>http://yoursite.com/2019/04/18/NEUOJ-2018新生赛-2/</id>
-    <published>2019-04-18T06:18:01.000Z</published>
-    <updated>2019-05-05T04:23:12.145Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;我们习惯将10进制转换为正进制，方法无非是取余n，其商再继续取余直至该数被除至0，依次得到的余数倒序即为该十进制的n进制表示。如果是-n进制
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="负进制" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="NEUOJ" scheme="http://yoursite.com/tags/NEUOJ/"/>
-    
-      <category term="负进制" scheme="http://yoursite.com/tags/%E8%B4%9F%E8%BF%9B%E5%88%B6/"/>
     
   </entry>
   
