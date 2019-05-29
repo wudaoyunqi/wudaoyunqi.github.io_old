@@ -307,6 +307,171 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunqi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wudaoyunqi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yunqi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/" itemprop="url">【图论】求无向连通图的割点（Tarjan算法）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T15:16:42+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>寒假训练开始了，发现自己真是半灌水响叮当，自己关于割点的概念完全不知道，后来找了几篇不错的博客以及翻了翻白书，白书很适合理解概念，博客给的模板代码适合借鉴。</p>
+<h2 id="割点的概念"><a href="#割点的概念" class="headerlink" title="割点的概念"></a>割点的概念</h2><p>在<strong>无向连通图</strong>中，如果将其中一个点以及这个点所连的所有的边都去掉，图不再连通，那么这个点成为<strong>割点</strong>（割顶/关节点）。</p>
+<h2 id="如何求割点"><a href="#如何求割点" class="headerlink" title="如何求割点"></a>如何求割点</h2><p>暴力的方法：</p>
+<ul>
+<li>依次删除每一个节点v</li>
+<li>DFS(BFS)判断是否连通</li>
+<li>再把节点v加入图中</li>
+</ul>
+<p>若用邻接表，需要做V次DFS，时间复杂度为O(V*(V+E))。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/24/【图论】求无向连通图的割点（Tarjan算法）/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/树状数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -660,7 +825,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -671,7 +836,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -682,7 +847,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
