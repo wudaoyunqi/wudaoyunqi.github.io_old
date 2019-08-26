@@ -307,6 +307,129 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/2017SWERC-Cakey-McCakeFace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunqi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wudaoyunqi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yunqi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/2017SWERC-Cakey-McCakeFace/" itemprop="url">2017SWERC-Cakey-McCakeFace</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T11:25:59+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目网址：<a href="https://open.kattis.com/problems/cakeymccakeface" target="_blank" rel="noopener">https://open.kattis.com/problems/cakeymccakeface</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>让你找出现次数最多的时间差，范围是[0,1e9]，那么用map的key记录时间差，value记录出现次数，最后找出value最大的最小的key即可。因为map会自动对key排序（默认从小到大），那么比较大小的时候写成&gt;max_n就行。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Yunqi on 19-5-1 下午12:11.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">int</span> t1[maxn], t2[maxn];</span><br><span class="line"></span><br><span class="line"><span class="comment">//bool cmp(const int &amp;a, const int &amp;b) &#123;</span></span><br><span class="line"><span class="comment">//    return a &lt; b;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m)) &#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; sum;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t1[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t2[i]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = t2[i] - t1[j];</span><br><span class="line">                <span class="keyword">if</span> (tmp &gt; <span class="number">0</span>)</span><br><span class="line">                    sum[tmp]++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">        <span class="keyword">int</span> max_n = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (it = sum.begin(); it != sum.end(); it++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (it-&gt;second &gt; max_n) &#123;</span><br><span class="line">                max_n = it-&gt;second;</span><br><span class="line">                ans = it-&gt;first;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>先开始想到的是用set=_=，然后忘了哪一个可以插入重复元素，用到了unordered_set（我在想什么…，后来想到了multiset，第一发t了，后来又想到map，用map记录次数，但是又用了set（记录是否出现过），反正思路很乱…..，其实没必要用到set，map的key就可以记录啊<br>后来只用了map，再交又wa了（更新ans那一块逻辑有问题），改了很久,到最后过一共花了一个半点（哎</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1679,149 +1802,6 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/一些碎碎念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yunqi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wudaoyunqi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunqi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/18/一些碎碎念/" itemprop="url">一些碎碎念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-18T16:37:34+08:00">
-                2019-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/没有目录/" itemprop="url" rel="index">
-                    <span itemprop="name">没有目录</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前去长白山的时候，我就说我发现自己一年过去了还是没有什么进步，cf分数还是那么低，每次都做不到四道题，每次都要思考很久，简单的思路不会，暴力有时候还会卡壳，算法的应用烂得跟个啥一样。没有进步，我觉得这个状态很可怕。<br>数学系的课程我学不懂，我也没有精力把所有的时间都放在上面，想保研太难了（当然也许是我持有借口一说，但我不想深入）。自己搞ACM，不，我觉得不是在搞，而是不上心地散一点时间在上面。诚然我付出的很少，特别是上学期，人嘛，没有自控力地生活总是会陷入烂泥里。所以我在长白山回来之后就问了zj学长，很丢人地自己状态说出来。是啊，云淇并不是很优秀。扪心自问，我付出得很少，特别是自从大一那事之后，我的状态就变得很奇怪。我不想以这个为借口，就事论事。<br>但是很丢人啊，开学以来无论是月赛，天梯赛都是这样，做不好，做不快，做不对。我应该早点发觉，而不是一味地陷入那个烂泥里不出来。<br>看柳婼的博客，能感觉她的确是一个优秀努力的人，而与我对比，自然分的高下，这种比对之后的差别是很可耻的，就像昨天填的表格一样，很丢人。<br>不能因为我不是计算机的学生就给自己找借口，我应该找到合适的状态，把自己放的很谦卑，把自己放在泥地里，只有抬头才能向上，而不是心悬在空中向下俯视。<br>我想变强，怎么去付诸，怎么去调整，怎么去改变心态，怎么去不丢人。<br>昨天晚上真的很想让世界上所有的人都忘记我，很丢人很丢人，简直想去死。我很好面子，很要强，对我来说是挺打击的。可是万事有因有果，这是一场马拉松，中间的懈力已经很明显了。<br>不想成为现在的样子，很差劲，没有力气去调整人际关系，和小泽也不想说话了，也知道我性格的弊病已经显现出来了，我明白，可是我不想说出来，因为我总是忍不住发脾气。<br>需要找到一个情感的宣泄口，比赛又会自虐，或许负面情绪会更多，但是还是要去试试的。<br>上面的话很没有逻辑，我的手指已经被机械键盘打疼了，应该让自己理智一点。<br>更多的话，以后再说吧。<br>哦，今天还想剪头，昨天大姨妈来了常微分课上疼的要死要活，打瞌睡都睡不了。昨晚又在科学馆待了一晚上，效率不是很好，还困，又不敢发出声音怕被发现，然后还有这烦死人的大姨妈。<br>啊，要活下去，坚强地活下去。</p>
-<p>2019年4月18日17:28</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1876,7 +1856,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1887,7 +1867,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1898,7 +1878,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
