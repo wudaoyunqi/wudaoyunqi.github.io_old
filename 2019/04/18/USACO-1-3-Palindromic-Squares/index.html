@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*ID: cm291182TASK: palsquareLANG: C++*/#include&amp;lt;algorithm&amp;g">
+<meta name="description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。">
 <meta name="keywords" content="USACO,搜索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="USACO-1.3-Palindromic_Squares">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/USACO-1-3-Palindromic-Squares/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*ID: cm291182TASK: palsquareLANG: C++*/#include&amp;lt;algorithm&amp;g">
+<meta property="og:description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T04:03:46.905Z">
+<meta property="og:updated_time" content="2019-08-26T16:59:42.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="USACO-1.3-Palindromic_Squares">
-<meta name="twitter:description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*ID: cm291182TASK: palsquareLANG: C++*/#include&amp;lt;algorithm&amp;g">
+<meta name="twitter:description" content="思路N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。">
 
 
 
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -401,6 +406,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
       
         <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>N范围在【1,300】，暴搜一遍，借用一个数组存转换进制之后的digit，然后短除法取模即可。</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">ID: cm291182</span></span><br><span class="line"><span class="comment">TASK: palsquare</span></span><br><span class="line"><span class="comment">LANG: C++</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> base[<span class="number">20</span>] = &#123;<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, </span><br><span class="line"><span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>, <span class="string">'H'</span>, <span class="string">'I'</span>, <span class="string">'J'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="function">ofstream <span class="title">fout</span><span class="params">(<span class="string">"palsquare.out"</span>)</span></span>;</span><br><span class="line">    <span class="function">ifstream <span class="title">fin</span><span class="params">(<span class="string">"palsquare.in"</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">while</span> (fin &gt;&gt; b) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">300</span>; ++i) &#123;</span><br><span class="line">            <span class="built_in">string</span> ans1, ans2;</span><br><span class="line">            <span class="keyword">int</span> squ = i * i, com = i;</span><br><span class="line">            <span class="keyword">while</span> (com &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans1 += base[com % b];</span><br><span class="line">                com /= b;</span><br><span class="line">            &#125;</span><br><span class="line">            reverse(ans1.begin(), ans1.end());</span><br><span class="line">            <span class="keyword">while</span> (squ &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans2 += base[squ % b];</span><br><span class="line">                squ /= b;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">string</span>::iterator j,k;</span><br><span class="line">            <span class="keyword">for</span> (j = ans2.begin(), k = ans2.end() - <span class="number">1</span>; j &lt;= k; ++j, --k) &#123;</span><br><span class="line">                <span class="keyword">if</span> (*j != *k) &#123;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)</span><br><span class="line">                fout &lt;&lt; ans1 &lt;&lt; <span class="string">" "</span> &lt;&lt; ans2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>一年前的我做这道题觉得很难，所以之后就没做了，现在看来不是很难。中间遇到的坑是短除法取模得到的数字顺序与输出顺序是相反的=_=，借用reverse一波，然后就是字符串的问题，开始把ans1和ans2的声明放在循环外面，这样会导致字符串会保留上一次的结果。<br>哦，最初也没看到要输出n表示为b进制后的数字，直接输出十进制的n了。</p>
 
@@ -420,9 +426,9 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/USACO/" rel="tag"># USACO</a>
+            <a href="/tags/USACO/" rel="tag"><i class="fa fa-tag"></i> USACO</a>
           
-            <a href="/tags/搜索/" rel="tag"># 搜索</a>
+            <a href="/tags/搜索/" rel="tag"><i class="fa fa-tag"></i> 搜索</a>
           
         </div>
       
@@ -518,7 +524,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -580,6 +586,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -644,7 +656,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -704,6 +716,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -742,6 +756,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

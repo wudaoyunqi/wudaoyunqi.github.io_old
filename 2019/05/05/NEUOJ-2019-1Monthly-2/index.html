@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="Yunqi&#39;s blog">
 <meta property="og:description" content="题目地址：https://oj.neu.edu.cn/problem/1460 思路任何一个整数都可以表示为n=p1^a1p2^a2…pn^an，则f(n,0)=a1a2…an，f(n,0)是积性函数（自己手推一下），对于f(x,y)是f(x,y-1)与自身进行狄利克雷卷积得到的结果，所以f(x,y)也是积性函数（这一点没有想通，等之后深挖狄利克雷卷积再填坑），所以f(x,y)也是积性函数。因此，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-05T07:54:22.272Z">
+<meta property="og:updated_time" content="2019-08-26T16:58:46.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NEUOJ-2019-1Monthly-2">
 <meta name="twitter:description" content="题目地址：https://oj.neu.edu.cn/problem/1460 思路任何一个整数都可以表示为n=p1^a1p2^a2…pn^an，则f(n,0)=a1a2…an，f(n,0)是积性函数（自己手推一下），对于f(x,y)是f(x,y-1)与自身进行狄利克雷卷积得到的结果，所以f(x,y)也是积性函数（这一点没有想通，等之后深挖狄利克雷卷积再填坑），所以f(x,y)也是积性函数。因此，">
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -424,6 +429,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <p>题目地址：<a href="https://oj.neu.edu.cn/problem/1460" target="_blank" rel="noopener">https://oj.neu.edu.cn/problem/1460</a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>任何一个整数都可以表示为n=p1^a1<em>p2^a2</em>…<em>pn^an，则f(n,0)=a1</em>a2<em>…</em>an，f(n,0)是积性函数（自己手推一下），对于f(x,y)是f(x,y-1)与自身进行狄利克雷卷积得到的结果，所以f(x,y)也是积性函数（这一点没有想通，等之后深挖狄利克雷卷积再填坑），所以f(x,y)也是积性函数。因此，只要对n质因子分解，然后预处理次方的dp值就可以了</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Yunqi on 19-4-18 下午7:30.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line">ll prime[maxn];</span><br><span class="line">ll dp[<span class="number">30</span>][<span class="number">10010</span>];  <span class="comment">//次方幂dp</span></span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            prime[++cnt] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; prime[j] * i &lt; maxn; ++j) &#123;</span><br><span class="line">            vis[prime[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_dp</span><span class="params">()</span> </span>&#123;  <span class="comment">//计算次方幂的dp</span></span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>; i &lt; <span class="number">30</span>; ++i)</span><br><span class="line">        dp[i][<span class="number">0</span>] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">30</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">10000</span>; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">1</span>] * <span class="number">2</span> % mod;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">1</span>] * <span class="number">2</span> % mod;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; i; ++k)</span><br><span class="line">                    dp[i][j] = (dp[i][j] + dp[k][j - <span class="number">1</span>] * dp[i - k][j - <span class="number">1</span>] % mod) % </span><br><span class="line">mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">get_factor</span><span class="params">(ll x, ll m)</span> </span>&#123;  <span class="comment">//分解质因数</span></span><br><span class="line">    ll ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (!vis[x])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][m] % mod;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; prime[i] * prime[i] &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (x % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                x /= prime[i];</span><br><span class="line">                ++cnt;</span><br><span class="line">            &#125;</span><br><span class="line">            ret = (ret * dp[cnt][m]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1L</span>L)</span><br><span class="line">        ret = (ret * dp[<span class="number">1</span>][m]) % mod;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    get_prime();</span><br><span class="line">    get_dp();</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t)) &#123;</span><br><span class="line">        <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">            ll n, m;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;m);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, get_factor(n, m));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>前前后后花了两天，先开始问了邱学弟dp的做法，然后他提点了一下我，我在纸上推了好久，有点思路了，写了初步的解法（先开始关于次方的dp没有推出来，或者说没有想到次方那里去…），后来发现样例都过不了。于是去找杨博学长问问，才发现我蠢到连取模都忘了orx，加了还是t，然后杨博学长说分解质因数时如果是素数就直接返回（优化），我加上从t到wa。杨博学长开始盲目debug，说取模会有负数这一情况让我改改，我改了还是wa。<br>囧最后还是问了邱学弟，他看了一下说n=1时结果好像不太对，我特判了一下，最后终于ac了！当时抓狂想把杨博学长祭天qaq</p>
 
@@ -443,11 +449,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/NEUOJ/" rel="tag"># NEUOJ</a>
+            <a href="/tags/NEUOJ/" rel="tag"><i class="fa fa-tag"></i> NEUOJ</a>
           
-            <a href="/tags/积性函数/" rel="tag"># 积性函数</a>
+            <a href="/tags/积性函数/" rel="tag"><i class="fa fa-tag"></i> 积性函数</a>
           
-            <a href="/tags/DP/" rel="tag"># DP</a>
+            <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
           
         </div>
       
@@ -543,7 +549,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -605,6 +611,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -669,7 +681,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -729,6 +741,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -767,6 +781,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

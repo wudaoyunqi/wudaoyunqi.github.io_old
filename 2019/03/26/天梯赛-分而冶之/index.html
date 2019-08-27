@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐 代码123456789101112131415161718192021222324252627282930313233343536373839404142#i">
+<meta name="description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐">
 <meta name="keywords" content="天梯赛题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天梯赛-分而冶之">
 <meta property="og:url" content="http://yoursite.com/2019/03/26/天梯赛-分而冶之/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐 代码123456789101112131415161718192021222324252627282930313233343536373839404142#i">
+<meta property="og:description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-26T07:40:34.633Z">
+<meta property="og:updated_time" content="2019-08-26T16:52:44.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天梯赛-分而冶之">
-<meta name="twitter:description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐 代码123456789101112131415161718192021222324252627282930313233343536373839404142#i">
+<meta name="twitter:description" content="思路这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐">
 
 
 
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -401,6 +406,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
       
         <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这道题也不难，不用想到什么无向图连通判断，只要对攻下的城市做记录，在跑一遍所有的边，看是否有一条边两个点都没被记录，这样的边就是孤立边<br>给的时间是600ms，k是100,m是10000，复杂度就是km，完全不会超时（要学会对复杂度的预判呐</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u,v;</span><br><span class="line">&#125;edge[maxn];</span><br><span class="line"><span class="keyword">bool</span> mark[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m))&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;edge[i].u,&amp;edge[i].v);</span><br><span class="line">        <span class="keyword">int</span> k,num,node;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</span><br><span class="line">        <span class="keyword">while</span>(k--)&#123;</span><br><span class="line">            <span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">memset</span>(mark,<span class="literal">false</span>,<span class="keyword">sizeof</span>(mark));</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;num);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=num;i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;node);</span><br><span class="line">                mark[node] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!mark[edge[i].u]&amp;&amp;!mark[edge[i].v])&#123;</span><br><span class="line">                    flag=<span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!flag)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>想复杂了，以为是无向图连通判断，发现自己不熟，就放弃这道题了</p>
 
@@ -420,7 +426,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/天梯赛题解/" rel="tag"># 天梯赛题解</a>
+            <a href="/tags/天梯赛题解/" rel="tag"><i class="fa fa-tag"></i> 天梯赛题解</a>
           
         </div>
       
@@ -516,7 +522,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -578,6 +584,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -642,7 +654,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -702,6 +714,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -740,6 +754,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

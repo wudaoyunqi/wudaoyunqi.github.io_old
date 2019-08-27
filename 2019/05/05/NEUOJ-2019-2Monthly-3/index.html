@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta name="description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好">
 <meta name="keywords" content="二分,NEUOJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NEUOJ-2019-2Monthly-3">
 <meta property="og:url" content="http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-3/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta property="og:description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-05T07:54:45.685Z">
+<meta property="og:updated_time" content="2019-08-26T16:59:21.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NEUOJ-2019-2Monthly-3">
-<meta name="twitter:description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta name="twitter:description" content="题目网址：https://oj.neu.edu.cn/problem/1467 思路求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好">
 
 
 
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -413,6 +418,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <p>题目网址：<a href="https://oj.neu.edu.cn/problem/1467" target="_blank" rel="noopener">https://oj.neu.edu.cn/problem/1467</a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by yunqi on 19-2-17.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> fastIO &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUF_SIZE 100000</span></span><br><span class="line">    <span class="comment">//fread -&gt; read</span></span><br><span class="line">    <span class="keyword">bool</span> IOerror = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">nc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">char</span> buf[BUF_SIZE], *p1 = buf + BUF_SIZE, *pend = buf + BUF_SIZE;</span><br><span class="line">        <span class="keyword">if</span> (p1 == pend) &#123;</span><br><span class="line">            p1 = buf;</span><br><span class="line">            pend = buf + fread(buf, <span class="number">1</span>, BUF_SIZE, <span class="built_in">stdin</span>);</span><br><span class="line">            <span class="keyword">if</span> (pend == p1) &#123;</span><br><span class="line">                IOerror = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *p1++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">blank</span><span class="params">(<span class="keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ch == <span class="string">' '</span> || ch == <span class="string">'\n'</span> || ch == <span class="string">'\r'</span> || ch == <span class="string">'\t'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> &amp;x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="keyword">while</span> (blank(ch = nc()));</span><br><span class="line">        <span class="keyword">if</span> (IOerror)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (x = ch - <span class="string">'0'</span>; (ch = nc()) &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>; x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">readll</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="keyword">while</span> (blank(ch = nc()));</span><br><span class="line">        <span class="keyword">if</span> (IOerror)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (x = ch - <span class="string">'0'</span>; (ch = nc()) &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>; x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">undef</span> BUF_SIZE</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> fastIO;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    read(t);</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n, q;</span><br><span class="line">        read(n);</span><br><span class="line">        read(q);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            readll(a[i]);</span><br><span class="line">        sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (q--) &#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">            readll(x);</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> l = lower_bound(a + <span class="number">1</span>, a + n + <span class="number">1</span>, x) - a;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> r = upper_bound(a + <span class="number">1</span>, a + n + <span class="number">1</span>, x) - a;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%ld\n"</span>, r - l);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>寒假刚好对lower_bound和upper_bound掌握得很熟练，所以看到这道题马上就想出来了，并且也意识到暴力是会t的：）<br>这一次快读会用了，体验很好，只可惜我做出三题后明显显露疲惫之态，导致第四道很多人都做出来了我却木有quq，我干啥去了？咸鱼去了啊</p>
 
@@ -432,9 +438,9 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/二分/" rel="tag"># 二分</a>
+            <a href="/tags/二分/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
           
-            <a href="/tags/NEUOJ/" rel="tag"># NEUOJ</a>
+            <a href="/tags/NEUOJ/" rel="tag"><i class="fa fa-tag"></i> NEUOJ</a>
           
         </div>
       
@@ -530,7 +536,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -592,6 +598,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -656,7 +668,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -716,6 +728,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -754,6 +768,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="Yunqi&#39;s blog">
 <meta property="og:description" content="题目网址：https://open.kattis.com/problems/ingredients 思路虽说是个拓扑排序，但不是广义上求顺序的，只要求把每一点的cost算出来就行，所以我用了dfs求cost和prestige，求的方法题目已经给出，取最小的cost，cost相同则取prestige最大的那个。求完之后用01背包算出答案。怎么看出是01背包的呢，首先它有要求的最大cost值，然后题目">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-12T05:26:44.344Z">
+<meta property="og:updated_time" content="2019-08-26T16:48:43.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017SWERC-Ingredients">
 <meta name="twitter:description" content="题目网址：https://open.kattis.com/problems/ingredients 思路虽说是个拓扑排序，但不是广义上求顺序的，只要求把每一点的cost算出来就行，所以我用了dfs求cost和prestige，求的方法题目已经给出，取最小的cost，cost相同则取prestige最大的那个。求完之后用01背包算出答案。怎么看出是01背包的呢，首先它有要求的最大cost值，然后题目">
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -413,6 +418,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <p>题目网址：<a href="https://open.kattis.com/problems/ingredients" target="_blank" rel="noopener">https://open.kattis.com/problems/ingredients</a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>虽说是个拓扑排序，但不是广义上求顺序的，只要求把每一点的cost算出来就行，所以我用了dfs求cost和prestige，求的方法题目已经给出，取最小的cost，cost相同则取prestige最大的那个。求完之后用01背包算出答案。<br>怎么看出是01背包的呢，首先它有要求的最大cost值，然后题目的意思让你选若干个dish在总cost不超过最大值的情况下使得prestige最大，就很符合01背包的概念嘛。“01”顾名思义就是选（１）或不选（０）。<br>另外，这里也用到了map将字符串转换为int型编号,用vector存边，每个顶点存以它为起点的边。dfs的思路是首先记录每个点的入度，找到入度为０的那个点，然后从这个点开始遍历它所连接的边，更新另一个点v的co和p值，同时将v的入度-1，如果入度为０了（此时它的co和p已经计算完毕），就将这个v点加入队列，重复以上步骤。</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Yunqi on 19-5-3 下午4:16.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1e18</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> co[maxn], p[maxn], dp[maxn];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; recipe;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line">    <span class="keyword">long</span> cost;</span><br><span class="line">    <span class="keyword">long</span> pres;</span><br><span class="line">&#125; es;</span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt; node[maxn];</span><br><span class="line"><span class="keyword">int</span> indegree[maxn];</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"><span class="keyword">int</span> b, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;b, &amp;n)) &#123;</span><br><span class="line">        <span class="keyword">char</span> str1[<span class="number">220</span>], str2[<span class="number">220</span>], str3[<span class="number">220</span>];</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> cost, pres;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(indegree, <span class="number">0</span>, <span class="keyword">sizeof</span>(indegree));</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">        recipe.clear();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= maxn; ++i)</span><br><span class="line">            node[i].clear();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s%s%s%lld%lld"</span>, str1, str2, str3, &amp;cost, &amp;pres);</span><br><span class="line">            <span class="keyword">if</span> (!recipe.count(str1))</span><br><span class="line">                recipe[str1] = ++k;</span><br><span class="line">            <span class="keyword">if</span> (!recipe.count(str2))</span><br><span class="line">                recipe[str2] = ++k;</span><br><span class="line">            es.v = recipe[str1], es.cost = cost, es.pres = pres;</span><br><span class="line">            node[recipe[str2]].push_back(es);</span><br><span class="line">            indegree[recipe[str1]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">            co[i] = INF;</span><br><span class="line">            p[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (indegree[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                q.push(i);</span><br><span class="line">                co[i] = p[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; node[u].size(); ++i) &#123;</span><br><span class="line">                <span class="keyword">int</span> v = node[u][i].v;</span><br><span class="line">                <span class="keyword">if</span> (co[v] &gt; co[u] + node[u][i].cost ||</span><br><span class="line">                    (co[v] == co[u] + node[u][i].cost &amp;&amp; p[v] &lt; p[u] + node[u][i].pres)) &#123;</span><br><span class="line">                    co[v] = co[u] + node[u][i].cost;</span><br><span class="line">                    p[v] = p[u] + node[u][i].pres;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!--indegree[v])</span><br><span class="line">                    q.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = b; j &gt;= (<span class="keyword">int</span>)co[i]; --j)</span><br><span class="line">                dp[j] = max(dp[j], dp[j - co[i]] + p[i]);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans1 = <span class="number">-1</span>, ans2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ans1 &lt;= dp[i]) &#123;</span><br><span class="line">                ans1 = dp[i];</span><br><span class="line">                ans2 = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n%lld\n"</span>, ans1, ans2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>啊……我的图论烂得跟个shit一样，我一直存在的问题是不知道那道题用什么来存图，存图该存哪些值=<em>=，嗯，分析得很透彻，怎么解决呢？刷题啊（<br>一开始没有意识到要将每个点的cost设置为INF,所以一直错（先把思路捋清除啊喂<br>然后是01背包的部分，啊…我到现在还不是很能理解，看了《挑战程序设计竞赛》这本书也模模糊糊的，现在在刷kuangbin关于dp的部分，然后再看看背包九讲吧。<br>最后是我wa十多发的坑，map没有清空=</em>=，还是学弟帮我找出来的，咋脑子就卡在这里了呢</p>
 
@@ -432,11 +438,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/SWERC/" rel="tag"># SWERC</a>
+            <a href="/tags/SWERC/" rel="tag"><i class="fa fa-tag"></i> SWERC</a>
           
-            <a href="/tags/拓扑排序/" rel="tag"># 拓扑排序</a>
+            <a href="/tags/拓扑排序/" rel="tag"><i class="fa fa-tag"></i> 拓扑排序</a>
           
-            <a href="/tags/01背包/" rel="tag"># 01背包</a>
+            <a href="/tags/01背包/" rel="tag"><i class="fa fa-tag"></i> 01背包</a>
           
         </div>
       
@@ -532,7 +538,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -594,6 +600,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -658,7 +670,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -718,6 +730,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -756,6 +770,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

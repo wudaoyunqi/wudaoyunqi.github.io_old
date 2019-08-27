@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636">
+<meta name="description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板">
 <meta name="keywords" content="SWERC,凸包（旋转卡壳）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2017SWERC-Blowing-Candles">
 <meta property="og:url" content="http://yoursite.com/2019/05/12/2017SWERC-Blowing-Candles/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636">
+<meta property="og:description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-12T04:50:43.271Z">
+<meta property="og:updated_time" content="2019-08-26T16:47:41.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017SWERC-Blowing-Candles">
-<meta name="twitter:description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636">
+<meta name="twitter:description" content="题目网址：https://open.kattis.com/problems/blowingcandles 思路旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板">
 
 
 
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -413,6 +418,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <p>题目网址：<a href="https://open.kattis.com/problems/blowingcandles" target="_blank" rel="noopener">https://open.kattis.com/problems/blowingcandles</a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板</p>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Yunqi on 19-5-1 下午2:13.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1e9</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n, top;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line"></span><br><span class="line">    Point(<span class="keyword">double</span> _x = <span class="number">0</span>, <span class="keyword">double</span> _y = <span class="number">0</span>) : x(_x), y(_y) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Point <span class="keyword">operator</span>-(Point a) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Point(x - a.x, y - a.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; point[maxn], <span class="built_in">stack</span>[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cross</span><span class="params">(<span class="keyword">const</span> Point &amp;p1, <span class="keyword">const</span> Point &amp;p2, <span class="keyword">const</span> Point &amp;p0)</span> </span>&#123;   <span class="comment">//叉乘</span></span><br><span class="line">    <span class="keyword">return</span> (p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">det</span><span class="params">(<span class="keyword">const</span> Point &amp;a, <span class="keyword">const</span> Point &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x * b.y - a.y * b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(<span class="keyword">const</span> Point &amp;a, <span class="keyword">const</span> Point &amp;b)</span> </span>&#123;  <span class="comment">//两点距离</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Point &amp;a, <span class="keyword">const</span> Point &amp;b)</span> </span>&#123;  <span class="comment">//极角排序</span></span><br><span class="line">    <span class="keyword">double</span> temp = cross(a, b, point[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">if</span> (temp &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (temp &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> dis(a, point[<span class="number">0</span>]) &lt; dis(b, point[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Graham_scan</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (top &gt; <span class="number">1</span> &amp;&amp; cross(<span class="built_in">stack</span>[top - <span class="number">1</span>], point[i], <span class="built_in">stack</span>[top - <span class="number">2</span>]) &lt;= <span class="number">0</span>)</span><br><span class="line">            --top;</span><br><span class="line">        <span class="built_in">stack</span>[top++] = point[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">len</span><span class="params">(<span class="keyword">const</span> Point &amp;a, <span class="keyword">const</span> Point &amp;b, <span class="keyword">const</span> Point &amp;c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> s = <span class="built_in">fabs</span>(cross(b, c, a));</span><br><span class="line">    <span class="keyword">return</span> s / dis(a, b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cps</span><span class="params">(<span class="keyword">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (top &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> ans = <span class="number">2</span> * r;</span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= top; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (det(<span class="built_in">stack</span>[i - <span class="number">1</span>] - <span class="built_in">stack</span>[i % top], <span class="built_in">stack</span>[(cur + <span class="number">1</span>) % top] - <span class="built_in">stack</span>[cur]) </span><br><span class="line">&lt; <span class="number">0</span>)</span><br><span class="line">            cur = (cur + <span class="number">1</span>) % top;</span><br><span class="line">        ans = min(ans, len(<span class="built_in">stack</span>[i - <span class="number">1</span>], <span class="built_in">stack</span>[i % top], <span class="built_in">stack</span>[cur]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> r;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; r) &#123;</span><br><span class="line">        top = <span class="number">0</span>;</span><br><span class="line">        <span class="function">Point <span class="title">com</span><span class="params">(<span class="number">0</span>, INF)</span></span>;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; point[i].x &gt;&gt; point[i].y;</span><br><span class="line">            <span class="keyword">if</span> (com.y &gt; point[i].y || (com.y == point[i].y &amp;&amp; com.x &gt; point[i].x)) &#123;</span><br><span class="line">                com = point[i];</span><br><span class="line">                k = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(point[<span class="number">0</span>], point[k]);</span><br><span class="line">        sort(point + <span class="number">1</span>, point + n, cmp);</span><br><span class="line">        Graham_scan();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>, cps(r));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>思考了一会儿意识到这是道凸包题，但是很久都没碰计算几何题了，连求凸包的算法都模糊不清了。找凸包模板花了点时间（我应该先去搞清楚求凸包的思路的），然后找靠谱的旋转卡壳模板又花了点时间，总之前后花费了很多时间。(一开始我还不知道旋转卡壳法囧<br>下面简单阐述一下求凸包的思路：<br>１、找到左下角那个点p0，然后以这个点为基准将其他点按极角排序<br>２、极角排序思路：向量a-&gt;p0与b-&gt;p0求叉乘，如果大于０，那么a点极角＜b点极角，反之将两点交换顺序，如果叉乘=0，再比较两点到p0的距离哪一个小<br>３、排序好后，将p0,p1压进栈，然后计算pi-&gt;栈顶后一个点与栈顶-&gt;栈顶后一个点的叉乘，如果大于０，则将该点压入栈，否则依次将栈顶点出栈，直到大于０<br>然后是旋转卡壳法的思路：<br>这里涉及到対踵点（边），有三种情况，点－点，边－点，边－边，这里我们用边－点的方法找宽度。<br>１、当前边的两个点为i,i+1,依次找点cur使得这三个点构成的三角形面积最大<br>２、找点cur的方法有两种，一种是比较cur和cur+1的分别构成的面积，如果cur+1的面积更大，那么cur++，直到不满足条件，此时的cur就是最远的点的编号；另一种是计算i+1-&gt;1与cur-&gt;cur+1的叉乘，如果&lt;0，说明cur不是最远点，cur+1，直到&gt;=0，此时的cur就是最远的点。（在纸上画画就清晰了）<br>３、找到cur了，然后计算cur到边（i，ｉ＋１）的距离，用面积除以边（i,i+1）的长度<br>４、遍历所有的边，记录最小的距离（下一条边的cur一定是上一条边的cur之后的点，所以cur一直增加即可而不用从头开始计算）<br>计算几何有一个靠谱的模板真的很重要啊:(</p>
 
@@ -432,9 +438,9 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/SWERC/" rel="tag"># SWERC</a>
+            <a href="/tags/SWERC/" rel="tag"><i class="fa fa-tag"></i> SWERC</a>
           
-            <a href="/tags/凸包（旋转卡壳）/" rel="tag"># 凸包（旋转卡壳）</a>
+            <a href="/tags/凸包（旋转卡壳）/" rel="tag"><i class="fa fa-tag"></i> 凸包（旋转卡壳）</a>
           
         </div>
       
@@ -530,7 +536,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -592,6 +598,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -656,7 +668,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -716,6 +728,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -754,6 +768,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

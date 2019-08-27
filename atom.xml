@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Yunqi&#39;s blog</title>
   
-  
+  <subtitle>我得记下些什么</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-26T16:42:26.466Z</updated>
+  <updated>2019-08-26T16:45:42.585Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="http://yoursite.com/2019/08/26/2019%E7%99%BE%E5%BA%A6%E4%B9%8B%E6%98%9F%E5%88%9D%E8%B5%9B%E7%AC%AC%E4%B8%80%E5%9C%BA%E9%A2%98%E8%A7%A3/"/>
     <id>http://yoursite.com/2019/08/26/2019百度之星初赛第一场题解/</id>
     <published>2019-08-26T14:53:23.000Z</published>
-    <updated>2019-08-26T16:42:26.466Z</updated>
+    <updated>2019-08-26T16:45:42.585Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;被学弟带着过了我不会的05，02自己看错了（所以wa出翔，没进前250&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;被学弟带着过了我不会的05，02自己看错了（所以wa出翔，没进前250&lt;/p&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h2 id=&quot;01-Polyn
-      
+&lt;h2 id=&quot;01-Polynomial&quot;&gt;&lt;a href=&quot;#01-Polynomial&quot; class=&quot;headerlink&quot; title=&quot;01 Polynomial&quot;&gt;&lt;/a&gt;01 Polynomial&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://acm.hdu.edu.cn/showproblem.php?pid=6668&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;HDU 6668&lt;/a&gt; 数学/暴力判断&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;题目大意&lt;/strong&gt;：给出f(x)和g(x)多项式各个系数，求当x→&lt;strong&gt;∞&lt;/strong&gt;时，f(x)/g(x)的值&lt;br&gt;&lt;strong&gt;思路&lt;/strong&gt;：无脑高数知识，高中爷也一定提前学到过。从最高位开始判断，当两个系数都为0时，判断下一位；如果f(x)系数不为0，g(x)系数为0，则趋于正无穷，反之趋于0；当两个系数都不为0，则答案为两个系数的商（最简形式，算个gcd即可）&lt;br&gt;
     
     </summary>
     
@@ -46,14 +43,11 @@
     <link href="http://yoursite.com/2019/05/29/2018CCPC%E5%A5%B3%E7%94%9F%E8%B5%9B-A-%E5%8F%A3%E7%AE%97%E8%AE%AD%E7%BB%83%E3%80%90%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3-%E4%BA%8C%E5%88%86%E3%80%91/"/>
     <id>http://yoursite.com/2019/05/29/2018CCPC女生赛-A-口算训练【质因数分解-二分】/</id>
     <published>2019-05-29T07:43:48.000Z</published>
-    <updated>2019-05-29T08:24:19.648Z</updated>
+    <updated>2019-08-26T16:49:03.137Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;暴力是不能暴力的，此题是求任意区间乘积能否整除给出的一个数，那么我们不妨换个思路，对于一个数我们可以把它进行质因数分解，那么如果一个数可以整
-      
+      &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;暴力是不能暴力的，此题是求任意区间乘积能否整除给出的一个数，那么我们不妨换个思路，对于一个数我们可以把它进行质因数分解，那么如果一个数可以整除另一个数，那么前者包含后者所有的质因数并且每个质因数个数都不小于后者。这道题先对ai进行质因数分解并记录，比如对于质数2，v[2]={1,2,2,4,4,4}表示第一个数有一个因数２，第二个数有两个，第三个数没有……，那么对于区间[l,r]，查询d的一个质因数x的个数k=upper_bound(v[2].begin(),v[2].end(),r)-lower_bound(v[2].begin(),v[2].end(),l)&lt;/p&gt;
     
     </summary>
     
@@ -75,14 +69,11 @@
     <link href="http://yoursite.com/2019/05/28/2018CCPC%E5%A5%B3%E7%94%9F%E8%B5%9B-B-%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4/"/>
     <id>http://yoursite.com/2019/05/28/2018CCPC女生赛-B-缺失的数据范围/</id>
     <published>2019-05-28T14:21:48.000Z</published>
-    <updated>2019-05-28T14:41:26.916Z</updated>
+    <updated>2019-08-26T16:49:27.171Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;蛮明显的二分，对[1,1e18]的数进行二分。这里有精度问题，所以要用到除法（某种角度很自然的想法？），精度问题可以用long&lt;br&gt;dou
-      
+      &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;蛮明显的二分，对[1,1e18]的数进行二分。这里有精度问题，所以要用到除法（某种角度很自然的想法？），精度问题可以用long&lt;br&gt;double解决，c++写法一共有四种，当然直接上JAVA(窝不会耶&lt;br&gt;
     
     </summary>
     
@@ -102,14 +93,12 @@
     <link href="http://yoursite.com/2019/05/12/kuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-U/"/>
     <id>http://yoursite.com/2019/05/12/kuangbin带你飞专题十四数论基础-U/</id>
     <published>2019-05-12T06:28:41.000Z</published>
-    <updated>2019-05-12T06:32:13.421Z</updated>
+    <updated>2019-08-26T16:58:09.077Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/U&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/U&lt;/a&gt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/U&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/U&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;就是单纯的求素数=_=，我现在习惯写线性筛啦。坑点是注意2要输出no&lt;/p&gt;
     
     </summary>
     
@@ -133,14 +122,12 @@
     <link href="http://yoursite.com/2019/05/12/kuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-E/"/>
     <id>http://yoursite.com/2019/05/12/kuangbin带你飞专题十四数论基础-E/</id>
     <published>2019-05-12T06:04:27.000Z</published>
-    <updated>2019-05-12T06:33:23.018Z</updated>
+    <updated>2019-08-26T16:57:56.333Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/E&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/E&lt;/a&gt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/E&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/E&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;n^k=(10^lgn)^k=10^klgn,求x的前三位方法：x=10^lgx，lgx＝整数a+小数b，a描述x有几位，10^a=100…0，10^b修饰每一位的数字，所以x的前三位就是10^b*100。后三位很好求，在快速幂中取mod＝1000即可。有个坑点是后三位可能有前导零，所以要注意格式控制符的写法。&lt;/p&gt;
     
     </summary>
     
@@ -164,14 +151,12 @@
     <link href="http://yoursite.com/2019/05/12/kuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-C/"/>
     <id>http://yoursite.com/2019/05/12/kuangbin带你飞专题十四数论基础-C/</id>
     <published>2019-05-12T05:39:06.000Z</published>
-    <updated>2019-05-12T06:03:44.465Z</updated>
+    <updated>2019-08-26T16:57:45.840Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/C&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/C&lt;/a&gt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/C&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/C&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;啊，寒假训练做过这道题，也是第一次知道唯一分解定理这个东西。大意就是任何一个正整数都可以表示为若干个素数的乘积并且表示方法唯一，例如12=2^2&lt;em&gt;3，称之为标准分解式。&lt;br&gt;有几个性质：&lt;br&gt;１、如果N=P1^a1&lt;/em&gt;p2^a2&lt;em&gt;…&lt;/em&gt;pm^am，那么它的正因数的个数为(1+a1)&lt;em&gt;(1+a2)&lt;/em&gt;…&lt;em&gt;(1+am)&lt;br&gt;２、它的全体正因数之和为(1+p1+p1^2+…+p1^a1)&lt;/em&gt;(1+p2+p2^2+…+p2^a2)&lt;em&gt;…&lt;/em&gt;(1+pm+pm^2+…+pm^am)&lt;br&gt;那么这道题我们要用到的是第一个性质，首先判断b*b是否&amp;gt;=a（题目说这个矩形不是正方形并且给出的是长度偏小的那一边）,大于则输出０，小于就求a有几个因子，然后将这个数/2，最后减掉[1,b-1]区间内a的因子数&lt;/p&gt;
     
     </summary>
     
@@ -195,14 +180,12 @@
     <link href="http://yoursite.com/2019/05/12/kuangbin%E5%B8%A6%E4%BD%A0%E9%A3%9E%E4%B8%93%E9%A2%98%E5%8D%81%E5%9B%9B%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-A/"/>
     <id>http://yoursite.com/2019/05/12/kuangbin带你飞专题十四数论基础-A/</id>
     <published>2019-05-12T05:32:12.000Z</published>
-    <updated>2019-05-12T05:38:30.045Z</updated>
+    <updated>2019-08-26T16:57:33.440Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/A&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/A&lt;/a&gt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://vjudge.net/contest/299252#problem/A&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vjudge.net/contest/299252#problem/A&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;先预处理欧拉函数值，我习惯用线性筛了，然后将cost记忆化求值，这里注意phi[a]&amp;lt;a，所以从a+1开始遍历寻找phi=a的数，更新cost[a]&lt;/p&gt;
     
     </summary>
     
@@ -226,14 +209,12 @@
     <link href="http://yoursite.com/2019/05/12/2017SWERC-Ingredients/"/>
     <id>http://yoursite.com/2019/05/12/2017SWERC-Ingredients/</id>
     <published>2019-05-12T04:52:20.000Z</published>
-    <updated>2019-05-12T05:26:44.344Z</updated>
+    <updated>2019-08-26T16:48:43.680Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/ingredients&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/ingredients&lt;/
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/ingredients&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/ingredients&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;虽说是个拓扑排序，但不是广义上求顺序的，只要求把每一点的cost算出来就行，所以我用了dfs求cost和prestige，求的方法题目已经给出，取最小的cost，cost相同则取prestige最大的那个。求完之后用01背包算出答案。&lt;br&gt;怎么看出是01背包的呢，首先它有要求的最大cost值，然后题目的意思让你选若干个dish在总cost不超过最大值的情况下使得prestige最大，就很符合01背包的概念嘛。“01”顾名思义就是选（１）或不选（０）。&lt;br&gt;另外，这里也用到了map将字符串转换为int型编号,用vector存边，每个顶点存以它为起点的边。dfs的思路是首先记录每个点的入度，找到入度为０的那个点，然后从这个点开始遍历它所连接的边，更新另一个点v的co和p值，同时将v的入度-1，如果入度为０了（此时它的co和p已经计算完毕），就将这个v点加入队列，重复以上步骤。&lt;/p&gt;
     
     </summary>
     
@@ -255,14 +236,12 @@
     <link href="http://yoursite.com/2019/05/12/2017SWERC-Blowing-Candles/"/>
     <id>http://yoursite.com/2019/05/12/2017SWERC-Blowing-Candles/</id>
     <published>2019-05-12T04:10:55.000Z</published>
-    <updated>2019-05-12T04:50:43.271Z</updated>
+    <updated>2019-08-26T16:47:41.293Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/blowingcandles&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/blowingcan
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/blowingcandles&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/blowingcandles&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;旋转卡壳求凸包的宽度（ps:你需要一个靠谱的模板&lt;/p&gt;
     
     </summary>
     
@@ -282,14 +261,12 @@
     <link href="http://yoursite.com/2019/05/12/2017SWERC-Frosting-on-the-Cake/"/>
     <id>http://yoursite.com/2019/05/12/2017SWERC-Frosting-on-the-Cake/</id>
     <published>2019-05-12T03:56:26.000Z</published>
-    <updated>2019-05-12T04:09:53.409Z</updated>
+    <updated>2019-08-26T16:48:21.670Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/frosting&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/frosting&lt;/a&gt;&lt;/p&gt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/frosting&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/frosting&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;n范围到1e5了，所以暴力不行啦，得把复杂度降低，目测大概O(n)左右。仔细观察每种颜色所处的Ai,Bj的i+j的关系，发现白色块(i%3+j)%3=2,黄色块(i%3+j)%3=0，红色块=1，那么答案就呼之欲出了。复杂度O(3n)。&lt;/p&gt;
     
     </summary>
     
@@ -309,14 +286,12 @@
     <link href="http://yoursite.com/2019/05/12/2017SWERC-Cakey-McCakeFace/"/>
     <id>http://yoursite.com/2019/05/12/2017SWERC-Cakey-McCakeFace/</id>
     <published>2019-05-12T03:25:59.000Z</published>
-    <updated>2019-05-12T03:52:23.158Z</updated>
+    <updated>2019-08-26T16:48:05.776Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/cakeymccakeface&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/cakeymcca
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://open.kattis.com/problems/cakeymccakeface&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://open.kattis.com/problems/cakeymccakeface&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;让你找出现次数最多的时间差，范围是[0,1e9]，那么用map的key记录时间差，value记录出现次数，最后找出value最大的最小的key即可。因为map会自动对key排序（默认从小到大），那么比较大小的时候写成&amp;gt;max_n就行。&lt;/p&gt;
     
     </summary>
     
@@ -332,15 +307,12 @@
     <link href="http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-3/"/>
     <id>http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-3/</id>
     <published>2019-05-05T07:40:15.000Z</published>
-    <updated>2019-05-05T07:54:45.685Z</updated>
+    <updated>2019-08-26T16:59:21.171Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1467&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1467&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;思路&quot;&gt;&lt;
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1467&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1467&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;求x出现了几次，当然是将所有编号踢入一个数组，然后用lower_bound和upper_bound寻找前后位置（目前二分很容易写错，stl大法好&lt;/p&gt;
     
     </summary>
     
@@ -360,15 +332,12 @@
     <link href="http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-2/"/>
     <id>http://yoursite.com/2019/05/05/NEUOJ-2019-2Monthly-2/</id>
     <published>2019-05-05T07:23:23.000Z</published>
-    <updated>2019-05-05T07:54:33.918Z</updated>
+    <updated>2019-08-26T16:59:08.514Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1466&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1466&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;思路&quot;&gt;&lt;
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1466&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1466&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;通过找规律发现，只有素数或者质因子分解形式为两个质数（指数为１）的积的合数不符合题目条件。那么可以先预处理出1e6范围内的符合条件的结果，然后再用lower_bound查找n的位置就行。&lt;/p&gt;
     
     </summary>
     
@@ -388,15 +357,12 @@
     <link href="http://yoursite.com/2019/05/05/NEUOJ-2019-1Monthly-2/"/>
     <id>http://yoursite.com/2019/05/05/NEUOJ-2019-1Monthly-2/</id>
     <published>2019-05-05T06:52:06.000Z</published>
-    <updated>2019-05-05T07:54:22.272Z</updated>
+    <updated>2019-08-26T16:58:46.174Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1460&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1460&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;思路&quot;&gt;&lt;
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1460&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1460&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;任何一个整数都可以表示为n=p1^a1&lt;em&gt;p2^a2&lt;/em&gt;…&lt;em&gt;pn^an，则f(n,0)=a1&lt;/em&gt;a2&lt;em&gt;…&lt;/em&gt;an，f(n,0)是积性函数（自己手推一下），对于f(x,y)是f(x,y-1)与自身进行狄利克雷卷积得到的结果，所以f(x,y)也是积性函数（这一点没有想通，等之后深挖狄利克雷卷积再填坑），所以f(x,y)也是积性函数。因此，只要对n质因子分解，然后预处理次方的dp值就可以了&lt;/p&gt;
     
     </summary>
     
@@ -420,15 +386,12 @@
     <link href="http://yoursite.com/2019/05/05/NEUOJ-2019-1Monthly-1/"/>
     <id>http://yoursite.com/2019/05/05/NEUOJ-2019-1Monthly-1/</id>
     <published>2019-05-05T06:34:03.000Z</published>
-    <updated>2019-05-05T07:54:09.486Z</updated>
+    <updated>2019-08-26T16:58:35.957Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1459&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1459&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;思路&quot;&gt;&lt;
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;https://oj.neu.edu.cn/problem/1459&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://oj.neu.edu.cn/problem/1459&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;三种做法，１、三次lowbit　２、三次x=x&amp;amp;(x-1) 　3、__builtin_popcountll（计算一个64位无符号整数的二进制有多少个位为１）&lt;/p&gt;
     
     </summary>
     
@@ -448,14 +411,12 @@
     <link href="http://yoursite.com/2019/05/05/%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Robot-Cleaner-I/"/>
     <id>http://yoursite.com/2019/05/05/浙江省赛19th-Robot-Cleaner-I/</id>
     <published>2019-05-05T04:07:09.000Z</published>
-    <updated>2019-05-05T04:20:44.854Z</updated>
+    <updated>2019-08-26T16:56:58.339Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=5981&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlin
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=5981&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=5981&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;按照题意模拟即可，有三处剪枝，一是获得的字母数＞字母总数时剪枝，二是给每个点对应一个哈希坐标，记录这个坐标是否在某几个x值循环（这一点比较难想，很容易t），三是只要处于do nothing状态就break&lt;/p&gt;
     
     </summary>
     
@@ -475,14 +436,12 @@
     <link href="http://yoursite.com/2019/05/05/%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Extended-Twin-Composite-Number/"/>
     <id>http://yoursite.com/2019/05/05/浙江省赛19th-Extended-Twin-Composite-Number/</id>
     <published>2019-05-05T03:47:12.000Z</published>
-    <updated>2019-05-05T04:01:19.748Z</updated>
+    <updated>2019-08-26T17:02:17.593Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4099&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onl
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4099&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4099&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;n&lt;em&gt;2+n=n&lt;/em&gt;3&lt;br&gt;
     
     </summary>
     
@@ -502,14 +461,12 @@
     <link href="http://yoursite.com/2019/05/05/%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Potion/"/>
     <id>http://yoursite.com/2019/05/05/浙江省赛19th-Potion/</id>
     <published>2019-05-05T03:03:56.000Z</published>
-    <updated>2019-05-05T03:40:05.445Z</updated>
+    <updated>2019-08-26T16:56:44.372Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4094&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onl
-      
+      &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4094&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4094&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;因为只能从rank高的（分给）rank低的，所以从n开始依次将bi置为ai，bi-1+=(bi-ai)，如果bi&amp;lt;ai，那么输出No,否则输出Yes&lt;/p&gt;
     
     </summary>
     
@@ -525,14 +482,12 @@
     <link href="http://yoursite.com/2019/05/01/%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Thanks_TuSimple/"/>
     <id>http://yoursite.com/2019/05/01/浙江省赛19th-Thanks_TuSimple/</id>
     <published>2019-04-30T18:27:22.000Z</published>
-    <updated>2019-05-05T03:01:56.541Z</updated>
+    <updated>2019-08-26T16:57:11.509Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4090&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onl
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4090&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4090&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;首先根据pi的值从小到大排序，同一个pi值按身高从低到高排序，然后线性匹配。&lt;/p&gt;
     
     </summary>
     
@@ -552,14 +507,12 @@
     <link href="http://yoursite.com/2019/05/01/%E6%B5%99%E6%B1%9F%E7%9C%81%E8%B5%9B19th-Postman/"/>
     <id>http://yoursite.com/2019/05/01/浙江省赛19th-Postman/</id>
     <published>2019-04-30T16:05:45.000Z</published>
-    <updated>2019-04-30T18:17:48.686Z</updated>
+    <updated>2019-08-26T16:56:30.076Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;题目网址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4096&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onl
-      
+      &lt;p&gt;题目网址：&lt;a href=&quot;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4096&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=4096&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;首先将坐标分组排序，两边分别计算路径最后相加，比较左边和右边离原点最远的点，这个点就只走一次（最后一次），然后从最远的点开始往原点“跳”，每次跳k个点直到回到原点（如此能保证总路径是最短的）&lt;/p&gt;
     
     </summary>
     

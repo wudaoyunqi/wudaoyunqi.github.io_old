@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的 代码12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;algorithm&amp;gt;#include&amp;lt;iostrea">
+<meta name="description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的">
 <meta name="keywords" content="天梯赛题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天梯赛-小字辈">
 <meta property="og:url" content="http://yoursite.com/2019/03/26/天梯赛-小字辈/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
-<meta property="og:description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的 代码12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;algorithm&amp;gt;#include&amp;lt;iostrea">
+<meta property="og:description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-26T07:05:57.102Z">
+<meta property="og:updated_time" content="2019-08-26T16:53:40.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天梯赛-小字辈">
-<meta name="twitter:description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的 代码12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;algorithm&amp;gt;#include&amp;lt;iostrea">
+<meta name="twitter:description" content="思路一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的">
 
 
 
@@ -142,7 +142,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -186,6 +186,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 </head>
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
@@ -209,7 +214,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">我得记下些什么</p>
       
   </div>
 
@@ -400,7 +405,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
 
       
-        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的</p>
+        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一道深搜题，不过要注意记忆化搜索，用maxx记录最小的那一辈(rank值最大），然后用vector存每一辈的下标，因为是顺序存的，所以输出也是递增的<br><a id="more"></a></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> _rank[maxn];</span><br><span class="line"><span class="keyword">int</span> far[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getrank</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_rank[i]!=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> _rank[i];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> _rank[i]=getrank(far[i])+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans[maxn];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;far[i]);</span><br><span class="line">            <span class="keyword">if</span>(far[i]==<span class="number">-1</span>)</span><br><span class="line">                _rank[i]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                _rank[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> maxx=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            getrank(i);</span><br><span class="line">            maxx=max(maxx,_rank[i]);</span><br><span class="line">            ans[_rank[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> _size=ans[maxx].size();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,maxx);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">long</span> i=<span class="number">0</span>;i&lt;_size;i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d%c"</span>,ans[maxx][i],i==_size<span class="number">-1</span>?<span class="string">'\n'</span>:<span class="string">' '</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="做题感受"><a href="#做题感受" class="headerlink" title="做题感受"></a>做题感受</h2><p>一开始我是没有用上面的代码实现深搜，就是dfs记录了搜索深度，每搜一次深度加1，现在想想并不是很好，很容易超时。上面的代码开了rank数组来记录，只要rank的值已经求出来了就立刻返回，记忆化搜索很妙啊:)然后关于按顺序输出，我也是东想西想，甚至还想开个map……(我在想什么……，不用上面代码vector实现，开个结构体排序处理一下也好嘛……(我x*&amp;.#$@….<br>哦还不止如此，我调了很久最后发现不用多组输入就过，用就会wa一个样例点，但是我很认真的检查了关于初始化没有问题啊，当时真的是……绝了，然而我刚刚又交了之前貌似没过的代码，结果就过了，我:??????我一定是见到了异世界（或者我见到了平行世界的我见到的场景？？？（我在说什么……<br><strong><strong>更新</strong></strong><br>刚刚实时测试了一下，把有一个样例点没过的代码复制粘贴再提交了一次，发现就过了……什么神奇的网站xxxxxxxx（真的是要吐血，浪费我很多很多很多很多很多时间去纠结一个实际上没有错的东西？？？？？？体验真是极差cao</p>
 
@@ -420,7 +425,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
       
         <div class="post-tags">
           
-            <a href="/tags/天梯赛题解/" rel="tag"># 天梯赛题解</a>
+            <a href="/tags/天梯赛题解/" rel="tag"><i class="fa fa-tag"></i> 天梯赛题解</a>
           
         </div>
       
@@ -516,7 +521,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                 alt="Yunqi" />
             
               <p class="site-author-name" itemprop="name">Yunqi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">十年饮冰，难凉热血。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -578,6 +583,12 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
                     <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-dao-yun-qi/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
                   </span>
                 
             </div>
@@ -642,7 +653,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -702,6 +713,8 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
 
+  
+
 
 
 
@@ -740,6 +753,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
