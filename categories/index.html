@@ -347,6 +347,11 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
           
 
   
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+
+  
 
         </div>
         
@@ -662,6 +667,28 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
 
 
 
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'c967369734b7120cf9b0',
+          clientSecret: 'de15a8c5aaed3561b0965097d31e65fecc6af6c6',
+          repo: 'wudaoyunqi.github.io',
+          owner: 'wudaoyunqi',
+          admin: ['wudaoyunqi'],
+          id:'gitalk_20181009230647',
+          labels: 'gitalk'.split(',').filter(l => l),
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
