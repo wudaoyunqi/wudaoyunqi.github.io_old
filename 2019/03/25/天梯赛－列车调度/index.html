@@ -135,7 +135,7 @@
 <meta name="keywords" content="天梯赛题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天梯赛－列车调度">
-<meta property="og:url" content="http://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/index.html">
+<meta property="og:url" content="https://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s blog">
 <meta property="og:description" content="思路这道题就是求递减子列的个数，我的方法是开一个数组来记录当前每个递减子列的尾值，如果要插入的这个数大于所有尾值中最大的那一个，那么ans就+1，这个数就是新的递减子列的头(同时也是这个递减子列的尾，因为此时子列只有它一个元素)，反之，用lower_bound找到最小的大于这个数的尾值，这个数就变为该递减子列的尾(更新尾值)。因为尾值数组始终保持递增(有序),所以可以用lower_bound来找。">
 <meta property="og:locale" content="default">
@@ -172,7 +172,7 @@
 
 
 
-  <link rel="canonical" href="http://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/"/>
+  <link rel="canonical" href="https://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/"/>
 
 
 
@@ -334,7 +334,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/">
+    <link itemprop="mainEntityOfPage" href="https://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunqi">
@@ -490,7 +490,7 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/" title="天梯赛－列车调度">http://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/</a>
+    <a href="https://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/" title="天梯赛－列车调度">https://wudaoyunqi.com/2019/03/25/天梯赛－列车调度/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -967,6 +967,21 @@ src="https://wudaoyunqi.github.io/js/src/pace.min.js"></script>
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
