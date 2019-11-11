@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wudaoyunqi.com/"/>
-  <updated>2019-11-11T13:19:16.017Z</updated>
+  <updated>2019-11-11T13:25:39.727Z</updated>
   <id>https://wudaoyunqi.com/</id>
   
   <author>
@@ -21,15 +21,13 @@
     <link href="https://wudaoyunqi.com/2019/11/11/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/"/>
     <id>https://wudaoyunqi.com/2019/11/11/卷积神经网络笔记/</id>
     <published>2019-11-11T11:42:01.000Z</published>
-    <updated>2019-11-11T13:19:16.017Z</updated>
+    <updated>2019-11-11T13:25:39.727Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;这篇笔记看到哪写到哪，只是一些杂碎的知识汇总，以后有时间再重新整理一下&lt;/p&gt;
-&lt;h2 id=&quot;卷积神经网络结构&quot;&gt;&lt;a href=&quot;#卷积神经网络结构&quot; class=&quot;headerlink&quot; title=&quot;卷积神经网络结构&quot;&gt;&lt;/a&gt;卷积神经网络结构&lt;/h2&gt;&lt;p&gt;一个简
-      
+      &lt;p&gt;这篇笔记看到哪写到哪，只是一些杂碎的知识汇总，以后有时间再重新整理一下&lt;/p&gt;
+&lt;h2 id=&quot;卷积神经网络结构&quot;&gt;&lt;a href=&quot;#卷积神经网络结构&quot; class=&quot;headerlink&quot; title=&quot;卷积神经网络结构&quot;&gt;&lt;/a&gt;卷积神经网络结构&lt;/h2&gt;&lt;p&gt;一个简单的卷积神经网络是由各种层按照顺序排列组成，网络中的每个层使用一个可以微分的函数将激活数据从一个层传递到下一个层。卷积神经网络主要由三种类型的层构成：卷积层、池化层(Pooling)和全连接层。&lt;/p&gt;
+&lt;h3 id=&quot;1-卷积层&quot;&gt;&lt;a href=&quot;#1-卷积层&quot; class=&quot;headerlink&quot; title=&quot;1 卷积层&quot;&gt;&lt;/a&gt;1 卷积层&lt;/h3&gt;&lt;p&gt;卷积层的参数是由一些可学习的滤波器(filter)集合构成的。每个滤波器在空间上（宽度和高度）都比较小，但是&lt;strong&gt;深度&lt;/strong&gt;和输入数据一致。&lt;br&gt;在向前传播的时候，每个滤波器都在输入数据的宽度和高度上&lt;strong&gt;滑动&lt;/strong&gt;(准确地说是&lt;strong&gt;卷积&lt;/strong&gt;)，然后计算整个滤波器和输入数据任一处的内积（这里不太明白，如果说是向量与向量之间的内积我明白，但是投射到数据和滤波器之间的内积就不明白计算过程，在后面的卷积动态图里我也不太明白orz)。&lt;br&gt;
     
     </summary>
     
@@ -82,11 +80,11 @@
       <category term="质因数分解" scheme="https://wudaoyunqi.com/categories/2018%E5%A5%B3%E7%94%9F%E8%B5%9B/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/"/>
     
     
+      <category term="二分" scheme="https://wudaoyunqi.com/tags/%E4%BA%8C%E5%88%86/"/>
+    
       <category term="女生赛" scheme="https://wudaoyunqi.com/tags/%E5%A5%B3%E7%94%9F%E8%B5%9B/"/>
     
       <category term="质因数分解" scheme="https://wudaoyunqi.com/tags/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/"/>
-    
-      <category term="二分" scheme="https://wudaoyunqi.com/tags/%E4%BA%8C%E5%88%86/"/>
     
   </entry>
   
