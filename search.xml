@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/04/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>女书平台项目</title>
+    <url>/2023/04/12/%E5%A5%B3%E4%B9%A6%E5%B9%B3%E5%8F%B0%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p>4.10在豆瓣上看到招募志愿者的帖子，本来标题写着暂停招人，后来发现又更新为招募有经验的姐妹。</p>
+<p>于是将自己做过的项目概况以及技术栈发给了发帖的姐妹，过了几小时真的回我了，在回答了几个问题之后成功进群。</p>
+<p>4.12和向阳语音之后才知道原来是我的项目经验实在太匹配了，所以她们就打算把我招进来。</p>
+<p>很巧的是，昨天晚上收到了某基金的hr，说要给我安排笔面，我看了看岗位JD，果不其然跟我的项目技术栈非常匹配。</p>
+<p>hhhh只能说对之后找工作的经验又多了一点。</p>
+]]></content>
+      <categories>
+        <category>开发成长之路</category>
+        <category>Java项目</category>
+      </categories>
+      <tags>
+        <tag>开发成长之路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2023/04/12/test/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+</search>
