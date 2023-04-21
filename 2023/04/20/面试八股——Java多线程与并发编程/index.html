@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 线程安全1.1 定义并发编程的原则：设计并发编程的目的是为了使程序获得更高的执行效率，但绝不能出现数据一致性(数据准确)问题，如果并发程序连最基本的执行结果准确性都无法保证，那并发编程就没有任何意义。 Java线程安全指的是在多线程环境下，对共享变量和资源的访问和操作能够保证正确性、一致性和可靠性。具体来说，一个线程安全的程序应该满足以下条件：  程序在并发情况下能够正确地执行，不会出现数据错">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试八股——Java多线程与并发编程之线程安全">
+<meta property="og:url" content="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Yunqi&#39;s Blog">
+<meta property="og:description" content="1 线程安全1.1 定义并发编程的原则：设计并发编程的目的是为了使程序获得更高的执行效率，但绝不能出现数据一致性(数据准确)问题，如果并发程序连最基本的执行结果准确性都无法保证，那并发编程就没有任何意义。 Java线程安全指的是在多线程环境下，对共享变量和资源的访问和操作能够保证正确性、一致性和可靠性。具体来说，一个线程安全的程序应该满足以下条件：  程序在并发情况下能够正确地执行，不会出现数据错">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/29/164e3637df80c2a2~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp">
+<meta property="og:image" content="https://s2.51cto.com/images/blog/202107/29/8cc55984152076f48b975796dbe8d6b2.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-4517995/w527xtazin.png?imageView2/2/w/2560/h/7000">
+<meta property="article:published_time" content="2023-04-20T14:04:24.000Z">
+<meta property="article:modified_time" content="2023-04-21T12:06:35.499Z">
+<meta property="article:author" content="wudaoyunqi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wudaoyunqi.github.io/2023/04/20/面试八股——Java多线程与并发编程/"/>
+
+
+
+
+
+  <title>面试八股——Java多线程与并发编程之线程安全 | Yunqi's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yunqi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/31103856?s=400&u=2b76906992e5a379c669123244077ec5c721c156&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yunqi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试八股——Java多线程与并发编程之线程安全</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-20T22:04:24+08:00">
+                2023-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java/" itemprop="url" rel="index">
+                    <span itemprop="name">面试八股——Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  6.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-线程安全"><a href="#1-线程安全" class="headerlink" title="1 线程安全"></a>1 线程安全</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>并发编程的原则：设计并发编程的目的是为了使程序获得更高的执行效率，但绝不能出现数据一致性(数据准确)问题，如果并发程序连最基本的执行结果准确性都无法保证，那并发编程就没有任何意义。</p>
+<p>Java线程安全指的是在多线程环境下，对共享变量和资源的访问和操作能够保证<strong>正确性</strong>、<strong>一致性</strong>和<strong>可靠性</strong>。具体来说，一个线程安全的程序应该满足以下条件：</p>
+<ol>
+<li>程序在并发情况下能够正确地执行，不会出现数据错误或逻辑错误等问题。</li>
+<li>程序的执行结果与串行执行的结果一致，不会产生数据不一致或漏洞等问题。</li>
+<li>程序在高并发情况下仍然能够保持性能、稳定性和可靠性。</li>
+</ol>
+<p>存在线程安全问题必须满足三个条件：</p>
+<ol>
+<li>有共享变量</li>
+<li>处在多线程环境下</li>
+<li>共享变量有修改操作。</li>
+</ol>
+<p>简单而言，非线程安全是指多线程操作同一个对象可能会出现问题。而线程安全则是多线程操作同一个对象不会有问题。</p>
+<h3 id="1-2-如何实现线程安全"><a href="#1-2-如何实现线程安全" class="headerlink" title="1.2 如何实现线程安全"></a>1.2 如何实现线程安全</h3><ol>
+<li>使用<strong>同步锁</strong>（synchronized）：在多线程环境下保证同一时刻只有一个线程能够访问共享变量或资源，避免并发修改的问题。</li>
+<li>使用java.util.concurrent.<strong>locks</strong> 包中的锁</li>
+<li>使用<strong>原子类</strong>（AtomicXXX）：提供了一些线程安全的基本数据类型，例如AtomicInteger、AtomicLong等，它们能够保证在并发情况下对变量的操作都是原子性的。</li>
+<li>使用<strong>线程安全的集合</strong>：例如ConcurrentHashMap、CopyOnWriteArrayList等，它们在内部实现上使用了同步机制，能够保证在多线程环境下的正确性和一致性。</li>
+</ol>
+<h2 id="2-Volatile关键字"><a href="#2-Volatile关键字" class="headerlink" title="2 Volatile关键字"></a>2 Volatile关键字</h2><h3 id="2-1-JMM模型（Java内存模型）"><a href="#2-1-JMM模型（Java内存模型）" class="headerlink" title="2.1 JMM模型（Java内存模型）"></a>2.1 JMM模型（Java内存模型）</h3><p><img src="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1"></p>
+<p><strong>1.主内存（Main Memory）</strong></p>
+<p>主内存可以简单理解为计算机当中的内存，但又不完全等同。主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。</p>
+<p><strong>2.工作内存（Working Memory）</strong></p>
+<p>工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。</p>
+<p>线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。</p>
+<p><strong>JMM工作流程</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对于一个静态变量 </span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>；</span><br><span class="line">线程A执行如下代码：</span><br><span class="line">s = <span class="number">3</span>；</span><br></pre></td></tr></table></figure>
+
+<p>通过一系列内存读写的操作指令（JVM内存模型共定义了8种内存操作指令，以后会细讲），线程A把静态变量 s&#x3D;0 从主内存读到工作内存，再把 s&#x3D;3 的更新结果同步到主内存当中。</p>
+<h3 id="2-2-volatile，一种轻量级的锁"><a href="#2-2-volatile，一种轻量级的锁" class="headerlink" title="2.2 volatile，一种轻量级的锁"></a>2.2 volatile，一种轻量级的锁</h3><p>同步锁虽然可以保证线程安全，但是对程序性能影响很大，而volatile是一种轻量级的锁，用volatile修饰的变量对所有线程都是<strong>可见</strong>的。当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值。</p>
+<p>当一个线程修改了该变量后，其他线程能够立即看到这个变化（直接从内存读，而不是从线程cache读）</p>
+<h3 id="2-3-volatile的缺点"><a href="#2-3-volatile的缺点" class="headerlink" title="2.3 volatile的缺点"></a>2.3 volatile的缺点</h3><p>volatile只能保证变量的可见性，但不能保证修改变量操作的<strong>原子性</strong>。</p>
+<h3 id="2-4-volatile的使用场景"><a href="#2-4-volatile的使用场景" class="headerlink" title="2.4 volatile的使用场景"></a>2.4 volatile的使用场景</h3><p><strong>1.运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值。</strong></p>
+<p><strong>2.变量不需要与其他的状态变量共同参与不变约束。</strong></p>
+<h3 id="2-5-volatile对指令重排的影响"><a href="#2-5-volatile对指令重排的影响" class="headerlink" title="2.5 volatile对指令重排的影响"></a>2.5 volatile对指令重排的影响</h3><p><strong>什么是指令重排？</strong></p>
+<p>指令重排是指JVM在编译Java代码的时候，或者CPU在执行JVM字节码的时候，对现有的指令顺序进行重新排序。</p>
+<p>指令重排的目的是为了在不改变程序执行结果的前提下，优化程序的运行效率。需要注意的是，这里所说的不改变执行结果，指的是不改变<strong>单线程</strong>下的程序执行结果。</p>
+<p><strong>volatile做了什么？</strong></p>
+<p>在一个变量被volatile修饰后，JVM会为我们做两件事：</p>
+<p>1.在每个volatile写操作前插入<strong>StoreStore</strong>屏障，在写操作后插入<strong>StoreLoad</strong>屏障。</p>
+<p>2.在每个volatile读操作前插入<strong>LoadLoad</strong>屏障，在读操作后插入<strong>LoadStore</strong>屏障。</p>
+<h3 id="2-6-总结"><a href="#2-6-总结" class="headerlink" title="2.6 总结"></a>2.6 总结</h3><ul>
+<li><p><strong>volatile特性之一：</strong></p>
+<ul>
+<li><strong>可见性</strong>：保证变量在线程之间的<strong>可见性</strong>。可见性的保证是基于CPU的内存屏障指令，被JSR-133抽象为happens-before原则。</li>
+</ul>
+</li>
+<li><p><strong>volatile特性之二：</strong></p>
+<ul>
+<li><strong>有序性</strong>：阻止编译时和运行时的<strong>指令重排（有序性）</strong>。编译时JVM编译器遵循内存屏障的约束，运行时依靠CPU屏障指令来阻止重排。</li>
+</ul>
+</li>
+<li><p><font color='red'> <strong>不保证原子性！</strong></font></p>
+</li>
+</ul>
+<h2 id="3-Synchronized关键字"><a href="#3-Synchronized关键字" class="headerlink" title="3 Synchronized关键字"></a>3 Synchronized关键字</h2><p>在Java中，每一个对象都拥有一个锁标记（<strong>monitor</strong>），也称为监视器，多线程同时访问某个对象时，只有拥有该对象锁（即监视器monitor）的线程才能访问。</p>
+<p>在Java中，可以使用synchronized关键字来标记一个需要同步的方法或者同步代码块，当某个线程调用该对象的synchronized方法或者访问synchronized代码块时，这个线程便获得了该对象的锁（监视器monitor），其他线程暂时无法访问这个方法，只有等待这个方法执行完毕或者代码块执行完毕，这个线程才会释放该对象的锁（监视器monitor），其他线程才能执行这个方法或者代码块。</p>
+<h3 id="3-1-Synchronized的作用"><a href="#3-1-Synchronized的作用" class="headerlink" title="3.1 Synchronized的作用"></a>3.1 Synchronized的作用</h3><ul>
+<li><strong>原子性</strong>：确保线程互斥的访问同步代码</li>
+<li><strong>可见性</strong>：保证共享变量的修改能够及时可见，其实是通过Java内存模型中的 <strong>“对一个变量unlock操作之前，必须要同步到主内存中；如果对一个变量进行lock操作，则将会清空工作内存中此变量的值，在执行引擎使用此变量前，需要重新从主内存中load操作或assign操作初始化变量值”</strong> 来保证的</li>
+<li><strong>有序性</strong>：有效解决重排序问题（阻止重排），即 <strong>“一个unlock操作先行发生(happen-before)于后面对同一个锁的lock操作”</strong></li>
+</ul>
+<p><strong>可重入锁</strong></p>
+<blockquote>
+<p>可重入锁是指一个线程在持有某个锁的情况下，能够再次请求该锁而不会造成死锁或其他异常。也就是说，同一个线程可以多次获得同一个锁，而不会被阻塞。</p>
+<p>可重入锁的释放顺序是与获取顺序相反的顺序。也就是说，如果线程A先获取了锁1，然后又获取了锁2，那么释放的顺序应该是先释放锁2，再释放锁1。</p>
+<p>这种顺序保证了获取锁和释放锁的顺序是一致的，避免了死锁等问题。同时，对于可重入锁来说，每个线程都有一个计数器来记录获取锁的次数，每次释放锁时，计数器减1，只有当计数器为0时才真正释放锁，这样可以避免释放其他线程所持有的锁。</p>
+</blockquote>
+<p>synchronized 内置锁 是一种 <strong>对象锁（锁的是对象而非引用变量）</strong>，<strong>作用粒度是对象</strong> ，可以用来实现对 <strong>临界资源的同步互斥访问</strong> ，是 <strong>可重入</strong> 的。<strong>其可重入最大的作用是避免死锁</strong>，如：子类同步方法调用了父类同步方法，如没有可重入的特性，则会发生死锁</p>
+<h3 id="3-2-同步原理"><a href="#3-2-同步原理" class="headerlink" title="3.2 同步原理"></a>3.2 同步原理</h3><p>数据同步需要依赖锁，那锁的同步又依赖谁？<strong>synchronized给出的答案是在软件层面依赖JVM，而j.u.c.Lock给出的答案是在硬件层面依赖特殊的CPU指令</strong>。</p>
+<p>当一个线程访问同步代码块时，<strong>首先是需要得到锁才能执行同步代码，当退出或者抛出异常时必须要释放锁</strong>，那么它是如何来实现这个机制的呢？</p>
+<p><strong>Synchronized的语义底层是通过一个monitor的对象来完成，其实wait&#x2F;notify等方法也依赖于monitor对象</strong>，这就是为什么只有在同步的块或者方法中才能调用wait&#x2F;notify等方法，<strong>否则会抛出java.lang.IllegalMonitorStateException的异常的原因</strong>。</p>
+<p><strong>JVM通过调用操作系统的互斥原语mutex来实现，被阻塞的线程会被挂起、等待重新调度</strong>，会导致“用户态和内核态”两个态之间来回切换，对性能有较大影响。</p>
+<h2 id="4-同步概念（待更新和优化）"><a href="#4-同步概念（待更新和优化）" class="headerlink" title="4 同步概念（待更新和优化）"></a>4 同步概念（待更新和优化）</h2><h3 id="4-1-Java对象头"><a href="#4-1-Java对象头" class="headerlink" title="4.1 Java对象头"></a>4.1 Java对象头</h3><p>在JVM中，对象在内存中的布局分为三块区域：<strong>对象头、实例数据和对齐填充</strong>。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/29/164e3637df80c2a2~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" alt="img"></p>
+<blockquote>
+<p><strong>实例数据</strong>：存放类的属性数据信息，包括父类的属性信息；</p>
+<p><strong>对齐填充</strong>：由于虚拟机要求 <strong>对象起始地址必须是8字节的整数倍</strong>。填充数据不是必须存在的，仅仅是为了字节对齐；</p>
+<p><strong>对象头</strong>：<strong>Java对象头一般占有2个机器码</strong>（在32位虚拟机中，1个机器码等于4字节，也就是32bit，在64位虚拟机中，1个机器码是8个字节，也就是64bit），但是 <strong>如果对象是数组类型，则需要3个机器码，因为JVM虚拟机可以通过Java对象的元数据信息确定Java对象的大小</strong>，但是无法从数组的元数据来确认数组的大小，所以用一块来记录数组长度。锁状态标志包括无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态。</p>
+<p><font color='red'> Mark Word里面的线程持有的锁应该改为持有该对象锁的线程ID</font></p>
+</blockquote>
+<p><strong>Synchronized用的锁就是存在Java对象头里的</strong>，对象头主要包括两部分数据：<strong>Mark Word（标记字段）、Class Pointer（类型指针）</strong>。其中 <strong>Class Pointer是对象指向它的类元数据的指针</strong>，虚拟机通过这个指针来确定这个对象是哪个类的实例，<strong>Mark Word用于存储对象自身的运行时数据，它是实现轻量级锁和偏向锁的关键</strong>。 </p>
+<h3 id="4-2-对象头中的Mark-Word与线程中的Lock-Record"><a href="#4-2-对象头中的Mark-Word与线程中的Lock-Record" class="headerlink" title="4.2 对象头中的Mark Word与线程中的Lock Record"></a>4.2 对象头中的Mark Word与线程中的Lock Record</h3><p>在线程进入同步代码块的时候，<strong>如果此同步对象没有被锁定，即它的锁标志位是01，则虚拟机首先在当前线程的栈中创建我们称之为“锁记录（Lock Record）”的空间，用于存储锁对象的Mark Word的拷贝</strong></p>
+<p><strong>Lock Record是线程私有的数据结构</strong>，每一个线程都有一个可用Lock Record列表，同时还有一个全局的可用列表。<strong>每一个被锁住的对象Mark Word都会和一个Lock Record关联（对象头的MarkWord中的Lock Word指向Lock Record的起始地址），同时Lock Record中有一个Owner字段存放拥有该锁的线程的唯一标识（或者<code>object mark word</code>），表示该锁被这个线程占用</strong>。</p>
+<h3 id="4-3-监视器（Monitor）"><a href="#4-3-监视器（Monitor）" class="headerlink" title="4.3 监视器（Monitor）"></a>4.3 监视器（Monitor）</h3><p>什么是Monitor？可以把它理解为 <strong>一个同步工具</strong>，也可以描述为 <strong>一种同步机制</strong>，它通常被 <strong>描述为一个对象</strong>。即它是用于实现同步机制的对象。</p>
+<p><strong>任何一个对象都有一个Monitor与之关联，当且一个Monitor被持有后，它将处于锁定状态</strong>。Synchronized在JVM里的实现都是 <strong>基于进入和退出Monitor对象来实现方法同步和代码块同步</strong>，可以通过成对的MonitorEnter和MonitorExit指令来实现。</p>
+<p><strong>Synchronized的对象锁，MarkWord锁标识位为10，其中指针指向的是Monitor对象的起始地址</strong>。</p>
+<p><strong>Monitor对象存在于每个Java对象的对象头Mark Word中（存储的指针的指向），Synchronized锁便是通过这种方式获取锁的</strong>，也是为什么Java中任意对象可以作为锁的原因，<strong>同时notify&#x2F;notifyAll&#x2F;wait等方法会使用到Monitor锁对象，所以必须在同步代码块中使用</strong>。</p>
+<p>监视器Monitor有两种同步方式：<strong>互斥与协作</strong>。多线程环境下线程之间如果需要共享数据，需要解决互斥访问数据的问题，<strong>监视器可以确保监视器上的数据在同一时刻只会有一个线程在访问</strong>（也就是synchronized给对象加锁的过程）。</p>
+<p>一个线程向缓冲区写数据，另一个线程从缓冲区读数据，如果读线程发现缓冲区为空就会等待，当写线程向缓冲区写入数据，就会唤醒读线程，<strong>这里读线程和写线程就是一个协作关系</strong>。</p>
+<h2 id="5-锁优化"><a href="#5-锁优化" class="headerlink" title="5 锁优化"></a>5 锁优化</h2><p>从JDK6开始，就对synchronized的实现机制进行了较大调整，<strong>包括使用JDK5引进的CAS自旋之外，还增加了自适应的CAS自旋、锁消除、锁粗化、偏向锁、轻量级锁这些优化策略</strong>。</p>
+<p>锁主要存在四种状态，依次是：<strong>无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态</strong>，锁可以从偏向锁升级到轻量级锁，再升级到重量级锁。但是锁的升级是<strong>单向</strong>的，也就是说只能<strong>从低到高升级</strong>，不会出现锁的降级。</p>
+<p>偏向锁，轻量级锁，重量级锁分别解决三个问题</p>
+<ul>
+<li>只有一个线程进入临界区</li>
+<li>多个线程<strong>交替进入</strong>临界区</li>
+<li>多个线程<strong>同时进入</strong>临界区</li>
+</ul>
+<h3 id="5-1-自旋锁"><a href="#5-1-自旋锁" class="headerlink" title="5.1 自旋锁"></a>5.1 自旋锁</h3><p><strong>线程的阻塞和唤醒需要CPU从用户态转为核心态</strong>，频繁的阻塞和唤醒对CPU来说是一件负担很重的工作，势必会给系统的并发性能带来很大的压力。同时我们发现在许多应用上面，对象锁的锁状态只会持续很短一段时间，为了这一段很短的时间频繁地阻塞和唤醒线程是非常不值得的。</p>
+<p>所以引入自旋锁，何谓自旋锁？</p>
+<blockquote>
+<p>所谓自旋锁，就是指当一个线程尝试获取某个锁时，<strong>如果该锁已被其他线程占用，就一直循环检测锁是否被释放</strong>，而不是进入线程挂起或睡眠状态。</p>
+</blockquote>
+<p>如果持有锁的线程很快就释放了锁，那么自旋的效率就非常好，反之，自旋的线程就会白白消耗掉CPU处理器的资源。所以说，自旋等待的时间（自旋的次数）必须要有一个限度，如果自旋超过了定义的时间仍然没有获取到锁，则应该被阻塞。</p>
+<h3 id="5-2-自适应自旋锁"><a href="#5-2-自适应自旋锁" class="headerlink" title="5.2 自适应自旋锁"></a>5.2 自适应自旋锁</h3><p>自旋的默认次数为10次，如果某些线程刚刚被阻塞就释放了锁（假如多自旋一两次就能获取锁），这种情况就可以通过自适应自旋锁来解决。</p>
+<p>所谓自适应就意味着<strong>自旋的次数不再是固定的</strong>，它是由前一次在同一个锁上的自旋时间及锁的拥有者的状态来决定。</p>
+<ul>
+<li><strong>线程如果自旋成功了，那么下次自旋的次数会更加多</strong></li>
+<li><strong>如果对于某个锁，很少有自旋能够成功</strong>，那么在以后要或者这个锁的时候自旋的次数会减少甚至省略掉自旋过程，以免浪费处理器资源。</li>
+</ul>
+<h3 id="5-3-锁消除"><a href="#5-3-锁消除" class="headerlink" title="5.3 锁消除"></a>5.3 锁消除</h3><p>在有些情况下，JVM检测到不可能存在共享数据竞争，这时JVM会对这些同步锁进行锁消除（没有必要上锁，提高性能）</p>
+<blockquote>
+<p><strong>锁消除的依据是逃逸分析的数据支持</strong></p>
+</blockquote>
+<p>虽然没有显示使用锁，但是在使用一些JDK的内置API时，如StringBuffer、Vector、HashTable等，这个时候会存在隐形的加锁操作。比如StringBuffer的append()方法，Vector的add()方法。但如果不存在共享数据竞争，JVM可以将这些内部的加锁操作消除。</p>
+<h3 id="5-4-锁粗化"><a href="#5-4-锁粗化" class="headerlink" title="5.4 锁粗化"></a>5.4 锁粗化</h3><p>在使用同步锁的时候，需要让同步块的作用范围尽可能小，即仅在共享数据的实际作用域中才进行同步，这样做的目的是为了使<strong>需要同步的操作数量尽可能缩小</strong>，如果存在锁竞争，那么等待锁的线程也能尽快拿到锁。</p>
+<p>但是如果存在一系列的连续加锁解锁操作，可能会导致不必要的性能损耗，所以引入锁粗化的概念。</p>
+<blockquote>
+<p><strong>锁粗化：将多个连续的加锁、解锁操作连接在一起，扩展成一个范围更大的锁</strong></p>
+<p>vector每次add的时候都需要加锁操作，JVM检测到对同一个对象（vector）连续加锁、解锁操作，会合并一个更大范围的加锁、解锁操作，即加锁解锁操作会移到for循环之外。</p>
+</blockquote>
+<h3 id="5-5-偏向锁（针对单线程的优化）"><a href="#5-5-偏向锁（针对单线程的优化）" class="headerlink" title="5.5 偏向锁（针对单线程的优化）"></a>5.5 偏向锁（针对单线程的优化）</h3><p>偏向锁是JDK6中的重要引进，因为HotSpot作者经过研究实践发现，<strong>在大多数情况下，锁不仅不存在多线程竞争，而且总是由同一线程多次获得</strong>，为了让线程获得锁的代价更低，引进了偏向锁。</p>
+<p>偏向锁是在<strong>单线程执行代码块时使用的机制</strong>，如果在多线程并发的环境下（即线程A尚未执行完同步代码块，线程B发起了申请锁的申请），则一定会转化为轻量级锁或者重量级锁。</p>
+<p>引入偏向锁主要目的是：<strong>为了在没有多线程竞争的情况下尽量减少不必要的轻量级锁执行路径</strong>。因为轻量级锁的加锁解锁操作是需要依赖多次CAS原子指令的，<strong>而偏向锁只需要在置换ThreadID的时候依赖一次CAS原子指令</strong>（由于一旦出现多线程竞争的情况就必须撤销偏向锁，所以偏向锁的撤销操作的性能损耗也必须小于节省下来的CAS原子指令的性能消耗）。</p>
+<blockquote>
+<p>轻量级锁是为了在多个线程<strong>交替执行</strong>同步块时提高性能，而偏向锁则是在只有<strong>一个线程执行</strong>同步块时进一步提高性能。</p>
+</blockquote>
+<p>初次执行到synchronized代码块的时候，锁对象变成偏向锁（通过CAS修改对象头里的锁标志位），字面意思是“偏向于第一个获得它的线程”的锁。执行完同步代码块后，线程并不会主动释放偏向锁。当第二次到达同步代码块时，线程会判断此时持有锁的线程是否就是自己（持有锁的线程ID也在对象头里），如果是则正常往下执行。由于之前没有释放锁，这里也就不需要重新加锁。如果自始至终使用锁的线程只有一个，很明显偏向锁几乎没有额外开销，性能极高。</p>
+<p><strong>步骤</strong></p>
+<ul>
+<li>检查Mark Word是否为可偏向状态（锁标志位为01）</li>
+<li>若为可偏向状态，则对比当前线程的ID是否为持有该对象锁的线程ID（Mark Word里面存的），若是，则直接执行同步代码块，不需要通过CAS操作来加锁（退出的时候也不用解锁）</li>
+<li>若当前线程的ID不是持有该对象锁的线程ID，则通过CAS操作<strong>竞争锁</strong><ul>
+<li>竞争成功，则将Mark Word记录的线程ID改为当前线程ID（依赖一次CAS原子指令），当前线程获得了<strong>轻量级锁</strong><ul>
+<li>先撤销锁偏向锁，再恢复到无锁或者轻量级锁的状态</li>
+</ul>
+</li>
+<li>竞争失败，证明当前存在<strong>多线程同时竞争情况</strong>，需要自旋等待或者自旋次数超过阈值后<strong>锁膨胀，升级为重量级锁</strong></li>
+<li>竞争锁指的是【线程尝试使用 CAS将对象头中的Mark Word替换为指向当前线程栈帧中的锁记录的指针】</li>
+</ul>
+</li>
+<li>偏向锁只有遇到其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁，线程是不会主动释放偏向锁的。</li>
+</ul>
+<h3 id="5-6-轻量级锁"><a href="#5-6-轻量级锁" class="headerlink" title="5.6 轻量级锁"></a>5.6 轻量级锁</h3><p>轻量级锁是指当锁是偏向锁的时候，却被另外的线程所访问，此时偏向锁就会升级为轻量级锁，其他线程会通过自旋的形式尝试获取锁，线程不会阻塞，从而提高性能。一旦有第二个线程加入锁竞争，偏向锁就升级为轻量级锁（自旋锁）</p>
+<p>在轻量级锁状态下继续锁竞争，没有抢到锁的线程将<strong>自旋</strong>，即不停地循环判断锁是否能够被成功获取。获取锁的操作，其实就是通过CAS修改对象头里的锁标志位。先比较当前锁标志位是否为“释放”，如果是则将其设置为“锁定”，比较并设置是原子性发生的。这就算抢到锁了，然后线程将当前锁的持有者信息修改为自己。</p>
+<p>轻量级锁依赖 CAS 操作 Mark Word 来试图获取锁，如果重试成功，就使用轻量级锁；否则，进一步升级为重量级锁</p>
+<h3 id="5-7-重量级锁"><a href="#5-7-重量级锁" class="headerlink" title="5.7 重量级锁"></a>5.7 重量级锁</h3><p>如果<strong>锁竞争</strong>情况严重，某个达到最大自旋次数的线程，会将轻量级锁升级为重量级锁（依然是CAS修改锁标志位，但不修改持有锁的线程ID）。当后续线程尝试获取锁时，发现被占用的锁是重量级锁，则直接将自己挂起（而不是忙等），等待将来被唤醒。</p>
+<p>重量级锁是指当有一个线程获取锁之后，其余所有等待获取该锁的线程都会处于<strong>阻塞</strong>状态。简言之，就是所有的控制权都交给了操作系统，由操作系统来负责线程间的调度和线程的状态变更。而这样会出现频繁地对线程运行状态的切换，线程的挂起和唤醒，从而消耗大量的系统资。</p>
+<p><img src="https://s2.51cto.com/images/blog/202107/29/8cc55984152076f48b975796dbe8d6b2.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184" alt="Java并发之锁升级：无锁-&gt;偏向锁-&gt;轻量级锁-&gt;重量级锁_临界区_03"></p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-4517995/w527xtazin.png?imageView2/2/w/2560/h/7000" alt="img"></p>
+<h3 id="5-8-总结"><a href="#5-8-总结" class="headerlink" title="5.8 总结"></a>5.8 总结</h3><ul>
+<li>当只有一个线程时，线程占有锁时是偏向锁；</li>
+<li>当有其他线程竞争锁时，偏向锁升级为轻量级锁；</li>
+<li>当多线程不能交替获得轻量级锁而不产生锁竞争（可以自旋等待）时，轻量级锁升级为重量级锁。</li>
+</ul>
+<h2 id="4-可重入锁"><a href="#4-可重入锁" class="headerlink" title="4 可重入锁"></a><strong>4 可重入锁</strong></h2><p>可重入锁是指一个线程在持有某个锁的情况下，能够再次请求该锁而不会造成死锁或其他异常。也就是说，同一个线程可以多次获得同一个锁，而不会被阻塞。</p>
+<p>在Java中，常用的可重入锁有以下几种：</p>
+<ol>
+<li><strong>synchronized</strong>关键字：在Java中，每个对象都有一个监视器（Monitor），当使用synchronized关键字修饰方法或代码块时，会自动获取当前对象的监视器，并在执行完毕后释放该监视器。</li>
+<li><strong>ReentrantLock</strong>类：是Java提供的一个可重入锁的实现，它提供了比synchronized更灵活的锁机制，可以实现公平锁和非公平锁、可重入锁等功能。</li>
+<li><strong>ReentrantReadWriteLock</strong>类：是ReentrantLock的升级版，它支持读写分离的锁机制，即读操作可以并发执行，写操作需要独占锁。</li>
+<li><strong>StampedLock</strong>类：是Java8新增的一个可重入锁的实现，它支持乐观读取和悲观读取两种模式，乐观读取不会阻塞写操作，悲观读取需要获取独占锁，类似于读写锁的机制，但比读写锁更加灵活。</li>
+</ol>
+<h2 id="5-公平锁与非公平锁"><a href="#5-公平锁与非公平锁" class="headerlink" title="5 公平锁与非公平锁"></a>5 公平锁与非公平锁</h2><h2 id="8-悲观锁与乐观锁"><a href="#8-悲观锁与乐观锁" class="headerlink" title="8 悲观锁与乐观锁"></a>8 悲观锁与乐观锁</h2><p><strong>悲观锁</strong></p>
+<ul>
+<li>认为线程安全问题一定会发生，因此在操作数据之前会获取锁，确保线程<strong>串行执行</strong></li>
+<li>Synchronized、Lock都属于悲观锁</li>
+</ul>
+<p><strong>乐观锁</strong></p>
+<ul>
+<li><p>认为线程安全问题不一定会发生，因此不加锁，只是在更新数据时去判断有没有其他线程对数据做了修改</p>
+</li>
+<li><p>如果没有修改才认为是安全的，进而更新数据</p>
+</li>
+<li><p>如果已经被其他线程修改说明发生了安全问题，此时可以重试或抛出异常</p>
+</li>
+<li><p><strong>版本号法</strong>，CAS法（Compare and swap）</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    wudaoyunqi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试八股——Java多线程与并发编程之线程安全">https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring%E7%B3%BB%E5%88%97/" rel="next" title="面试八股——Spring系列01">
+                <i class="fa fa-chevron-left"></i> 面试八股——Spring系列01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/04/21/%E9%BB%91%E9%A9%AC%E7%82%B9%E8%AF%84%E9%A1%B9%E7%9B%AE/" rel="prev" title="黑马点评项目">
+                黑马点评项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars.githubusercontent.com/u/31103856?s=400&u=2b76906992e5a379c669123244077ec5c721c156&v=4"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wudaoyunqi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wudaoyunqi@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">1.</span> <span class="nav-text">1 线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 如何实现线程安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.</span> <span class="nav-text">2 Volatile关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-JMM%E6%A8%A1%E5%9E%8B%EF%BC%88Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 JMM模型（Java内存模型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-volatile%EF%BC%8C%E4%B8%80%E7%A7%8D%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%9A%84%E9%94%81"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 volatile，一种轻量级的锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-volatile%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 volatile的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-volatile%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 volatile的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-volatile%E5%AF%B9%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 volatile对指令重排的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E6%80%BB%E7%BB%93"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Synchronized%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.</span> <span class="nav-text">3 Synchronized关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Synchronized%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Synchronized的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 同步原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%90%8C%E6%AD%A5%E6%A6%82%E5%BF%B5%EF%BC%88%E5%BE%85%E6%9B%B4%E6%96%B0%E5%92%8C%E4%BC%98%E5%8C%96%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">4 同步概念（待更新和优化）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Java%E5%AF%B9%E8%B1%A1%E5%A4%B4"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Java对象头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AF%B9%E8%B1%A1%E5%A4%B4%E4%B8%AD%E7%9A%84Mark-Word%E4%B8%8E%E7%BA%BF%E7%A8%8B%E4%B8%AD%E7%9A%84Lock-Record"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 对象头中的Mark Word与线程中的Lock Record</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E7%9B%91%E8%A7%86%E5%99%A8%EF%BC%88Monitor%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 监视器（Monitor）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%94%81%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">5 锁优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 自旋锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E8%87%AA%E9%80%82%E5%BA%94%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 自适应自旋锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%94%81%E6%B6%88%E9%99%A4"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 锁消除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E9%94%81%E7%B2%97%E5%8C%96"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 锁粗化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E5%81%8F%E5%90%91%E9%94%81%EF%BC%88%E9%92%88%E5%AF%B9%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%8C%96%EF%BC%89"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 偏向锁（针对单线程的优化）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">5.6.</span> <span class="nav-text">5.6 轻量级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">5.7.</span> <span class="nav-text">5.7 重量级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-8-%E6%80%BB%E7%BB%93"><span class="nav-number">5.8.</span> <span class="nav-text">5.8 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81"><span class="nav-number">6.</span> <span class="nav-text">4 可重入锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%AC%E5%B9%B3%E9%94%81%E4%B8%8E%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81"><span class="nav-number">7.</span> <span class="nav-text">5 公平锁与非公平锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81"><span class="nav-number">8.</span> <span class="nav-text">8 悲观锁与乐观锁</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wudaoyunqi</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">7.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+</body>
+</html>

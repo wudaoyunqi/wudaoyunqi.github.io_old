@@ -79,15 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://wudaoyunqi.github.io/tags/index.html">
+<meta name="description" content="1 Spring MVC的工作流程  客户端发送请求-&gt; 前端控制器 DispatcherServlet 接受客户端请求 -&gt; 调用处理器映射器 HandlerMapping 解析请求对应的 Handler-&gt; HandlerAdapter 会根据 Handler 来调用真正的处理器处理请求，并处理相应的业务逻辑 -&gt; 处理器返回一个模型视图 ModelAndView -&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试八股——Spring系列01">
+<meta property="og:url" content="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="Yunqi&#39;s Blog">
+<meta property="og:description" content="1 Spring MVC的工作流程  客户端发送请求-&gt; 前端控制器 DispatcherServlet 接受客户端请求 -&gt; 调用处理器映射器 HandlerMapping 解析请求对应的 Handler-&gt; HandlerAdapter 会根据 Handler 来调用真正的处理器处理请求，并处理相应的业务逻辑 -&gt; 处理器返回一个模型视图 ModelAndView -&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-12T13:49:52.000Z">
-<meta property="article:modified_time" content="2023-04-12T13:51:20.657Z">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-16d4df4fcf529667f4cb10dbbea654dd_720w.webp">
+<meta property="article:published_time" content="2023-04-20T13:40:59.000Z">
+<meta property="article:modified_time" content="2023-04-20T13:59:36.946Z">
 <meta property="article:author" content="wudaoyunqi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-16d4df4fcf529667f4cb10dbbea654dd_720w.webp">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://wudaoyunqi.github.io/tags/"/>
+  <link rel="canonical" href="https://wudaoyunqi.github.io/2023/04/20/面试八股——Spring系列/"/>
 
 
 
 
 
-  <title>tags | Yunqi's Blog</title>
+  <title>面试八股——Spring系列01 | Yunqi's Blog</title>
   
 
 
@@ -272,40 +276,246 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring%E7%B3%BB%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/31103856?s=400&u=2b76906992e5a379c669123244077ec5c721c156&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yunqi's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                2 tags in total
+          <h1 class="post-title" itemprop="name headline">面试八股——Spring系列01</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-20T21:40:59+08:00">
+                2023-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">面试八股——Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  706
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/%E5%BC%80%E5%8F%91%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/" style="font-size: 12px; color: #ccc">开发成长之路</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="1-Spring-MVC的工作流程"><a href="#1-Spring-MVC的工作流程" class="headerlink" title="1 Spring MVC的工作流程"></a>1 Spring MVC的工作流程</h2><p><img src="https://pic2.zhimg.com/80/v2-16d4df4fcf529667f4cb10dbbea654dd_720w.webp" alt="https://pic3.zhimg.com/80/v2-4d4f8b01c6b9faad1af473dcdda4ff06_720w.webp"></p>
+<ul>
+<li>客户端发送请求-&gt; 前端控制器 DispatcherServlet 接受客户端请求 -&gt; 调用处理器映射器 HandlerMapping 解析请求对应的 Handler-&gt; HandlerAdapter 会根据 Handler 来调用真正的处理器处理请求，并处理相应的业务逻辑 -&gt; 处理器返回一个模型视图 ModelAndView -&gt; 视图解析器进行解析，并返回一个视图对象-&gt;前端控制器 DispatcherServlet 渲染数据（将Model传给View）-&gt;将得到视图对象返回给用户</li>
+</ul>
+<p>（1）客户端（浏览器）发送请求，直接请求到 DispatcherServlet。</p>
+<p>（2）DispatcherServlet 根据请求信息调用 HandlerMapping，解析请求对应的 Handler。</p>
+<p>（3）解析到对应的 Handler（也就是我们平常说的 Controller 控制器）后，开始由 HandlerAdapter 适配器处理。</p>
+<p>（4）HandlerAdapter 会根据 Handler 来调用真正的处理器开处理请求，并处理相应的业务逻辑。</p>
+<p>（5）处理器处理完业务后，会返回一个 ModelAndView 对象，Model 是返回的数据对象，View 是个逻辑上的 View。</p>
+<p>（6）ViewResolver 会根据逻辑 View 查找实际的 View。</p>
+<p>（7）DispaterServlet 把返回的 Model 传给 View（视图渲染）。</p>
+<p>（8）把 View 返回给请求者（浏览器）</p>
+<h2 id="2-Spring几个常用的接口"><a href="#2-Spring几个常用的接口" class="headerlink" title="2 Spring几个常用的接口"></a>2 Spring几个常用的接口</h2><h3 id="2-1-BeanFactory接口"><a href="#2-1-BeanFactory接口" class="headerlink" title="2.1 BeanFactory接口"></a>2.1 BeanFactory接口</h3><p>BeanFactory： 以Factory结尾，表示它是一个工厂类，是用于管理Bean的一个工厂</p>
+<ul>
+<li><p>BeanFactory接口是Spring容器最基本的接口，它的实现机制采用的是Java经典的工厂模式。</p>
+</li>
+<li><p>BeanFactory接口提供了创建和管理Bean的方法。</p>
+</li>
+</ul>
+<h3 id="2-2-HandlerInterceptor接口"><a href="#2-2-HandlerInterceptor接口" class="headerlink" title="2.2 HandlerInterceptor接口"></a>2.2 HandlerInterceptor接口</h3><p>在SpringMVC 中定义一个Interceptor是比较非常简单，主要有两种方式：</p>
+<p>第一种：实现HandlerInterceptor 接口，或者是继承实现了HandlerInterceptor 接口的类，例如HandlerInterceptorAdapter；<br>第二种：实现Spring的WebRequestInterceptor接口，或者是继承实现了WebRequestInterceptor的类。<br>HandlerInterceptor接口主要定义了三个方法：</p>
+<ol>
+<li><p><strong>boolean preHandle</strong> (HttpServletRequest request, HttpServletResponse response, Object handle)方法：该方法将在请求处理之前进行调用，只有该方法返回true，才会继续执行后续的Interceptor和Controller，当返回值为true 时，就会继续调用下一个Interceptor的preHandle就会继续调用下一个Interceptor的preHandle 方法，如果已经是最后一个Interceptor的时候就会是调用当前请求的Controller方法；</p>
+</li>
+<li><p><strong>void postHandle</strong> (HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)方法：该方法将在请求处理之后，DispatcherServlet进行视图返回渲染之前进行调用，可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作。</p>
+</li>
+<li><p><strong>void afterCompletion</strong>(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)方法：该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行，该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。用于进行资源清理。</p>
+</li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    wudaoyunqi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring%E7%B3%BB%E5%88%97/" title="面试八股——Spring系列01">https://wudaoyunqi.github.io/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Spring%E7%B3%BB%E5%88%97/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%9F%BA%E7%A1%80/" rel="next" title="面试八股——Java基础01">
+                <i class="fa fa-chevron-left"></i> 面试八股——Java基础01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/04/20/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E2%80%94%E2%80%94Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="prev" title="面试八股——Java多线程与并发编程之线程安全">
+                面试八股——Java多线程与并发编程之线程安全 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -338,8 +548,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -419,6 +638,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Spring-MVC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">1 Spring MVC的工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Spring%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">2 Spring几个常用的接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-BeanFactory%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 BeanFactory接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-HandlerInterceptor%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 HandlerInterceptor接口</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
